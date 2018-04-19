@@ -272,15 +272,15 @@
 <li>git log –stat #查看提交统计信息<h4 id="tig"><a href="#tig" class="headerlink" title="tig"></a>tig</h4></li>
 <li>Mac上可以使用tig代替diff和log，brew install tig<h4 id="Git-本地分支管理"><a href="#Git-本地分支管理" class="headerlink" title="Git 本地分支管理"></a>Git 本地分支管理</h4><h4 id="查看、切换、创建和删除分支"><a href="#查看、切换、创建和删除分支" class="headerlink" title="查看、切换、创建和删除分支"></a>查看、切换、创建和删除分支</h4></li>
 <li>git br -r # 查看远程分支</li>
-<li>git br <new_branch> # 创建新的分支</new_branch></li>
+<li>git br &lt;new_branch&gt; # 创建新的分支</li>
 <li>git br -v # 查看各个分支最后提交信息</li>
 <li>git br –merged # 查看已经被合并到当前分支的分支</li>
 <li>git br –no-merged # 查看尚未被合并到当前分支的分支</li>
 <li>git co <branch> # 切换到某个分支</branch></li>
-<li>git co -b <new_branch> # 创建新的分支，并且切换过去</new_branch></li>
-<li>git co -b <new_branch> <branch> # 基于branch创建新的new_branch</branch></new_branch></li>
+<li>git co -b &lt;new_branch&gt; # 创建新的分支，并且切换过去</li>
+<li>git co -b &lt;new_branch&gt; <branch> # 基于branch创建新的new_branch</branch></li>
 <li>git co $id # 把某次历史提交记录checkout出来，但无分支信息，切换到其他分支会自动删除</li>
-<li>git co $id -b <new_branch> # 把某次历史提交记录checkout出来，创建成一个分支</new_branch></li>
+<li>git co $id -b &lt;new_branch&gt; # 把某次历史提交记录checkout出来，创建成一个分支</li>
 <li>git br -d <branch> # 删除某个分支</branch></li>
 <li>git br -D <branch> # 强制删除某个分支 (未被合并的分支被删除的时候需要强制)<h4 id="分支合并和rebase"><a href="#分支合并和rebase" class="headerlink" title="分支合并和rebase"></a>分支合并和rebase</h4></branch></li>
 <li>git merge <branch> # 将branch分支合并到当前分支</branch></li>
@@ -298,13 +298,13 @@
 <li>git fetch origin # 抓取远程仓库更新</li>
 <li>git merge origin/master # 将远程主分支合并到本地当前分支</li>
 <li>git co –track origin/branch # 跟踪某个远程分支创建相应的本地分支</li>
-<li>git co -b <local_branch> origin/<remote_branch> # 基于远程分支创建本地分支，功能同上</remote_branch></local_branch></li>
+<li>git co -b &lt;local_branch&gt; origin/&lt;remote_branch&gt; # 基于远程分支创建本地分支，功能同上</li>
 <li>git push # push所有分支</li>
 <li>git push origin master # 将本地主分支推到远程主分支</li>
 <li>git push -u origin master # 将本地主分支推到远程(如无远程主分支则创建，用于初始化远程仓库)</li>
-<li>git push origin <local_branch> # 创建远程分支， origin是远程仓库名</local_branch></li>
-<li>git push origin <local_branch>:<remote_branch> # 创建远程分支</remote_branch></local_branch></li>
-<li>git push origin :<remote_branch> #先删除本地分支(git br -d <branch>)，然后再push删除远程分支<h4 id="Git远程仓库管理"><a href="#Git远程仓库管理" class="headerlink" title="Git远程仓库管理"></a>Git远程仓库管理</h4></branch></remote_branch></li>
+<li>git push origin &lt;local_branch&gt; # 创建远程分支， origin是远程仓库名</li>
+<li>git push origin &lt;local_branch&gt;:&lt;remote_branch&gt; # 创建远程分支</li>
+<li>git push origin :&lt;remote_branch&gt; #先删除本地分支(git br -d <branch>)，然后再push删除远程分支<h4 id="Git远程仓库管理"><a href="#Git远程仓库管理" class="headerlink" title="Git远程仓库管理"></a>Git远程仓库管理</h4></branch></li>
 <li>git remote -v # 查看远程服务器地址和仓库名称</li>
 <li>git remote show origin # 查看远程服务器仓库状态</li>
 <li>git remote add origin git@ github:robbin/robbin_site.git # 添加远程仓库地址</li>
@@ -315,10 +315,9 @@
 <li>git remote add origin git@ github.com:robbin/robbin_site.git # 设置远程仓库地址</li>
 <li>git push -u origin master # 客户端首次提交</li>
 <li>git push -u origin develop # 首次将本地develop分支提交到远程develop分支，并且track</li>
-<li>git remote set-head origin master # 设置远程仓库的HEAD指向master分支</li>
-</ul>
-<p>也可以命令设置跟踪远程库和本地库</p>
-<ul>
+<li>git remote set-head origin master # 设置远程仓库的HEAD指向master分支<h3 id="git-添加第二个仓库"><a href="#git-添加第二个仓库" class="headerlink" title="git 添加第二个仓库"></a>git 添加第二个仓库</h3></li>
+<li>git remote add origin git@ github.com:robbin/robbin_site.git # 设置远程仓库地址</li>
+<li>git pull origin master —-allow-unrelated-histories<br>也可以命令设置跟踪远程库和本地库</li>
 <li>git branch –set-upstream master origin/master</li>
 <li>git branch –set-upstream develop origin/develop</li>
 </ul>
