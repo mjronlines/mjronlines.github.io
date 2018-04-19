@@ -1,0 +1,70 @@
+layout: false
+---
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>DOM鼠标按下Scroll左右拖动</title>
+    <meta name=viewport content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
+    <style type="text/css" media="screen">
+        .box {
+            width: 500px;
+            overflow-x: auto;
+            height: 500px;
+        }
+
+        .cc {
+            width: 1000px;
+            height: 500px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="box" id="box">
+    <div class="cc" id="cc">
+        123123123123123123123123123123dsgfsdgsdfgsdg 123123123123123123123123123123dsgfsdgsdfgsdg
+        123123123123123123123123123123dsgfsdgsdfgsdg 123123123123123123123123123123dsgfsdgsdfgsdg
+        123123123123123123123123123123dsgfsdgsdfgsdg 123123123123123123123123123123 123123123123123123123123123123
+        123123123123123123123123123123 123123123123123123123123123123 123123123123123123123123123123
+    </div>
+</div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" charset="utf-8" async defer>
+
+
+    //    $(".box").mousedown(function(){
+    //        console.log("---");
+    //        $(".box").mousemove(function(event){
+    //            console.log("event",event);
+    //        })
+    //    })
+
+
+    var box = document.getElementById("box");
+    box.onmousedown = function (ev) {
+        console.log("---");
+        var scrollx = box.scrollLeft;
+        var ev = ev || window.event;
+        var topleft = ev.clientX - box.offsetLeft;
+        console.log("topleft", topleft);
+        document.onmousemove = function (ev) {
+            var ev = ev || window.event;
+            var nowx = ev.clientX - box.offsetLeft;
+            console.log("move", topleft - nowx);
+            box.scrollLeft = scrollx + (topleft - nowx);
+        }
+        document.onmouseup = function () {
+            document.onmousemove = null;
+            document.onmouseup = null;
+        }
+    }
+
+
+</script>
+
+<!--<script src="./js/default.js" type="text/javascript" charset="utf-8"></script> &ndash;&gt;-->
+
+</html>

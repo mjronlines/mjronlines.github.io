@@ -1,0 +1,110 @@
+layout: false
+---
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>瀑布流简单原理案例源码在本页面-贝贝网络工作室</title>
+</head>
+<style>
+.fbox {
+    width: 20%;
+    float: left;
+}
+
+.fbox .container {
+
+    width: 95%;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.fbox .container img {
+    width: 100%;
+}
+
+.fbox .container span {
+    width: 100%;
+    text-align: cener;
+    line-height: 20px;
+}
+
+.more {
+    display: block;
+    width: 100%;
+    clear: both;
+}
+</style>
+
+<body>
+    <div class="kBox">
+        <div class="fbox fboxone">
+            <div class="container">
+            </div>
+        </div>
+        <div class="fbox">
+            <div class="container">
+            </div>
+        </div>
+        <div class="fbox">
+            <div class="container">
+            </div>
+        </div>
+        <div class="fbox">
+            <div class="container">
+            </div>
+        </div>
+        <div class="fbox">
+            <div class="container">
+            </div>
+        </div>
+    </div>
+    <div class="more">加载更多</div>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+    var isappend=true;
+    var imgurl = ["http://img.qlxing.com/78e3be3a-6378-41b0-b067-45ae2c51ec69", "6d367183f99733b6c4f88eeb9b9f4af1dd74be110af4e1574e96450940e1c2e58bfff49d14947e90b6ede3aba1282cef", "http://img.qlxing.com/88761b03-f889-464b-b629-c704f94790d0", "http://img.qlxing.com/2d9f73b2-00ea-4141-b194-7caef72ff384", "http://img.qlxing.com/38a28f6d-4182-4f1b-a674-06efef059519", "http://img.qlxing.com/2c691f54-9c10-4cdc-84f8-b089b8e5fa15", "http://img.qlxing.com/0ec0a339-0a2f-43cd-96be-652c9a481eaa", "http://img.qlxing.com/7b542688-b255-4c06-9158-496962564b8c", "http://img.qlxing.com/c40407df-2e42-4664-b90c-0b593ae85650", "http://img.qlxing.com/988d6134-2f78-43af-ba3e-42432c1a948a", "http://img.qlxing.com/dcdad91a-4452-492b-baa0-4fbac118c92b"]
+    $(function() {
+        appendb();
+    })
+
+    var appendb = () => {
+        var db = getdb();
+        for (var x in db) {
+            // console.log(db[x]);
+            var divbox = $(".fboxone");
+            var divs = $(document).find(".fbox");
+            for (var i = 0; i < divs.length; i++) {
+                if (divbox.height() > $(divs[i]).height()) {
+                    divbox = $(divs[i]);
+                }
+            }
+            divbox.find(".container").append(`<img src="${db[x].url}"/><span>${db[x].name}</span>`);
+            isappend=true;
+        }
+    }
+    /*数据源*/
+    var getdb = () => {
+        var db = [];
+        for (var i = 0; i < 30; i++) {
+            db.push({ name: parseInt(Math.random() * 10000), url: imgurl[parseInt(Math.random() * 10)] });
+        }
+        return db;
+    }
+
+    $(document).scroll(function() {
+ 
+        if ($(".fboxone").height() < $(document).scrollTop() + $(window).height()) {
+        	isappend=false;
+            appendb();
+        }
+    })
+    </script>
+</body>
+
+</html>

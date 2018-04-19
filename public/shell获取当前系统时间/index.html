@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>shell获取当前系统时间 | MJRBlOG</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="在shell脚本里常常需要获取系统时间来处理某项操作，今天系统的学习了一下如何获取系统时间。记录如下：linux的系统时间在shell里是可以直接调用系统变量的如：获取今天时期：date +%Y%m%d 或 date +%F 或 $(date +%y%m%d)命令输出结果如下： 隐藏Activity的头部默认导航123456[root@centi-C sh]# date +%Y%m%d 20120">
+<meta name="keywords" content="linux,shell">
+<meta property="og:type" content="article">
+<meta property="og:title" content="shell获取当前系统时间">
+<meta property="og:url" content="https://www.58h.com.cn/shell获取当前系统时间/index.html">
+<meta property="og:site_name" content="MJRBlOG">
+<meta property="og:description" content="在shell脚本里常常需要获取系统时间来处理某项操作，今天系统的学习了一下如何获取系统时间。记录如下：linux的系统时间在shell里是可以直接调用系统变量的如：获取今天时期：date +%Y%m%d 或 date +%F 或 $(date +%y%m%d)命令输出结果如下： 隐藏Activity的头部默认导航123456[root@centi-C sh]# date +%Y%m%d 20120">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-11-30T02:58:23.324Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="shell获取当前系统时间">
+<meta name="twitter:description" content="在shell脚本里常常需要获取系统时间来处理某项操作，今天系统的学习了一下如何获取系统时间。记录如下：linux的系统时间在shell里是可以直接调用系统变量的如：获取今天时期：date +%Y%m%d 或 date +%F 或 $(date +%y%m%d)命令输出结果如下： 隐藏Activity的头部默认导航123456[root@centi-C sh]# date +%Y%m%d 20120">
+  
+    <link rel="alternate" href="/atom.xml" title="MJRBlOG" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">MJRBlOG</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/分类/android-安卓/">安卓学习</a>
+        
+          <a class="main-nav-link" href="/分类/Linux/">Linux学习</a>
+        
+          <a class="main-nav-link" href="/分类/前端/">前端</a>
+        
+          <a class="main-nav-link" href="/分类/服务端/">服务端</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://www.58h.com.cn"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-shell获取当前系统时间" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/shell获取当前系统时间/" class="article-date">
+  <time datetime="2017-11-30T02:52:16.385Z" itemprop="datePublished">2017-11-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/分类/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      shell获取当前系统时间
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry " itemprop="articleBody">
+      
+        <p>在shell脚本里常常需要获取系统时间来处理某项操作，今天系统的学习了一下如何获取系统时间。记录如下：<br>linux的系统时间在shell里是可以直接调用系统变量的如：<br>获取今天时期：<code>date +%Y%m%d</code> 或 <code>date +%F</code> 或 $(date +%y%m%d)<br>命令输出结果如下：</p>
+<h2 id="隐藏Activity的头部默认导航"><a href="#隐藏Activity的头部默认导航" class="headerlink" title="隐藏Activity的头部默认导航"></a>隐藏Activity的头部默认导航</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@centi-C sh]# date +%Y%m%d </span><br><span class="line">20120727 </span><br><span class="line">[root@centi-C sh]# date +%F </span><br><span class="line">2012-07-27 </span><br><span class="line">[root@centi-C sh]# date +%y%m%d </span><br><span class="line">120727</span><br></pre></td></tr></table></figure>
+<p>获取昨天时期：<code>date -d yesterday +%Y%m%d</code> 也可以写成<code>date -d -1day +%Y%m%d</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@centi-C sh]# date -d yesterday +%Y%m%d </span><br><span class="line">20120726 </span><br><span class="line">[root@centi-C sh]# date -d yesterday +%F </span><br><span class="line">2012-07-26 </span><br><span class="line">[root@centi-C sh]# date -d -1day +%y%m%d </span><br><span class="line">120726 </span><br><span class="line">[root@centi-C sh]# date -d -1day +%Y%m%d </span><br><span class="line">20120726</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>获取前天日期：<code>date -d -2day +%Y%m%d</code> </li>
+<li>依次类推比如获取10天前的日期：<code>date -d -10day +%Y%m%d</code> </li>
+<li>或n天前的 <code>date -d &quot;n days ago&quot; +%y%m%d</code> </li>
+<li>明天：<code>date -d tomorrow +%y%m%d</code> </li>
+<li><p>注意以上中间有空格 </p>
+</li>
+<li><p>至于你需要什么样的日期时间格式，就需要应用相关的时间域参数来实现咯</p>
+</li>
+<li>相关时间域如下： </li>
+<li>% H 小时（00..23） </li>
+<li>% I 小时（01..12） </li>
+<li>% k 小时（0..23） </li>
+<li>% l 小时（1..12） </li>
+<li>% M 分（00..59） </li>
+<li>% p 显示出AM或PM </li>
+<li>% r 时间（hh：mm：ss AM或PM），12小时 </li>
+<li>% s 从1970年1月1日00：00：00到目前经历的秒数 </li>
+<li>% S 秒（00..59） </li>
+<li>% T 时间（24小时制）（hh:mm:ss） </li>
+<li>% X 显示时间的格式（％H:％M:％S） </li>
+<li>% Z 时区 日期域 </li>
+<li>% a 星期几的简称（ Sun..Sat） </li>
+<li>% A 星期几的全称（ Sunday..Saturday） </li>
+<li>% b 月的简称（Jan..Dec） </li>
+<li>% B 月的全称（January..December） </li>
+<li>% c 日期和时间（ Mon Nov 8 14：12：46 CST 1999） </li>
+<li>% d 一个月的第几天（01..31） </li>
+<li>% D 日期（mm／dd／yy） </li>
+<li>% h 和%b选项相同 </li>
+<li>% j 一年的第几天（001..366） </li>
+<li>% m 月（01..12） </li>
+<li>% w 一个星期的第几天（0代表星期天） </li>
+<li>% W 一年的第几个星期（00..53，星期一为第一天） </li>
+<li>% x 显示日期的格式（mm/dd/yy） </li>
+<li>% y 年的最后两个数字（ 1999则是99） </li>
+<li>% Y 年（例如：1970，1996等） </li>
+<li>注意：只有超级用户才有权限使用date命令设置时间，一般用户只能使用date命令显示时间。</li>
+</ul>
+<p>添加一个练习脚本，功能：</p>
+<ul>
+<li><p><font color="#ff0000"> 在每月第一天备份并压缩/etc目录的所有内容，存放在/root/bak目录里，且文件名为如下形式yymmdd_etc，yy为年，mm为月，dd为日。Shell程序fileback存放在/usr/bin目录下。</font></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#/bin/bash </span><br><span class="line">#filebak </span><br><span class="line">#file executable: chmod 755 filebak </span><br><span class="line">PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin </span><br><span class="line">export PATH </span><br><span class="line">bakdir=&quot;/root/bak/&quot; </span><br><span class="line">filename=&quot;`date +%y%m%d`_etc.tar.gz&quot; </span><br><span class="line">if [ ! -x &quot;$bakdir&quot; ];then </span><br><span class="line">mkdir $bakdir </span><br><span class="line">fi </span><br><span class="line">cd $bakdir </span><br><span class="line">tar cvfz $filename /etc</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>或使用crontab -e 命令添加定时任务：</p>
+</li>
+<li>0 1 <em> </em> * /bin/sh /usr/bin/fileback</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.58h.com.cn/shell获取当前系统时间/" data-id="cjalvy6ff00000chg0c445g6y" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/ubuntu16.0.4 系统中chrome浏览器的代理配置/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          ubuntu16.0.4 系统中chrome浏览器的代理配置
+        
+      </div>
+    </a>
+  
+  
+    <a href="/android布局技巧/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">android布局技巧</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/分类/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/分类/android-安卓/">android-安卓</a></li><li class="category-list-item"><a class="category-list-link" href="/分类/javascript/">javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/分类/前端/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/分类/服务端/">服务端</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scroll/">Scroll</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/angular/">angular</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chrome/">chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/">css3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dom/">dom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/drawable/">drawable</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/">express</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/loading/">loading</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongodb整库备份与还原以及单个collection备份、恢复方法/">mongodb整库备份与还原以及单个collection备份、恢复方法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodeJs/">nodeJs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/relativelayout相对布局/">relativelayout相对布局</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/">ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ueditor/">ueditor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动态特效/">动态特效</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/实例/">实例</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/瀑布流/">瀑布流</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/百度地图/">百度地图</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/鼠标拖动/">鼠标拖动</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Scroll/" style="font-size: 10px;">Scroll</a> <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/angular/" style="font-size: 15px;">angular</a> <a href="/tags/chrome/" style="font-size: 10px;">chrome</a> <a href="/tags/css3/" style="font-size: 15px;">css3</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/drawable/" style="font-size: 10px;">drawable</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/javascript/" style="font-size: 15px;">javascript</a> <a href="/tags/linux/" style="font-size: 20px;">linux</a> <a href="/tags/loading/" style="font-size: 10px;">loading</a> <a href="/tags/mongodb整库备份与还原以及单个collection备份、恢复方法/" style="font-size: 10px;">mongodb整库备份与还原以及单个collection备份、恢复方法</a> <a href="/tags/nginx/" style="font-size: 15px;">nginx</a> <a href="/tags/nodeJs/" style="font-size: 15px;">nodeJs</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/relativelayout相对布局/" style="font-size: 10px;">relativelayout相对布局</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/ubuntu/" style="font-size: 15px;">ubuntu</a> <a href="/tags/ueditor/" style="font-size: 10px;">ueditor</a> <a href="/tags/前端/" style="font-size: 15px;">前端</a> <a href="/tags/动态特效/" style="font-size: 10px;">动态特效</a> <a href="/tags/实例/" style="font-size: 10px;">实例</a> <a href="/tags/瀑布流/" style="font-size: 10px;">瀑布流</a> <a href="/tags/百度地图/" style="font-size: 10px;">百度地图</a> <a href="/tags/鼠标拖动/" style="font-size: 10px;">鼠标拖动</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/android使用Service在后台运行/">android使用Service在后台运行</a>
+          </li>
+        
+          <li>
+            <a href="/angular路由中Ueditor第二次无法初始化/">angular小知识汇总</a>
+          </li>
+        
+          <li>
+            <a href="/实用JS案例收集/">JS实用案例收集</a>
+          </li>
+        
+          <li>
+            <a href="/AngularJSH5videosrcurl/">AngularJS H5 video src url</a>
+          </li>
+        
+          <li>
+            <a href="/nodejs express制作后台引入富文本编辑器/">nodejs express制作后台引入富文本编辑器</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 牟骏荣<br>
+
+      <!-- #%%# __('powered_by') #%%# <a href="http://hexo.io/" target="_blank">Hexo</a>-->
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/分类/android-安卓/" class="mobile-nav-link">安卓学习</a>
+  
+    <a href="/分类/Linux/" class="mobile-nav-link">Linux学习</a>
+  
+    <a href="/分类/前端/" class="mobile-nav-link">前端</a>
+  
+    <a href="/分类/服务端/" class="mobile-nav-link">服务端</a>
+  
+</nav>
+    
+
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

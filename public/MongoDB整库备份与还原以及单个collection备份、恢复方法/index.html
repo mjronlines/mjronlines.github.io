@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>MongoDB整库备份与还原以及单个collection备份、恢复方法 | MJRBlOG</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="mongodb数据库维护离不开必要的备份、恢复操作，而且一般不会出错，所以我们在使用的时候大部分时候使用备份和恢复操作就可以了  mongodump.exe备份的原理是通过一次查询获取当前服务器快照，并将快照写入磁盘中，因此这种方式保存的也不是实时的，因为在获取快照后，服务器还会有数据写入，为了保证备份的安全，同样我们还是可以利用fsync锁使服务器数据暂时写入缓存中。  备份前的检查12345">
+<meta name="keywords" content="mongodb整库备份与还原以及单个collection备份、恢复方法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MongoDB整库备份与还原以及单个collection备份、恢复方法">
+<meta property="og:url" content="https://www.58h.com.cn/MongoDB整库备份与还原以及单个collection备份、恢复方法/index.html">
+<meta property="og:site_name" content="MJRBlOG">
+<meta property="og:description" content="mongodb数据库维护离不开必要的备份、恢复操作，而且一般不会出错，所以我们在使用的时候大部分时候使用备份和恢复操作就可以了  mongodump.exe备份的原理是通过一次查询获取当前服务器快照，并将快照写入磁盘中，因此这种方式保存的也不是实时的，因为在获取快照后，服务器还会有数据写入，为了保证备份的安全，同样我们还是可以利用fsync锁使服务器数据暂时写入缓存中。  备份前的检查12345">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-01-02T02:57:35.658Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MongoDB整库备份与还原以及单个collection备份、恢复方法">
+<meta name="twitter:description" content="mongodb数据库维护离不开必要的备份、恢复操作，而且一般不会出错，所以我们在使用的时候大部分时候使用备份和恢复操作就可以了  mongodump.exe备份的原理是通过一次查询获取当前服务器快照，并将快照写入磁盘中，因此这种方式保存的也不是实时的，因为在获取快照后，服务器还会有数据写入，为了保证备份的安全，同样我们还是可以利用fsync锁使服务器数据暂时写入缓存中。  备份前的检查12345">
+  
+    <link rel="alternate" href="/atom.xml" title="MJRBlOG" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">MJRBlOG</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/分类/android-安卓/">安卓学习</a>
+        
+          <a class="main-nav-link" href="/分类/Linux/">Linux学习</a>
+        
+          <a class="main-nav-link" href="/分类/前端/">前端</a>
+        
+          <a class="main-nav-link" href="/分类/服务端/">服务端</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://www.58h.com.cn"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-MongoDB整库备份与还原以及单个collection备份、恢复方法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/MongoDB整库备份与还原以及单个collection备份、恢复方法/" class="article-date">
+  <time datetime="2017-12-27T06:05:20.840Z" itemprop="datePublished">2017-12-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/分类/android-安卓/">android-安卓</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      MongoDB整库备份与还原以及单个collection备份、恢复方法
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry " itemprop="articleBody">
+      
+        <ul>
+<li>mongodb数据库维护离不开必要的备份、恢复操作，而且一般不会出错，所以我们在使用的时候大部分时候使用备份和恢复操作就可以了</li>
+</ul>
+<p>mongodump.exe备份的原理是通过一次查询获取当前服务器快照，并将快照写入磁盘中，因此这种方式保存的也不是实时的，因为在获取快照后，服务器还会有数据写入，为了保证备份的安全，同样我们还是可以利用fsync锁使服务器数据暂时写入缓存中。 </p>
+<h2 id="备份前的检查"><a href="#备份前的检查" class="headerlink" title="备份前的检查"></a>备份前的检查</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&gt; show dbs</span><br><span class="line">MyDB <span class="number">0.0625</span>GB</span><br><span class="line">admin (empty)</span><br><span class="line">bruce <span class="number">0.0625</span>GB</span><br><span class="line">local (empty)</span><br><span class="line">test <span class="number">0.0625</span>GB</span><br><span class="line">&gt; use MyDB</span><br><span class="line">switched to db MyDB</span><br><span class="line">&gt; db.users.find()</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"4e290aa39a1945747b28f1ee"</span>), <span class="string">"a"</span> : <span class="number">1</span>, <span class="string">"b"</span> : <span class="number">1</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"4e2cd2182a65c81f21566318"</span>), <span class="string">"a"</span> : <span class="number">3</span>, <span class="string">"b"</span> : <span class="number">5</span> &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="整库备份"><a href="#整库备份" class="headerlink" title="整库备份"></a>整库备份</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">mongodump -h dbhost -d dbname -o dbdirectory</span><br><span class="line">-h：MongDB所在服务器地址，例如：<span class="number">127.0</span>.0.1，当然也可以指定端口号：<span class="number">127.0</span>.0.1:<span class="number">27017</span></span><br><span class="line">-d：需要备份的数据库实例，例如：test</span><br><span class="line">-o：备份的数据存放位置，例如：c:\data\dump，当然该目录需要提前建立，在备份完成后，系统自动在dump目录下建立一个test目录，这个目录里面存放该数据库实例的备份数据。</span><br><span class="line"></span><br><span class="line">mongodump的官方说明(可通过mongodump --help查看)：</span><br><span class="line">options:</span><br><span class="line"> --help          produce help message</span><br><span class="line"> -v [ --verbose ]     <span class="function">be more <span class="title">verbose</span> <span class="params">(include multiple times <span class="keyword">for</span> more</span></span></span><br><span class="line"><span class="function"><span class="params">              verbosity e.g. -vvvvv)</span></span></span><br><span class="line"><span class="function"> --version        print the program's version and exit</span></span><br><span class="line"><span class="function"> -h [ --host ] arg    mongo host to connect <span class="title">to</span> <span class="params">( /s1,s2 <span class="keyword">for</span></span></span></span><br><span class="line"><span class="function"><span class="params">              sets)</span></span></span><br><span class="line"><span class="function"> --port arg        server port. Can also use --host hostname:port</span></span><br><span class="line"><span class="function"> --ipv6          enable IPv6 <span class="title">support</span> <span class="params">(disabled by <span class="keyword">default</span>)</span></span></span><br><span class="line"><span class="function"> -u [ --username ] arg  username</span></span><br><span class="line"><span class="function"> -p [ --password ] arg  password</span></span><br><span class="line"><span class="function"> --dbpath arg       directly access mongod database files in the given</span></span><br><span class="line"><span class="function">              path, instead of connecting to a mongod server -</span></span><br><span class="line"><span class="function">              needs to lock the data directory, so cannot be used</span></span><br><span class="line"><span class="function">              <span class="keyword">if</span> a mongod is currently accessing the same path</span></span><br><span class="line"><span class="function"> --directoryperdb     <span class="keyword">if</span> dbpath specified, each db is in a separate</span></span><br><span class="line"><span class="function">              directory</span></span><br><span class="line"><span class="function"> --journal        enable journaling</span></span><br><span class="line"><span class="function"> -d [ --db ] arg     database to use</span></span><br><span class="line"><span class="function"> -c [ --collection ] arg collection to <span class="title">use</span> <span class="params">(some commands)</span></span></span><br><span class="line"><span class="function"> -o [ --out ] <span class="title">arg</span> <span class="params">(=dump)</span> output directory or "-" <span class="keyword">for</span> stdout</span></span><br><span class="line"><span class="function"> -q [ --query ] arg    json query</span></span><br><span class="line"><span class="function"> --oplog         Use oplog <span class="keyword">for</span> point-in-time snapshotting</span></span><br><span class="line"><span class="function"> --repair         <span class="keyword">try</span> to recover a crashed database</span></span><br><span class="line"><span class="function"> --forceTableScan     force a table <span class="title">scan</span> <span class="params">(<span class="keyword">do</span> not use $snapshot)</span></span></span><br></pre></td></tr></table></figure>
+<h2 id="整库恢复："><a href="#整库恢复：" class="headerlink" title="整库恢复："></a>整库恢复：</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">mongorestore -h dbhost -d dbname –directoryperdb dbdirectory</span><br><span class="line">-h：MongoDB所在服务器地址</span><br><span class="line">-d：需要恢复的数据库实例，例如：test，当然这个名称也可以和备份时候的不一样，比如test2</span><br><span class="line">–directoryperdb：备份数据所在位置，例如：c:\data\dump\test，这里为什么要多加一个test，而不是备份时候的dump，读者自己查看提示吧！</span><br><span class="line">–drop：恢复的时候，先删除当前数据，然后恢复备份的数据。就是说，恢复后，备份后添加修改的数据都会被删除，慎用哦！</span><br><span class="line"></span><br><span class="line">mongorestore的官方说明(可通过mongorestore --help查看)：</span><br><span class="line">options:</span><br><span class="line"> --help         produce help message</span><br><span class="line"> -v [ --verbose ]    <span class="function">be more <span class="title">verbose</span> <span class="params">(include multiple times <span class="keyword">for</span> more</span></span></span><br><span class="line"><span class="function"><span class="params">             verbosity e.g. -vvvvv)</span></span></span><br><span class="line"><span class="function"> --version        print the program's version and exit</span></span><br><span class="line"><span class="function"> -h [ --host ] arg    mongo host to connect <span class="title">to</span> <span class="params">( /s1,s2 <span class="keyword">for</span> sets)</span></span></span><br><span class="line"><span class="function"> --port arg       server port. Can also use --host hostname:port</span></span><br><span class="line"><span class="function"> --ipv6         enable IPv6 <span class="title">support</span> <span class="params">(disabled by <span class="keyword">default</span>)</span></span></span><br><span class="line"><span class="function"> -u [ --username ] arg  username</span></span><br><span class="line"><span class="function"> -p [ --password ] arg  password</span></span><br><span class="line"><span class="function"> --dbpath arg      directly access mongod database files in the given</span></span><br><span class="line"><span class="function">             path, instead of connecting to a mongod server -</span></span><br><span class="line"><span class="function">             needs to lock the data directory, so cannot be used</span></span><br><span class="line"><span class="function">             <span class="keyword">if</span> a mongod is currently accessing the same path</span></span><br><span class="line"><span class="function"> --directoryperdb    <span class="keyword">if</span> dbpath specified, each db is in a separate</span></span><br><span class="line"><span class="function">             directory</span></span><br><span class="line"><span class="function"> --journal        enable journaling</span></span><br><span class="line"><span class="function"> -d [ --db ] arg     database to use</span></span><br><span class="line"><span class="function"> -c [ --collection ] arg collection to <span class="title">use</span> <span class="params">(some commands)</span></span></span><br><span class="line"><span class="function"> --objcheck       validate object before inserting</span></span><br><span class="line"><span class="function"> --filter arg      filter to apply before inserting</span></span><br><span class="line"><span class="function"> --drop         drop each collection before <span class="keyword">import</span></span></span><br><span class="line"><span class="function"> --oplogReplay      replay oplog <span class="keyword">for</span> point-in-time restore</span></span><br><span class="line"><span class="function"> --oplogLimit arg    exclude oplog entries newer than provided timestamp</span></span><br><span class="line"><span class="function">             <span class="params">(epoch[:ordinal])</span></span></span><br><span class="line"><span class="function"> --keepIndexVersion   don't upgrade indexes to newest version</span></span><br><span class="line"><span class="function"> --noOptionsRestore   don't restore collection options</span></span><br><span class="line"><span class="function"> --noIndexRestore    don't restore indexes</span></span><br><span class="line"><span class="function"> --w <span class="title">arg</span> <span class="params">(=<span class="number">1</span>)</span>      minimum number of replicas per write</span></span><br></pre></td></tr></table></figure>
+<h2 id="单个collection备份"><a href="#单个collection备份" class="headerlink" title="单个collection备份"></a>单个collection备份</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">mongoexport -h dbhost -d dbname -c collectionname -f collectionKey -o dbdirectory</span><br><span class="line">-h: MongoDB所在服务器地址</span><br><span class="line">-d: 需要恢复的数据库实例</span><br><span class="line">-c: 需要恢复的集合</span><br><span class="line">-f: 需要导出的字段(省略为所有字段)</span><br><span class="line">-o: 表示导出的文件名</span><br><span class="line"></span><br><span class="line">mongoexport -h <span class="number">127.0</span>.0.1:<span class="number">5506</span> -c tables -d dbname --out db.doc.json</span><br><span class="line"></span><br><span class="line">mongoexport的官方说明(可通过mongoexport --help查看)：</span><br><span class="line"> --help          produce help message</span><br><span class="line"> -v [ --verbose ]     <span class="function">be more <span class="title">verbose</span> <span class="params">(include multiple times <span class="keyword">for</span> more</span></span></span><br><span class="line"><span class="function"><span class="params">              verbosity e.g. -vvvvv)</span></span></span><br><span class="line"><span class="function"> --version         print the program's version and exit</span></span><br><span class="line"><span class="function"> -h [ --host ] arg     mongo host to connect <span class="title">to</span> <span class="params">( /s1,s2 <span class="keyword">for</span></span></span></span><br><span class="line"><span class="function"><span class="params">              sets)</span></span></span><br><span class="line"><span class="function"> --port arg        server port. Can also use --host hostname:port</span></span><br><span class="line"><span class="function"> --ipv6          enable IPv6 <span class="title">support</span> <span class="params">(disabled by <span class="keyword">default</span>)</span></span></span><br><span class="line"><span class="function"> -u [ --username ] arg   username</span></span><br><span class="line"><span class="function"> -p [ --password ] arg   password</span></span><br><span class="line"><span class="function"> --dbpath arg       directly access mongod database files in the given</span></span><br><span class="line"><span class="function">              path, instead of connecting to a mongod server -</span></span><br><span class="line"><span class="function">              needs to lock the data directory, so cannot be used</span></span><br><span class="line"><span class="function">              <span class="keyword">if</span> a mongod is currently accessing the same path</span></span><br><span class="line"><span class="function"> --directoryperdb     <span class="keyword">if</span> dbpath specified, each db is in a separate</span></span><br><span class="line"><span class="function">              directory</span></span><br><span class="line"><span class="function"> --journal         enable journaling</span></span><br><span class="line"><span class="function"> -d [ --db ] arg      database to use</span></span><br><span class="line"><span class="function"> -c [ --collection ] arg  collection to <span class="title">use</span> <span class="params">(some commands)</span></span></span><br><span class="line"><span class="function"> -f [ --fields ] arg    comma separated list of field names e.g. -f</span></span><br><span class="line"><span class="function">              name,age</span></span><br><span class="line"><span class="function"> --fieldFile arg      file with fields names - 1 per line</span></span><br><span class="line"><span class="function"> -q [ --query ] arg    query filter, as a JSON string</span></span><br><span class="line"><span class="function"> --csv           export to csv instead of json</span></span><br><span class="line"><span class="function"> -o [ --out ] arg     output file</span>; <span class="keyword">if</span> not specified, stdout is used</span><br><span class="line"> --jsonArray        output to a json array rather than one object per</span><br><span class="line">              line</span><br><span class="line"> -k [ --slaveOk ] arg (=<span class="number">1</span>) use secondaries <span class="keyword">for</span> export <span class="keyword">if</span> available, <span class="keyword">default</span></span><br><span class="line">              <span class="keyword">true</span></span><br><span class="line"> --<span class="function">forceTableScan     force a table <span class="title">scan</span> <span class="params">(<span class="keyword">do</span> not use $snapshot)</span></span></span><br></pre></td></tr></table></figure>
+<h2 id="单个collection恢复"><a href="#单个collection恢复" class="headerlink" title="单个collection恢复"></a>单个collection恢复</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">mongoimport -d dbhost -c collectionname –type csv –headerline –file</span><br><span class="line">-type: 指明要导入的文件格式</span><br><span class="line">-headerline: 批明不导入第一行，因为第一行是列名</span><br><span class="line">-file: 指明要导入的文件路径</span><br><span class="line"></span><br><span class="line">mongoimport -h <span class="number">127.0</span>.0.1:<span class="number">5506</span> -c tablename -d dbname  ./tool.documents.json</span><br><span class="line"></span><br><span class="line">mongoimport的官方说明(可通过mongoimport --help查看)：</span><br><span class="line"> --help         produce help message</span><br><span class="line"> -v [ --verbose ]    <span class="function">be more <span class="title">verbose</span> <span class="params">(include multiple times <span class="keyword">for</span> more</span></span></span><br><span class="line"><span class="function"><span class="params">             verbosity e.g. -vvvvv)</span></span></span><br><span class="line"><span class="function"> --version        print the program's version and exit</span></span><br><span class="line"><span class="function"> -h [ --host ] arg    mongo host to connect <span class="title">to</span> <span class="params">( /s1,s2 <span class="keyword">for</span> sets)</span></span></span><br><span class="line"><span class="function"> --port arg       server port. Can also use --host hostname:port</span></span><br><span class="line"><span class="function"> --ipv6         enable IPv6 <span class="title">support</span> <span class="params">(disabled by <span class="keyword">default</span>)</span></span></span><br><span class="line"><span class="function"> -u [ --username ] arg  username</span></span><br><span class="line"><span class="function"> -p [ --password ] arg  password</span></span><br><span class="line"><span class="function"> --dbpath arg      directly access mongod database files in the given</span></span><br><span class="line"><span class="function">             path, instead of connecting to a mongod server -</span></span><br><span class="line"><span class="function">             needs to lock the data directory, so cannot be used</span></span><br><span class="line"><span class="function">             <span class="keyword">if</span> a mongod is currently accessing the same path</span></span><br><span class="line"><span class="function"> --directoryperdb    <span class="keyword">if</span> dbpath specified, each db is in a separate</span></span><br><span class="line"><span class="function">             directory</span></span><br><span class="line"><span class="function"> --journal        enable journaling</span></span><br><span class="line"><span class="function"> -d [ --db ] arg     database to use</span></span><br><span class="line"><span class="function"> -c [ --collection ] arg collection to <span class="title">use</span> <span class="params">(some commands)</span></span></span><br><span class="line"><span class="function"> -f [ --fields ] arg   comma separated list of field names e.g. -f name,age</span></span><br><span class="line"><span class="function"> --fieldFile arg     file with fields names - 1 per line</span></span><br><span class="line"><span class="function"> --ignoreBlanks     <span class="keyword">if</span> given, empty fields in csv and tsv will be ignored</span></span><br><span class="line"><span class="function"> --type arg       type of file to <span class="keyword">import</span>. <span class="keyword">default</span>: <span class="title">json</span> <span class="params">(json,csv,tsv)</span></span></span><br><span class="line"><span class="function"> --file arg       file to <span class="keyword">import</span> from</span>; <span class="keyword">if</span> not specified stdin is used</span><br><span class="line"> --drop         drop collection first</span><br><span class="line"> --headerline      CSV,TSV only - use first line as headers</span><br><span class="line"> --upsert        insert or update objects that already exist</span><br><span class="line"> --upsertFields arg   comma-separated fields <span class="keyword">for</span> the query part of the</span><br><span class="line">             upsert. You should make sure <span class="keyword">this</span> is indexed</span><br><span class="line"> --stopOnError      stop importing at first error rather than continuing</span><br><span class="line"> --jsonArray       load a json array, not one item per line. Currently</span><br><span class="line">             limited to <span class="number">16</span>MB.</span><br></pre></td></tr></table></figure>
+<h2 id="其他导入与导出操作："><a href="#其他导入与导出操作：" class="headerlink" title="其他导入与导出操作："></a>其他导入与导出操作：</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>. mongoimport -d my_mongodb -c user user.dat</span><br><span class="line"></span><br><span class="line">参数说明:</span><br><span class="line"></span><br><span class="line">-d 指明使用的库, 本例中为” my_mongodb”</span><br><span class="line"></span><br><span class="line">-c 指明要导出的表, 本例中为”user”</span><br><span class="line"></span><br><span class="line">可以看到导入数据的时候会隐式创建表结构</span><br><span class="line"></span><br><span class="line"><span class="number">2</span>. mongoexport -d my_mongodb -c user -o user.dat</span><br><span class="line"></span><br><span class="line">参数说明:</span><br><span class="line"></span><br><span class="line">-d 指明使用的库, 本例中为” my_mongodb”</span><br><span class="line"></span><br><span class="line">-c 指明要导出的表, 本例中为”user”</span><br><span class="line"></span><br><span class="line">-o 指明要导出的文件名, 本例中为”user.dat”</span><br><span class="line"></span><br><span class="line">从上面可以看到导出的方式使用的是JSON 的样式.</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.58h.com.cn/MongoDB整库备份与还原以及单个collection备份、恢复方法/" data-id="cjbonv4lw0000ichgyg3mw40r" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mongodb整库备份与还原以及单个collection备份、恢复方法/">mongodb整库备份与还原以及单个collection备份、恢复方法</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/javascript图形验证码大全/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          javascript图形验证码大全
+        
+      </div>
+    </a>
+  
+  
+    <a href="/DOM鼠标按下Scroll左右拖动/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">DOM鼠标按下Scroll左右拖动</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/分类/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/分类/android-安卓/">android-安卓</a></li><li class="category-list-item"><a class="category-list-link" href="/分类/javascript/">javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/分类/前端/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/分类/服务端/">服务端</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scroll/">Scroll</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/angular/">angular</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chrome/">chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/">css3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dom/">dom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/drawable/">drawable</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/">express</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/loading/">loading</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongodb整库备份与还原以及单个collection备份、恢复方法/">mongodb整库备份与还原以及单个collection备份、恢复方法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodeJs/">nodeJs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/relativelayout相对布局/">relativelayout相对布局</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/">ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ueditor/">ueditor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动态特效/">动态特效</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/实例/">实例</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/瀑布流/">瀑布流</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/百度地图/">百度地图</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/鼠标拖动/">鼠标拖动</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Scroll/" style="font-size: 10px;">Scroll</a> <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/angular/" style="font-size: 15px;">angular</a> <a href="/tags/chrome/" style="font-size: 10px;">chrome</a> <a href="/tags/css3/" style="font-size: 15px;">css3</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/drawable/" style="font-size: 10px;">drawable</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/javascript/" style="font-size: 15px;">javascript</a> <a href="/tags/linux/" style="font-size: 20px;">linux</a> <a href="/tags/loading/" style="font-size: 10px;">loading</a> <a href="/tags/mongodb整库备份与还原以及单个collection备份、恢复方法/" style="font-size: 10px;">mongodb整库备份与还原以及单个collection备份、恢复方法</a> <a href="/tags/nginx/" style="font-size: 15px;">nginx</a> <a href="/tags/nodeJs/" style="font-size: 15px;">nodeJs</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/relativelayout相对布局/" style="font-size: 10px;">relativelayout相对布局</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/ubuntu/" style="font-size: 15px;">ubuntu</a> <a href="/tags/ueditor/" style="font-size: 10px;">ueditor</a> <a href="/tags/前端/" style="font-size: 15px;">前端</a> <a href="/tags/动态特效/" style="font-size: 10px;">动态特效</a> <a href="/tags/实例/" style="font-size: 10px;">实例</a> <a href="/tags/瀑布流/" style="font-size: 10px;">瀑布流</a> <a href="/tags/百度地图/" style="font-size: 10px;">百度地图</a> <a href="/tags/鼠标拖动/" style="font-size: 10px;">鼠标拖动</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/android使用Service在后台运行/">android使用Service在后台运行</a>
+          </li>
+        
+          <li>
+            <a href="/angular路由中Ueditor第二次无法初始化/">angular小知识汇总</a>
+          </li>
+        
+          <li>
+            <a href="/实用JS案例收集/">JS实用案例收集</a>
+          </li>
+        
+          <li>
+            <a href="/AngularJSH5videosrcurl/">AngularJS H5 video src url</a>
+          </li>
+        
+          <li>
+            <a href="/nodejs express制作后台引入富文本编辑器/">nodejs express制作后台引入富文本编辑器</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 牟骏荣<br>
+
+      <!-- #%%# __('powered_by') #%%# <a href="http://hexo.io/" target="_blank">Hexo</a>-->
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/分类/android-安卓/" class="mobile-nav-link">安卓学习</a>
+  
+    <a href="/分类/Linux/" class="mobile-nav-link">Linux学习</a>
+  
+    <a href="/分类/前端/" class="mobile-nav-link">前端</a>
+  
+    <a href="/分类/服务端/" class="mobile-nav-link">服务端</a>
+  
+</nav>
+    
+
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

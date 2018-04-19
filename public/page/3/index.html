@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>MJRBlOG</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="学习收藏">
+<meta property="og:type" content="website">
+<meta property="og:title" content="MJRBlOG">
+<meta property="og:url" content="https://www.58h.com.cn/page/3/index.html">
+<meta property="og:site_name" content="MJRBlOG">
+<meta property="og:description" content="学习收藏">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MJRBlOG">
+<meta name="twitter:description" content="学习收藏">
+  
+    <link rel="alternate" href="/atom.xml" title="MJRBlOG" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">MJRBlOG</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/分类/android-安卓/">安卓学习</a>
+        
+          <a class="main-nav-link" href="/分类/Linux/">Linux学习</a>
+        
+          <a class="main-nav-link" href="/分类/前端/">前端</a>
+        
+          <a class="main-nav-link" href="/分类/服务端/">服务端</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://www.58h.com.cn"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-ubuntu16.0.4 系统中chrome浏览器的代理配置" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/ubuntu16.0.4 系统中chrome浏览器的代理配置/" class="article-date">
+  <time datetime="2017-11-30T03:07:10.714Z" itemprop="datePublished">2017-11-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/分类/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/ubuntu16.0.4 系统中chrome浏览器的代理配置/">ubuntu16.0.4 系统中chrome浏览器的代理配置</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry  article-entry-index " itemprop="articleBody">
+      
+        <ul>
+<li>受支持的桌面环境中运行Chromium时，将使用系统代理设置。但您的系统不受支持，或启动系统配置时出现问题。 </li>
+<li><p>但您仍可通过命令行进行配置。如需详细了解各项实验功能和环境变量，请参见 man chromium-browser。  </p>
+</li>
+<li><p>安装好google-chrome（或者chromium也行）后，我们发现浏览器的设置中，代理配置功能失效，显示为： </p>
+</li>
+<li><p>在受支持的桌面环境中运行google-chrome时，将使用系统代理设置。但您的系统不受支持，或启动系统配置时出现问题。 </p>
+</li>
+<li><p>但您仍可通过命令行进行配置。如需详细了解各项实验功能和环境变量，请参见 man google-chrome。 </p>
+<h2 id="关闭该google-chrome，并重新从命令行启动，加入一个参数："><a href="#关闭该google-chrome，并重新从命令行启动，加入一个参数：" class="headerlink" title="关闭该google-chrome，并重新从命令行启动，加入一个参数："></a>关闭该google-chrome，并重新从命令行启动，加入一个参数：</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">jackX<span class="meta">@thinkpad</span>:~$ google-chrome --proxy-server=<span class="string">"socks5://localhost:8787"</span> </span><br><span class="line">chromium-browser --proxy-server=<span class="string">"socks5://localhost:8787"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>值得注意的是，由于我平常windows环境下使用的代理工具为：chrome+SwitchyOmega插件+MyEntunnel，配置是SSH+socks5，所以一开始没有在–proxy-server参数中指定socks5，导致启动后代理失效。(可通过google-chrome –help了解详细参数) </p>
+</li>
+<li><p>chrome成功启动后，打开百度输入“ip”，可显示我的代理服务器IP，说明代理成功启用。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.58h.com.cn/ubuntu16.0.4 系统中chrome浏览器的代理配置/" data-id="cjalwg4eh00070chgfgig0jix" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/chrome/">chrome</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ubuntu/">ubuntu</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-shell获取当前系统时间" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/shell获取当前系统时间/" class="article-date">
+  <time datetime="2017-11-30T02:52:16.385Z" itemprop="datePublished">2017-11-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/分类/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/shell获取当前系统时间/">shell获取当前系统时间</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry  article-entry-index " itemprop="articleBody">
+      
+        <p>在shell脚本里常常需要获取系统时间来处理某项操作，今天系统的学习了一下如何获取系统时间。记录如下：<br>linux的系统时间在shell里是可以直接调用系统变量的如：<br>获取今天时期：<code>date +%Y%m%d</code> 或 <code>date +%F</code> 或 $(date +%y%m%d)<br>命令输出结果如下：</p>
+<h2 id="隐藏Activity的头部默认导航"><a href="#隐藏Activity的头部默认导航" class="headerlink" title="隐藏Activity的头部默认导航"></a>隐藏Activity的头部默认导航</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@centi-C sh]# date +%Y%m%d </span><br><span class="line">20120727 </span><br><span class="line">[root@centi-C sh]# date +%F </span><br><span class="line">2012-07-27 </span><br><span class="line">[root@centi-C sh]# date +%y%m%d </span><br><span class="line">120727</span><br></pre></td></tr></table></figure>
+<p>获取昨天时期：<code>date -d yesterday +%Y%m%d</code> 也可以写成<code>date -d -1day +%Y%m%d</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@centi-C sh]# date -d yesterday +%Y%m%d </span><br><span class="line">20120726 </span><br><span class="line">[root@centi-C sh]# date -d yesterday +%F </span><br><span class="line">2012-07-26 </span><br><span class="line">[root@centi-C sh]# date -d -1day +%y%m%d </span><br><span class="line">120726 </span><br><span class="line">[root@centi-C sh]# date -d -1day +%Y%m%d </span><br><span class="line">20120726</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>获取前天日期：<code>date -d -2day +%Y%m%d</code> </li>
+<li>依次类推比如获取10天前的日期：<code>date -d -10day +%Y%m%d</code> </li>
+<li>或n天前的 <code>date -d &quot;n days ago&quot; +%y%m%d</code> </li>
+<li>明天：<code>date -d tomorrow +%y%m%d</code> </li>
+<li><p>注意以上中间有空格 </p>
+</li>
+<li><p>至于你需要什么样的日期时间格式，就需要应用相关的时间域参数来实现咯</p>
+</li>
+<li>相关时间域如下： </li>
+<li>% H 小时（00..23） </li>
+<li>% I 小时（01..12） </li>
+<li>% k 小时（0..23） </li>
+<li>% l 小时（1..12） </li>
+<li>% M 分（00..59） </li>
+<li>% p 显示出AM或PM </li>
+<li>% r 时间（hh：mm：ss AM或PM），12小时 </li>
+<li>% s 从1970年1月1日00：00：00到目前经历的秒数 </li>
+<li>% S 秒（00..59） </li>
+<li>% T 时间（24小时制）（hh:mm:ss） </li>
+<li>% X 显示时间的格式（％H:％M:％S） </li>
+<li>% Z 时区 日期域 </li>
+<li>% a 星期几的简称（ Sun..Sat） </li>
+<li>% A 星期几的全称（ Sunday..Saturday） </li>
+<li>% b 月的简称（Jan..Dec） </li>
+<li>% B 月的全称（January..December） </li>
+<li>% c 日期和时间（ Mon Nov 8 14：12：46 CST 1999） </li>
+<li>% d 一个月的第几天（01..31） </li>
+<li>% D 日期（mm／dd／yy） </li>
+<li>% h 和%b选项相同 </li>
+<li>% j 一年的第几天（001..366） </li>
+<li>% m 月（01..12） </li>
+<li>% w 一个星期的第几天（0代表星期天） </li>
+<li>% W 一年的第几个星期（00..53，星期一为第一天） </li>
+<li>% x 显示日期的格式（mm/dd/yy） </li>
+<li>% y 年的最后两个数字（ 1999则是99） </li>
+<li>% Y 年（例如：1970，1996等） </li>
+<li>注意：只有超级用户才有权限使用date命令设置时间，一般用户只能使用date命令显示时间。</li>
+</ul>
+<p>添加一个练习脚本，功能：</p>
+<ul>
+<li><p><font color="#ff0000"> 在每月第一天备份并压缩/etc目录的所有内容，存放在/root/bak目录里，且文件名为如下形式yymmdd_etc，yy为年，mm为月，dd为日。Shell程序fileback存放在/usr/bin目录下。</font></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#/bin/bash </span><br><span class="line">#filebak </span><br><span class="line">#file executable: chmod 755 filebak </span><br><span class="line">PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin </span><br><span class="line">export PATH </span><br><span class="line">bakdir=&quot;/root/bak/&quot; </span><br><span class="line">filename=&quot;`date +%y%m%d`_etc.tar.gz&quot; </span><br><span class="line">if [ ! -x &quot;$bakdir&quot; ];then </span><br><span class="line">mkdir $bakdir </span><br><span class="line">fi </span><br><span class="line">cd $bakdir </span><br><span class="line">tar cvfz $filename /etc</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>或使用crontab -e 命令添加定时任务：</p>
+</li>
+<li>0 1 <em> </em> * /bin/sh /usr/bin/fileback</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.58h.com.cn/shell获取当前系统时间/" data-id="cjalvy6ff00000chg0c445g6y" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-android布局技巧" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/android布局技巧/" class="article-date">
+  <time datetime="2017-11-30T02:17:12.572Z" itemprop="datePublished">2017-11-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/分类/android-安卓/">android-安卓</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/android布局技巧/">android布局技巧</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry  article-entry-index " itemprop="articleBody">
+      
+        <ul>
+<li>安卓布局技巧收藏<h2 id="隐藏Activity的头部默认导航"><a href="#隐藏Activity的头部默认导航" class="headerlink" title="隐藏Activity的头部默认导航"></a>隐藏Activity的头部默认导航</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ActionBar actionBar=getSupportActionBar();</span><br><span class="line"><span class="keyword">if</span>(actionBar!=<span class="keyword">null</span>)&#123;</span><br><span class="line">    actionBar.hide();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="ListView的setOnItemClickListener点击无效问题"><a href="#ListView的setOnItemClickListener点击无效问题" class="headerlink" title="ListView的setOnItemClickListener点击无效问题"></a>ListView的setOnItemClickListener点击无效问题</h2><ul>
+<li>如果ListView中的单个Item的view中存在checkbox，button等view，会导致ListView.setOnItemClickListener无效，事件会被子View捕获到，ListView无法捕获处理该事件.</li>
+</ul>
+<p>####解决方法：</p>
+<ul>
+<li>在checkbox、button对应的view处加:</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">android:focusable=<span class="string">"false"</span></span><br><span class="line">android:clickable=<span class="string">"false"</span></span><br><span class="line">android:focusableInTouchMode=<span class="string">"false"</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.58h.com.cn/android布局技巧/" data-id="cjalunv100000wghghstot9tg" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-android百度地图开发总结" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/android百度地图开发总结/" class="article-date">
+  <time datetime="2017-11-29T07:56:54.301Z" itemprop="datePublished">2017-11-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/分类/android-安卓/">android-安卓</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/android百度地图开发总结/">android百度地图开发总结</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry  article-entry-index " itemprop="articleBody">
+      
+        <p>项目近期开发加入百度地图的需求，初次使用遇到一些基础问题，总结如下：<br>    百度地图的KEY申请地址<a href="http://lbsyun.baidu.com/，基础使用直接看百度地图API就可以，有Demo。" target="_blank" rel="noopener">http://lbsyun.baidu.com/，基础使用直接看百度地图API就可以，有Demo。</a><br>    百度地图显示的时候全是网格没有地图，基本肯定就是KEY的问题。</p>
+<h2 id="1、BaiduMapOptions"><a href="#1、BaiduMapOptions" class="headerlink" title="1、BaiduMapOptions"></a>1、BaiduMapOptions</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">BaiduMapOptions <span class="title">compassEnabled</span><span class="params">(<span class="keyword">boolean</span> enabled)</span><span class="comment">//设置是否允许指南针，默认允许。</span></span></span><br><span class="line"><span class="function">BaiduMapOptions <span class="title">mapStatus</span><span class="params">(MapStatus status)</span><span class="comment">//设置地图初始化时的地图状态， 默认地图中心点为北京天安门，缩放级别为 12.0f</span></span></span><br><span class="line"><span class="function">BaiduMapOptions <span class="title">mapType</span><span class="params">(<span class="keyword">int</span> mapType)</span><span class="comment">//设置地图模式，默认普通地图</span></span></span><br><span class="line"><span class="function">BaiduMapOptions <span class="title">overlookingGesturesEnabled</span><span class="params">(<span class="keyword">boolean</span> enabled)</span> <span class="comment">//设置是否允许俯视手势，默认允许</span></span></span><br><span class="line"><span class="function">BaiduMapOptions <span class="title">rotateGesturesEnabled</span><span class="params">(<span class="keyword">boolean</span> enabled)</span><span class="comment">//设置是否允许旋转手势，默认允许</span></span></span><br><span class="line"><span class="function">BaiduMapOptions <span class="title">scaleControlEnabled</span><span class="params">(<span class="keyword">boolean</span> enabled)</span><span class="comment">//设置是否显示比例尺控件</span></span></span><br><span class="line"><span class="function">BaiduMapOptions <span class="title">scrollGesturesEnabled</span><span class="params">(<span class="keyword">boolean</span> enabled)</span><span class="comment">//设置是否允许拖拽手势，默认允许</span></span></span><br><span class="line"><span class="function">BaiduMapOptions <span class="title">zoomControlsEnabled</span><span class="params">(<span class="keyword">boolean</span> enabled)</span><span class="comment">//设置是否显示缩放控件</span></span></span><br><span class="line"><span class="function">BaiduMapOptions <span class="title">zoomGesturesEnabled</span><span class="params">(<span class="keyword">boolean</span> enabled)</span><span class="comment">//设置是否允许缩放手势</span></span></span><br></pre></td></tr></table></figure>
+<h2 id="2、UiSettings"><a href="#2、UiSettings" class="headerlink" title="2、UiSettings"></a>2、UiSettings</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">MapView mMapView = (MapView)findViewById(R.id.mapview);</span><br><span class="line">BaiduMap mBaiduMap = mMapView.getMap();</span><br><span class="line">UiSettings uiSettings = mBaiduMap.getUiSettings();</span><br><span class="line"><span class="comment">//设置是否允许旋转手势</span></span><br><span class="line">uiSettings.setRotateGesturesEnabled(<span class="keyword">false</span>);</span><br><span class="line"><span class="comment">//设置是否允许指南针</span></span><br><span class="line">uiSettings.setCompassEnabled(<span class="keyword">false</span>);</span><br><span class="line"><span class="comment">//设置是否允许俯视手势</span></span><br><span class="line">uiSettings.setOverlookingGesturesEnabled(<span class="keyword">false</span>);</span><br><span class="line"><span class="comment">//设置是否允许拖拽手势</span></span><br><span class="line">uiSettings.setScrollGesturesEnabled(<span class="keyword">true</span>);</span><br><span class="line"><span class="comment">//设置是否允许缩放手势</span></span><br><span class="line">uiSettings.setZoomGesturesEnabled(<span class="keyword">true</span>);</span><br><span class="line"><span class="comment">//隐藏地图上百度地图logo图标</span></span><br><span class="line">mMapView.removeViewAt(<span class="number">1</span>);</span><br><span class="line"><span class="comment">//隐藏地图上比例尺</span></span><br><span class="line">mMapView.showScaleControl(<span class="keyword">true</span>);</span><br><span class="line"><span class="comment">//隐藏缩放按钮</span></span><br><span class="line">mMapView.showZoomControls(<span class="keyword">false</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="3、根据坐标和级别缩放地图"><a href="#3、根据坐标和级别缩放地图" class="headerlink" title="3、根据坐标和级别缩放地图"></a>3、根据坐标和级别缩放地图</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//地图级别3-2000km</span></span><br><span class="line"><span class="comment">//地图级别4-1000km</span></span><br><span class="line"><span class="comment">//地图级别5-500km</span></span><br><span class="line"><span class="comment">//地图级别6-200km</span></span><br><span class="line"><span class="comment">//地图级别7-100km</span></span><br><span class="line"><span class="comment">//地图级别8-50km</span></span><br><span class="line"><span class="comment">//地图级别9-25km</span></span><br><span class="line"><span class="comment">//地图级别10-20km</span></span><br><span class="line"><span class="comment">//地图级别11-10km</span></span><br><span class="line"><span class="comment">//地图级别12-5km</span></span><br><span class="line"><span class="comment">//地图级别13-2km</span></span><br><span class="line"><span class="comment">//地图级别14-1km</span></span><br><span class="line"><span class="comment">//地图级别15-500m</span></span><br><span class="line"><span class="comment">//地图级别16-200m</span></span><br><span class="line"><span class="comment">//地图级别17-100m</span></span><br><span class="line"><span class="comment">//地图级别18-50m</span></span><br><span class="line"><span class="comment">//地图级别19-20m</span></span><br><span class="line"><span class="comment">//地图级别20-10m</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">scalePosition</span><span class="params">(LatLng position,<span class="keyword">int</span> level)</span></span>&#123;</span><br><span class="line">   MapStatus.Builder builder = <span class="keyword">new</span> MapStatus.Builder();</span><br><span class="line">   <span class="keyword">if</span> (level != <span class="number">0</span>) &#123;</span><br><span class="line">      builder.zoom(level);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">if</span> (position != <span class="keyword">null</span>) &#123;</span><br><span class="line">      builder.target(position);</span><br><span class="line">   &#125;</span><br><span class="line">   MapStatus mapStatus = builder.build();</span><br><span class="line">       MapStatusUpdate statusUpdate = MapStatusUpdateFactory.newMapStatus(mapStatus);</span><br><span class="line">   <span class="keyword">if</span> (mBaiduMap!=<span class="keyword">null</span>) &#123;</span><br><span class="line">      mBaiduMap.animateMapStatus(statusUpdate);<span class="comment">//动画缩放，不用动画会直接刷新界面</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="4、根据城市名称获取城市中心坐标或根据坐标反编码"><a href="#4、根据城市名称获取城市中心坐标或根据坐标反编码" class="headerlink" title="4、根据城市名称获取城市中心坐标或根据坐标反编码"></a>4、根据城市名称获取城市中心坐标或根据坐标反编码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">**</span><br><span class="line"> * 地理编码查询接口</span><br><span class="line"> */</span><br><span class="line"><span class="keyword">private</span> GeoCoder geoCoder = GeoCoder.newInstance();</span><br><span class="line"></span><br><span class="line">String	City = <span class="string">"北京"</span>;</span><br><span class="line">geoCoder.geocode(<span class="keyword">new</span> GeoCodeOption().city(City).address(City));<span class="comment">//编码城市获取坐标</span></span><br><span class="line"></span><br><span class="line">Activity实现OnGetGeoCoderResultListener接口有如下方法：</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onGetGeoCodeResult</span><span class="params">(GeoCodeResult arg0)</span> </span>&#123;</span><br><span class="line">   LatLng lng = arg0.getLocation();<span class="comment">//获取编码城市坐标;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onGetReverseGeoCodeResult</span><span class="params">(ReverseGeoCodeResult arg0)</span> </span>&#123;</span><br><span class="line">   <span class="comment">// 反编码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="5、在地图上构建标志"><a href="#5、在地图上构建标志" class="headerlink" title="5、在地图上构建标志"></a>5、在地图上构建标志</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">BitmapDescriptor bitmap = BitmapDescriptorFactory</span><br><span class="line">      .fromResource(R.drawable.worksite_map_feidianshang);</span><br><span class="line">MarkerOptions option = <span class="keyword">new</span> MarkerOptions().position(point)</span><br><span class="line">      .icon(bitmap).zIndex(<span class="number">9</span>).extraInfo(bundle);<span class="comment">//bundle可以携带一些区分标志的信息等</span></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">   mBaiduMap.addOverlay(option);</span><br><span class="line">&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">   e.printStackTrace();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (bitmap != <span class="keyword">null</span>) &#123;</span><br><span class="line">   bitmap.recycle();</span><br><span class="line">   bitmap = <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//构建自定义布局标志</span></span><br><span class="line"></span><br><span class="line">这个用的时候小心，有个bug</span><br><span class="line"><span class="comment">//在4.4以下版本，空指针异常 </span></span><br><span class="line">View view = LayoutInflater.from(mContext).inflate(R.layout.worksite_marker_quxian, <span class="keyword">null</span>);</span><br><span class="line">BitmapDescriptor bitmap = BitmapDescriptorFactory.fromView(view);<span class="comment">//view不为空但报空指针异常</span></span><br><span class="line"><span class="comment">//解决办法：</span></span><br><span class="line"><span class="comment">//1、最外层要使用LinearLayout包住，才会不报错，我在第一次使用的RelativeLayout包住报错.</span></span><br><span class="line"><span class="comment">//2、view.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">View view = LayoutInflater.from(mContext).inflate(</span><br><span class="line">      R.layout.worksite_marker_quxian, <span class="keyword">null</span>);</span><br><span class="line">params = <span class="keyword">new</span> ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);</span><br><span class="line">view.setLayoutParams(params);</span><br><span class="line"></span><br><span class="line">TextView markerNum = (TextView) view</span><br><span class="line">      .findViewById(R.id.worksiteNum);</span><br><span class="line">TextView cityName = (TextView) view</span><br><span class="line">      .findViewById(R.id.cityName);</span><br><span class="line">cityName.setVisibility(View.VISIBLE);</span><br><span class="line">cityName.setText(info.get(i).RegionName);</span><br><span class="line">markerNum.setText(count + <span class="string">""</span>);</span><br><span class="line">BitmapDescriptor bitmap = BitmapDescriptorFactory</span><br><span class="line">      .fromView(view);</span><br><span class="line">option = <span class="keyword">new</span> MarkerOptions().position(point)</span><br><span class="line">      .icon(bitmap).zIndex(<span class="number">9</span>).extraInfo(bundle);</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">   mBaiduMap.addOverlay(option);</span><br><span class="line">&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">   e.printStackTrace();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (bitmap != <span class="keyword">null</span>) &#123;</span><br><span class="line">   bitmap.recycle();</span><br><span class="line">   bitmap = <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="百度地图在合适视野范围内显示所有的点"><a href="#百度地图在合适视野范围内显示所有的点" class="headerlink" title="百度地图在合适视野范围内显示所有的点"></a>百度地图在合适视野范围内显示所有的点</h3><ul>
+<li><p>通常地图会显示出多个点，如像行驶轨迹等，往往在屏幕上一次性就全部显示出来，那要怎么设置地图的显示宽高，才能将所有的点合理的显示出来呢。看看以下的代码实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">private void setMyLocation() &#123;  </span><br><span class="line">        list = new ArrayList&lt;&gt;();  </span><br><span class="line">        LatLng ll = new LatLng(24.475982,  </span><br><span class="line">                118.093132);  </span><br><span class="line">        LatLng ll1 = new LatLng(24.477382,  </span><br><span class="line">                118.093232);  </span><br><span class="line">        LatLng ll2 = new LatLng(24.478382,  </span><br><span class="line">                118.093832);  </span><br><span class="line">        LatLng ll3 = new LatLng(24.487382,  </span><br><span class="line">                118.094232);  </span><br><span class="line">        LatLng ll4 = new LatLng(24.497982,  </span><br><span class="line">                118.099562);  </span><br><span class="line">  </span><br><span class="line">        list.add(ll);  </span><br><span class="line">        list.add(ll1);  </span><br><span class="line">        list.add(ll2);  </span><br><span class="line">        list.add(ll3);  </span><br><span class="line">        list.add(ll4);  </span><br><span class="line">  </span><br><span class="line">        MapStatus.Builder builder = new MapStatus.Builder();  </span><br><span class="line">        builder.target(ll).zoom(18.0f);  </span><br><span class="line">//        mBaiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));  </span><br><span class="line">        for (LatLng latLng : list) &#123;  </span><br><span class="line">            mBaiduMap.addOverlay(new BaiduMapUtil().setMarker(latLng));  </span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">        mBaiduMap.addOverlay(new BaiduMapUtil().Polyline(list));  </span><br><span class="line">  </span><br><span class="line">//将所有的坐标显示出来的合理视图  </span><br><span class="line">        if (isFrist) &#123;  </span><br><span class="line">            mBaiduMap.setOnMapLoadedCallback(new BaiduMap.OnMapLoadedCallback() &#123;  </span><br><span class="line">  </span><br><span class="line">                @Override  </span><br><span class="line">                public void onMapLoaded() &#123;  </span><br><span class="line">                    isFrist=false;  </span><br><span class="line">                    mBaiduMap.animateMapStatus(new BaiduMapUtil().setLatLngBounds(list, mMapView));  </span><br><span class="line">                &#125;  </span><br><span class="line">            &#125;);  </span><br><span class="line">        &#125;else&#123;  </span><br><span class="line">            mBaiduMap.animateMapStatus(new BaiduMapUtil().setLatLngBounds(list, mMapView));  </span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>以下为工具类BaiduMapUtil的具体实现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">public class BaiduMapUtil &#123;  </span><br><span class="line">  </span><br><span class="line">    /** </span><br><span class="line">     * 绘制Marker，地图上常见的类似气球形状的图层 </span><br><span class="line">     */  </span><br><span class="line">    public MarkerOptions setMarker(LatLng latLng) &#123;  </span><br><span class="line">        return setMarker(latLng, R.drawable.icon_defult_marker);  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">    public MarkerOptions setMarker(LatLng latLng, int drawableId) &#123;  </span><br><span class="line">        MarkerOptions markerOptions = new MarkerOptions();//参数设置类  </span><br><span class="line">        markerOptions.position(latLng);//marker坐标位置  </span><br><span class="line">        markerOptions.icon(BitmapDescriptorFactory  </span><br><span class="line">                .fromResource(drawableId));//marker图标，可以自定义  </span><br><span class="line">        markerOptions.draggable(false);//是否可拖拽，默认不可拖拽  </span><br><span class="line">        markerOptions.anchor(0.5f, 1.0f);//设置 marker覆盖物与位置点的位置关系，默认（0.5f, 1.0f）水平居中，垂直下对齐  </span><br><span class="line">        markerOptions.alpha(0.8f);//marker图标透明度，0~1.0，默认为1.0  </span><br><span class="line">        markerOptions.animateType(MarkerOptions.MarkerAnimateType.none);//marker出现的方式，从天上掉下  </span><br><span class="line">        markerOptions.flat(false);//marker突变是否平贴地面  </span><br><span class="line">        markerOptions.zIndex(1);//index  </span><br><span class="line">        return markerOptions;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    /** </span><br><span class="line">     * 绘制折线 </span><br><span class="line">     */  </span><br><span class="line">    public PolylineOptions Polyline(List&lt;LatLng&gt; points) &#123;  </span><br><span class="line">        PolylineOptions polylineOptions = new PolylineOptions();//参数设置类  </span><br><span class="line">        polylineOptions.width(10);//宽度,单位：像素  </span><br><span class="line">        polylineOptions.color(0xAAFF0000);//设置折线颜色  </span><br><span class="line">        polylineOptions.points(points);//折线顶点坐标集  </span><br><span class="line">        return polylineOptions;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    /** </span><br><span class="line">     * 多个点，在Android里面显示合理的缩放级 </span><br><span class="line">     */  </span><br><span class="line">    public MapStatusUpdate setLatLngBounds(List&lt;LatLng&gt; points, MapView mMapView) &#123;  </span><br><span class="line">        LatLngBounds.Builder builder2 = new LatLngBounds.Builder();  </span><br><span class="line">        for (LatLng p : points) &#123;  </span><br><span class="line">            builder2 = builder2.include(p);  </span><br><span class="line">        &#125;  </span><br><span class="line">        LatLngBounds latlngBounds = builder2.build();  </span><br><span class="line">        MapStatusUpdate u = MapStatusUpdateFactory.newLatLngBounds(latlngBounds, mMapView.getWidth(), mMapView.getHeight());  </span><br><span class="line">        return u;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">if (isFrist) &#123;  </span><br><span class="line">           mBaiduMap.setOnMapLoadedCallback(new BaiduMap.OnMapLoadedCallback() &#123;  </span><br><span class="line"> </span><br><span class="line">               @Override  </span><br><span class="line">               public void onMapLoaded() &#123;  </span><br><span class="line">                   isFrist=false;  </span><br><span class="line">                   mBaiduMap.animateMapStatus(new BaiduMapUtil().setLatLngBounds(list, mMapView));  </span><br><span class="line">               &#125;  </span><br><span class="line">           &#125;);  </span><br><span class="line">       &#125;else&#123;  </span><br><span class="line">           mBaiduMap.animateMapStatus(new BaiduMapUtil().setLatLngBounds(list, mMapView));  </span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>这段代码为显示合理范围的核心代码，加入是否为首次的判断，因为要在OnMapLoadedCallback中实现是关键，否则mapview的with和height取得是0，如果在其他视觉范围内，想恢复到这个合理的范围则经过首次加载后，就不会再执行OnMapLoadedCallback方法，所以要判断是否为第一次加载的状态。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.58h.com.cn/android百度地图开发总结/" data-id="cjalty4m00000vghghprvl23e" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/百度地图/">百度地图</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/hello-world/" class="article-date">
+  <time datetime="2017-11-29T07:17:29.064Z" itemprop="datePublished">2017-11-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/hello-world/">Hello World1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry  article-entry-index " itemprop="articleBody">
+      
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.58h.com.cn/hello-world/" data-id="cjaltxh1800018whg99ldevjb" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+  </nav>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/分类/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/分类/android-安卓/">android-安卓</a></li><li class="category-list-item"><a class="category-list-link" href="/分类/javascript/">javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/分类/前端/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/分类/服务端/">服务端</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scroll/">Scroll</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/angular/">angular</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chrome/">chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/">css3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dom/">dom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/drawable/">drawable</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/">express</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/loading/">loading</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongodb整库备份与还原以及单个collection备份、恢复方法/">mongodb整库备份与还原以及单个collection备份、恢复方法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodeJs/">nodeJs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/relativelayout相对布局/">relativelayout相对布局</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/">ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ueditor/">ueditor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动态特效/">动态特效</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/实例/">实例</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/瀑布流/">瀑布流</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/百度地图/">百度地图</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/鼠标拖动/">鼠标拖动</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Scroll/" style="font-size: 10px;">Scroll</a> <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/angular/" style="font-size: 15px;">angular</a> <a href="/tags/chrome/" style="font-size: 10px;">chrome</a> <a href="/tags/css3/" style="font-size: 15px;">css3</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/drawable/" style="font-size: 10px;">drawable</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/javascript/" style="font-size: 15px;">javascript</a> <a href="/tags/linux/" style="font-size: 20px;">linux</a> <a href="/tags/loading/" style="font-size: 10px;">loading</a> <a href="/tags/mongodb整库备份与还原以及单个collection备份、恢复方法/" style="font-size: 10px;">mongodb整库备份与还原以及单个collection备份、恢复方法</a> <a href="/tags/nginx/" style="font-size: 15px;">nginx</a> <a href="/tags/nodeJs/" style="font-size: 15px;">nodeJs</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/relativelayout相对布局/" style="font-size: 10px;">relativelayout相对布局</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/ubuntu/" style="font-size: 15px;">ubuntu</a> <a href="/tags/ueditor/" style="font-size: 10px;">ueditor</a> <a href="/tags/前端/" style="font-size: 15px;">前端</a> <a href="/tags/动态特效/" style="font-size: 10px;">动态特效</a> <a href="/tags/实例/" style="font-size: 10px;">实例</a> <a href="/tags/瀑布流/" style="font-size: 10px;">瀑布流</a> <a href="/tags/百度地图/" style="font-size: 10px;">百度地图</a> <a href="/tags/鼠标拖动/" style="font-size: 10px;">鼠标拖动</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/android使用Service在后台运行/">android使用Service在后台运行</a>
+          </li>
+        
+          <li>
+            <a href="/angular路由中Ueditor第二次无法初始化/">angular小知识汇总</a>
+          </li>
+        
+          <li>
+            <a href="/实用JS案例收集/">JS实用案例收集</a>
+          </li>
+        
+          <li>
+            <a href="/AngularJSH5videosrcurl/">AngularJS H5 video src url</a>
+          </li>
+        
+          <li>
+            <a href="/nodejs express制作后台引入富文本编辑器/">nodejs express制作后台引入富文本编辑器</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 牟骏荣<br>
+
+      <!-- #%%# __('powered_by') #%%# <a href="http://hexo.io/" target="_blank">Hexo</a>-->
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/分类/android-安卓/" class="mobile-nav-link">安卓学习</a>
+  
+    <a href="/分类/Linux/" class="mobile-nav-link">Linux学习</a>
+  
+    <a href="/分类/前端/" class="mobile-nav-link">前端</a>
+  
+    <a href="/分类/服务端/" class="mobile-nav-link">服务端</a>
+  
+</nav>
+    
+
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
