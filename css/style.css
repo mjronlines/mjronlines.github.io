@@ -548,8 +548,13 @@ body {
   -ms-transition: color 0.2s;
   transition: color 0.2s;
 }
-a.article-title:hover {
+.article-title a,
+.article-title:hover {
   color: #258fb8;
+}
+.article-entry-index {
+  max-height: 800px;
+  overflow: hidden;
 }
 .article-entry {
   color: #555;
@@ -658,15 +663,15 @@ a.article-title:hover {
   position: relative;
   text-align: center;
 }
-.article-entry .video-container {
+.video-container {
   position: relative;
   padding-top: 56.25%;
   height: 0;
   overflow: hidden;
 }
-.article-entry .video-container iframe,
-.article-entry .video-container object,
-.article-entry .video-container embed {
+.video-container iframe,
+.video-container object,
+.video-container embed {
   position: absolute;
   top: 0;
   left: 0;
