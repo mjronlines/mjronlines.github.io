@@ -71,6 +71,60 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-实用Css案例收集" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/实用Css案例收集/" class="article-date">
+  <time datetime="2018-03-05T03:40:48.120Z" itemprop="datePublished">2018-03-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/分类/前端/">前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/实用Css案例收集/">Css实用案例收集</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry  article-entry-index " itemprop="articleBody">
+      
+        <ul>
+<li><p>CSS实现单行、多行文本溢出显示省略号</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">display: -webkit-box;</span><br><span class="line">-webkit-box-orient: vertical;</span><br><span class="line">-webkit-line-clamp: 3;//数组填写1则一行超出省略号</span><br><span class="line">overflow: hidden;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>CSS常用div阴影效果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">box-shadow: 0 1px 5px 0 rgba(0,0,0,.5);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>CSS常用文字阴影效果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">text-shadow: 0 0 0.1em #666, 0 0 0.3em #666,0 0 0.1em #666</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="css设置各种中文字体如雅黑、黑体、宋体、楷体等等"><a href="#css设置各种中文字体如雅黑、黑体、宋体、楷体等等" class="headerlink" title="css设置各种中文字体如雅黑、黑体、宋体、楷体等等"></a>css设置各种中文字体如雅黑、黑体、宋体、楷体等等</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">在css中推荐使用中文字体的英文表示法，以下附常见中文字体的英文名： </span><br><span class="line">Mac OS的一些： </span><br><span class="line"></span><br><span class="line">华文细黑：STHeiti Light [STXihei] </span><br><span class="line">华文黑体：STHeiti </span><br><span class="line">华文楷体：STKaiti </span><br><span class="line">华文宋体：STSong </span><br><span class="line">华文仿宋：STFangsong </span><br><span class="line">儷黑 Pro：LiHei Pro Medium </span><br><span class="line">儷宋 Pro：LiSong Pro Light </span><br><span class="line">標楷體：BiauKai </span><br><span class="line">蘋果儷中黑：Apple LiGothic Medium </span><br><span class="line">蘋果儷細宋：Apple LiSung Light </span><br><span class="line">Windows的一些： </span><br><span class="line">新細明體：PMingLiU </span><br><span class="line">細明體：MingLiU </span><br><span class="line">標楷體：DFKai-SB </span><br><span class="line">黑体：SimHei </span><br><span class="line">宋体：SimSun </span><br><span class="line">新宋体：NSimSun </span><br><span class="line">仿宋：FangSong </span><br><span class="line">楷体：KaiTi </span><br><span class="line">仿宋_GB2312：FangSong_GB2312 </span><br><span class="line">楷体_GB2312：KaiTi_GB2312 </span><br><span class="line">微軟正黑體：Microsoft JhengHei </span><br><span class="line">微软雅黑体：Microsoft YaHei </span><br><span class="line">装Office会生出来的一些： </span><br><span class="line"></span><br><span class="line">隶书：LiSu </span><br><span class="line">幼圆：YouYuan </span><br><span class="line">华文细黑：STXihei </span><br><span class="line">华文楷体：STKaiti </span><br><span class="line">华文宋体：STSong </span><br><span class="line">华文中宋：STZhongsong </span><br><span class="line">华文仿宋：STFangsong </span><br><span class="line">方正舒体：FZShuTi </span><br><span class="line">方正姚体：FZYaoti </span><br><span class="line">华文彩云：STCaiyun </span><br><span class="line">华文琥珀：STHupo </span><br><span class="line">华文隶书：STLiti </span><br><span class="line">华文行楷：STXingkai </span><br><span class="line">华文新魏：STXinwei</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.58h.com.cn/实用Css案例收集/" data-id="cjedol72600003ghggsr7g2vk" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css3/">css3</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-javascript图形验证码大全" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/javascript图形验证码大全/" class="article-date">
@@ -660,50 +714,6 @@
 
 
   
-    <article id="post-编译安装php nginx部分代码" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/编译安装php nginx部分代码/" class="article-date">
-  <time datetime="2017-11-30T03:14:34.725Z" itemprop="datePublished">2017-11-30</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/分类/Linux/">Linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/编译安装php nginx部分代码/">linux编译安装php nginx部分代码</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry  article-entry-index " itemprop="articleBody">
-      
-        <h2 id="安装php"><a href="#安装php" class="headerlink" title="安装php"></a>安装php</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">./configure --prefix=/home/php5.6 --enable-fpm --with-png-dir  --with-gd  --enable-gd-native-ttf  </span><br><span class="line"> --enable-gd-jis-conv  --with-png-dir  --with-zlib   --with-zlib-dir   --with-freetype-dir </span><br><span class="line">  --with-mysql --enable-mysqlnd</span><br><span class="line">#查找帮助./configure --help|grep fpm</span><br><span class="line">#make &amp;&amp; make install</span><br><span class="line">经过漫长时间的等待</span><br><span class="line">#cp php.ini-development /usr/local/php5/lib/php.ini 复制 php.ini</span><br><span class="line">#cp /usr/local/php5/etc/php-fpm.conf.default php-fpm.conf 复制 fpm 配置文件</span><br><span class="line">#/usr/local/php5/bin/php -varsoin</span><br></pre></td></tr></table></figure>
-<p>2、nginx 安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#./configure --prefix=/usr/local/nginx</span><br><span class="line">.....</span><br><span class="line">#/usr/local/nginx/sbin/nginx</span><br><span class="line">打开浏览器 http://localhost</span><br><span class="line">Welcome to nginx! 安装成功</span><br><span class="line">nginx 支持 php</span><br><span class="line">#vi /usr/local/nginx/conf/nginx.conf</span><br><span class="line">把以下取消注释</span><br><span class="line"> location ~ .php$ &#123;</span><br><span class="line">    root     html;</span><br><span class="line">    fastcgi_pass   127.0.0.1:9000;</span><br><span class="line">    fastcgi_index  index.php;</span><br><span class="line">    fastcgi_param  SCRIPT_FILENAME  /usr/local/nginx/html/$fastcgi_script_name;</span><br><span class="line">    include        fastcgi_params;</span><br><span class="line">&#125;</span><br><span class="line">重启 nginx</span><br><span class="line">#pkill -9 nginx</span><br><span class="line">#/usr/local/nginx/sbin/nginx</span><br></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://www.58h.com.cn/编译安装php nginx部分代码/" data-id="cjalxaz7v00075shg6zyv06k6" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/">nginx</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -746,7 +756,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li></ul>
     </div>
   </div>
 
@@ -759,7 +769,11 @@
       <ul>
         
           <li>
-            <a href="/Windows.close无效/">javascript中Windows.close无效完美解决</a>
+            <a href="/js-滚动到指定位置/">javascript中滚动到指定位置</a>
+          </li>
+        
+          <li>
+            <a href="/js-Windows.close无效/">javascript中Windows.close无效完美解决</a>
           </li>
         
           <li>
@@ -772,10 +786,6 @@
         
           <li>
             <a href="/实用JS案例收集/">JS实用案例收集</a>
-          </li>
-        
-          <li>
-            <a href="/AngularJSH5videosrcurl/">AngularJS H5 video src url</a>
           </li>
         
       </ul>

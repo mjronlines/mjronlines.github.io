@@ -3,18 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: 鼠标拖动 | MJRBlOG</title>
+  <title>javascript中滚动到指定位置 | MJRBlOG</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="学习收藏">
-<meta property="og:type" content="website">
-<meta property="og:title" content="MJRBlOG">
-<meta property="og:url" content="https://www.58h.com.cn/tags/鼠标拖动/index.html">
+  <meta name="description" content="javascript中滚动到指定位置 方法一 12345//主要运用到了$(selector).animate(styles,speed,easing,callback)和scrollTop函数$(&amp;quot;body,html&amp;quot;).animate(&amp;#123;	scrollTop: 200  //让body的scrollTop等于pos的top，就实现了滚动&amp;#125;, 200);">
+<meta name="keywords" content="前端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript中滚动到指定位置">
+<meta property="og:url" content="https://www.58h.com.cn/js-滚动到指定位置/index.html">
 <meta property="og:site_name" content="MJRBlOG">
-<meta property="og:description" content="学习收藏">
+<meta property="og:description" content="javascript中滚动到指定位置 方法一 12345//主要运用到了$(selector).animate(styles,speed,easing,callback)和scrollTop函数$(&amp;quot;body,html&amp;quot;).animate(&amp;#123;	scrollTop: 200  //让body的scrollTop等于pos的top，就实现了滚动&amp;#125;, 200);">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-05-14T06:51:26.814Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MJRBlOG">
-<meta name="twitter:description" content="学习收藏">
+<meta name="twitter:title" content="javascript中滚动到指定位置">
+<meta name="twitter:description" content="javascript中滚动到指定位置 方法一 12345//主要运用到了$(selector).animate(styles,speed,easing,callback)和scrollTop函数$(&amp;quot;body,html&amp;quot;).animate(&amp;#123;	scrollTop: 200  //让body的scrollTop等于pos的top，就实现了滚动&amp;#125;, 200);">
   
     <link rel="alternate" href="/atom.xml" title="MJRBlOG" type="application/atom+xml">
   
@@ -69,39 +71,65 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/DOM鼠标按下Scroll左右拖动/" class="archive-article-date">
-  <time datetime="2017-12-26T02:27:18.050Z" itemprop="datePublished">12月 26</time>
+        <section id="main"><article id="post-js-滚动到指定位置" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/js-滚动到指定位置/" class="article-date">
+  <time datetime="2018-05-14T06:48:12.382Z" itemprop="datePublished">2018-05-14</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/分类/javascript/">javascript</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/DOM鼠标按下Scroll左右拖动/">DOM鼠标按下Scroll左右拖动</a>
+    <h1 class="article-title" itemprop="name">
+      javascript中滚动到指定位置
     </h1>
   
 
-    </header>
+      </header>
+    
+    <div class="article-entry " itemprop="articleBody">
+      
+        <h2 id="javascript中滚动到指定位置"><a href="#javascript中滚动到指定位置" class="headerlink" title="javascript中滚动到指定位置"></a>javascript中滚动到指定位置</h2><ul>
+<li><p>方法一</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">//主要运用到了$(selector).animate(styles,speed,easing,callback)和scrollTop函数</span><br><span class="line">$(&quot;body,html&quot;).animate(&#123;</span><br><span class="line">	scrollTop: 200  //让body的scrollTop等于pos的top，就实现了滚动</span><br><span class="line">&#125;, 200);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>jq滚动方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$(&quot;#text1&quot;).click(function()&#123;</span><br><span class="line"></span><br><span class="line">       $(&quot;html,body&quot;).animate(</span><br><span class="line"></span><br><span class="line">        &#123;scrollTop:$($(&quot;#text1&quot;).attr(&apos;href&apos;)).offset().top&#125;,500 /*scroll实现定位滚动*/</span><br><span class="line"></span><br><span class="line">        );/*让整个页面可以滚动*/</span><br><span class="line"></span><br><span class="line">return false;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.58h.com.cn/js-滚动到指定位置/" data-id="cjh5w4os50001pshgwyx33siz" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/js-Windows.close无效/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">javascript中Windows.close无效完美解决</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
 </section>
         
