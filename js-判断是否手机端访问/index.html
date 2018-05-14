@@ -3,18 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>归档: 2017/12 | MJRBlOG</title>
+  <title>js简化判断是否为手机访问 | MJRBlOG</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="学习收藏">
-<meta property="og:type" content="website">
-<meta property="og:title" content="MJRBlOG">
-<meta property="og:url" content="https://www.58h.com.cn/archives/2017/12/index.html">
+  <meta name="description" content="js简化判断是否为手机访问123456789101112131415161718var ua = navigator.userAgent;var ipad = ua.match(/(iPad).*OS\s([\d_]+)/),    isIphone = !ipad &amp;amp;&amp;amp; ua.match(/(iPhone\sOS)\s([\d_]+)/),    isAndroid = ua.m">
+<meta name="keywords" content="前端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js简化判断是否为手机访问">
+<meta property="og:url" content="https://www.58h.com.cn/js-判断是否手机端访问/index.html">
 <meta property="og:site_name" content="MJRBlOG">
-<meta property="og:description" content="学习收藏">
+<meta property="og:description" content="js简化判断是否为手机访问123456789101112131415161718var ua = navigator.userAgent;var ipad = ua.match(/(iPad).*OS\s([\d_]+)/),    isIphone = !ipad &amp;amp;&amp;amp; ua.match(/(iPhone\sOS)\s([\d_]+)/),    isAndroid = ua.m">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-05-14T07:25:16.711Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MJRBlOG">
-<meta name="twitter:description" content="学习收藏">
+<meta name="twitter:title" content="js简化判断是否为手机访问">
+<meta name="twitter:description" content="js简化判断是否为手机访问123456789101112131415161718var ua = navigator.userAgent;var ipad = ua.match(/(iPad).*OS\s([\d_]+)/),    isIphone = !ipad &amp;amp;&amp;amp; ua.match(/(iPhone\sOS)\s([\d_]+)/),    isAndroid = ua.m">
   
     <link rel="alternate" href="/atom.xml" title="MJRBlOG" type="application/atom+xml">
   
@@ -69,153 +71,58 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/MongoDB整库备份与还原以及单个collection备份、恢复方法/" class="archive-article-date">
-  <time datetime="2017-12-27T06:05:20.840Z" itemprop="datePublished">12月 27</time>
+        <section id="main"><article id="post-js-判断是否手机端访问" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/js-判断是否手机端访问/" class="article-date">
+  <time datetime="2018-05-14T07:24:39.314Z" itemprop="datePublished">2018-05-14</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/分类/javascript/">javascript</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/MongoDB整库备份与还原以及单个collection备份、恢复方法/">MongoDB整库备份与还原以及单个collection备份、恢复方法</a>
+    <h1 class="article-title" itemprop="name">
+      js简化判断是否为手机访问
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/DOM鼠标按下Scroll左右拖动/" class="archive-article-date">
-  <time datetime="2017-12-26T02:27:18.050Z" itemprop="datePublished">12月 26</time>
-</a>
+    <div class="article-entry " itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/DOM鼠标按下Scroll左右拖动/">DOM鼠标按下Scroll左右拖动</a>
-    </h1>
-  
+        <h2 id="js简化判断是否为手机访问"><a href="#js简化判断是否为手机访问" class="headerlink" title="js简化判断是否为手机访问"></a>js简化判断是否为手机访问</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">var ua = navigator.userAgent;</span><br><span class="line">var ipad = ua.match(/(iPad).*OS\s([\d_]+)/),</span><br><span class="line">    isIphone = !ipad &amp;&amp; ua.match(/(iPhone\sOS)\s([\d_]+)/),</span><br><span class="line">    isAndroid = ua.match(/(Android)\s+([\d.]+)/),</span><br><span class="line">    isMobile = isIphone || isAndroid;</span><br><span class="line">    if(isMobile) &#123;</span><br><span class="line">        location.href = &apos;http://m.domain.com&apos;;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        location.href = &apos;http://www.domain.com&apos;;</span><br><span class="line">    ｝</span><br><span class="line">    //或者单独判断iphone或android</span><br><span class="line">    if(isIphone)&#123;</span><br><span class="line">        //code</span><br><span class="line">    else if(isAndroid)&#123;</span><br><span class="line">        //code</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        //code</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/Drawable类，在不同分辨率下的设置/" class="archive-article-date">
-  <time datetime="2017-12-07T08:35:21.598Z" itemprop="datePublished">12月 7</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/Drawable类，在不同分辨率下的设置/">Drawable类，在不同分辨率下的设置</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/Git常用命令/" class="archive-article-date">
-  <time datetime="2017-12-07T06:17:30.734Z" itemprop="datePublished">12月 7</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.58h.com.cn/js-判断是否手机端访问/" data-id="cjh5xbzjd0000yohgbg7ufuet" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/Git常用命令/">Git常用命令</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/RelativeLayout相对布局 安卓布局技巧/" class="archive-article-date">
-  <time datetime="2017-12-04T03:38:14.265Z" itemprop="datePublished">12月 4</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/RelativeLayout相对布局 安卓布局技巧/">RelativeLayout相对布局 安卓布局技巧</a>
-    </h1>
-  
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
 
-    </header>
+    </footer>
   </div>
-</article>
   
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/28种纯css3动态加载loading动态特效/" class="archive-article-date">
-  <time datetime="2017-12-01T01:58:04.962Z" itemprop="datePublished">12月 1</time>
-</a>
-      
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/28种纯css3动态加载loading动态特效/">28种纯css3动态加载loading动态特效</a>
-    </h1>
   
+    <a href="/js-滚动到指定位置/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">javascript中滚动到指定位置</div>
+    </a>
+  
+</nav>
 
-    </header>
-  </div>
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/Express使用html模板/" class="archive-article-date">
-  <time datetime="2017-12-01T01:42:34.373Z" itemprop="datePublished">12月 1</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/Express使用html模板/">Express使用html模板</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
 
 </section>
         
