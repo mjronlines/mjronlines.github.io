@@ -71,6 +71,58 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-layui学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/layui学习笔记/" class="article-date">
+  <time datetime="2018-03-22T03:17:07.673Z" itemprop="datePublished">2018-03-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/分类/前端/">前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/layui学习笔记/">LayUi学习笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry  article-entry-index " itemprop="articleBody">
+      
+        <h3 id="layui-select-change事件如何响应"><a href="#layui-select-change事件如何响应" class="headerlink" title="layui select change事件如何响应?"></a>layui select change事件如何响应?</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">lay-filter</span>=<span class="string">"test"</span>&gt;</span><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> form = layui.form();</span><br><span class="line">form.on(<span class="string">'select(test)'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(data);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="layui-表单元素的选中问题"><a href="#layui-表单元素的选中问题" class="headerlink" title="layui 表单元素的选中问题"></a>layui 表单元素的选中问题</h3><ul>
+<li>layui对表单元素都作了美化,比如下拉列表,单选框,多选框.对表单美化后相应元素的操作,其实是在layui处理过后的div上操作,不能真的反映在原始我们编写的表单的元素上.这也会出现一个问题,如果想用JS对表单做些预处理,怎么做?操作原始的元素并不会展现在layui处理过的表单中的,那我们就对layui处理过的表单动手<br>这里要提两个我用过的,一个是单选框,一个是下拉列表 </li>
+</ul>
+<ul>
+<li>单选框,layui美化后,对应的type=radio的input项隐藏,在input之后追加了一个div,里面用i标签美化,所以我们需要做的事找到目标单选框的临近i标签,然后触发它的click事件 </li>
+<li>下拉框,layui把下拉框美化成了一个dl,每一个option标签都变成了一个dd标签表示,其中value更改为lay-value属性,我们要做的就是找到下拉框对应的dl标签,将符合要求值lay-value的dd的click事件触发<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var update=$(&quot;#update-form&quot;)</span><br><span class="line">update.find(&quot;input[type=radio][value=female]&quot;).next().find(&quot;i&quot;).click();//将value是female的单选框选中</span><br><span class="line">update.find(&quot;dd[lay-value=value-i-need]&quot;).click();//将下拉列表value为value-i-need的项选中</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.58h.com.cn/layui学习笔记/" data-id="cjf1y73xj0000nghgwcxeqz7p" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-window下nodejs爬取gb2312网页出现乱码的解决方案" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/window下nodejs爬取gb2312网页出现乱码的解决方案/" class="article-date">
@@ -630,53 +682,6 @@
 
 
   
-    <article id="post-28种纯css3动态加载loading动态特效" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/28种纯css3动态加载loading动态特效/" class="article-date">
-  <time datetime="2017-12-01T01:58:04.962Z" itemprop="datePublished">2017-12-01</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/分类/前端/">前端</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/28种纯css3动态加载loading动态特效/">28种纯css3动态加载loading动态特效</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry  article-entry-index " itemprop="articleBody">
-      
-        <ul>
-<li>28种纯css3动态加载loading动态特效</li>
-</ul>
-<p><iframe height="498" width="100%" src="https://mjronlines.github.io/demo/28css3loading/index.html" frameborder="0" allowfullscreen></iframe></p>
-<h2 id="案例地址"><a href="#案例地址" class="headerlink" title="案例地址"></a>案例地址</h2><p><a href="https://mjronlines.github.io/demo/28css3loading/index.html" target="_blank" rel="noopener">28种纯css3动态加载loading动态特效</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://www.58h.com.cn/28种纯css3动态加载loading动态特效/" data-id="cjan9f456000e6ghgofsjr4cf" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css3/">css3</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/loading/">loading</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动态特效/">动态特效</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -732,6 +737,10 @@
       <ul>
         
           <li>
+            <a href="/js-anglar JS使用两层ng-repeat嵌套使用，分辨$index/">anglar JS使用两层ng-repeat嵌套使用，分辨$index</a>
+          </li>
+        
+          <li>
             <a href="/js-页面滚动显示动画JS/">scrollReveal.js – 页面滚动显示动画JS</a>
           </li>
         
@@ -745,10 +754,6 @@
         
           <li>
             <a href="/js-Windows.close无效/">javascript中Windows.close无效完美解决</a>
-          </li>
-        
-          <li>
-            <a href="/android使用Service在后台运行/">android使用Service在后台运行</a>
           </li>
         
       </ul>

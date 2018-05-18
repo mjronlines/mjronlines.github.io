@@ -71,6 +71,54 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-js-anglar JS使用两层ng-repeat嵌套使用，分辨$index" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/js-anglar JS使用两层ng-repeat嵌套使用，分辨$index/" class="article-date">
+  <time datetime="2018-05-18T01:43:52.105Z" itemprop="datePublished">2018-05-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/分类/javascript/">javascript</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/js-anglar JS使用两层ng-repeat嵌套使用，分辨$index/">anglar JS使用两层ng-repeat嵌套使用，分辨$index</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry  article-entry-index " itemprop="articleBody">
+      
+        <h2 id="anglar-JS使用两层ng-repeat嵌套使用，分辨-index"><a href="#anglar-JS使用两层ng-repeat嵌套使用，分辨-index" class="headerlink" title="anglar JS使用两层ng-repeat嵌套使用，分辨$index"></a>anglar JS使用两层ng-repeat嵌套使用，分辨$index</h2><ul>
+<li>使用ng-init给首层的每个元素赋值一个独立的值。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ng-init=&quot;outerIndex = $index;&quot;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML:"></a>HTML:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;category-nav&quot;&gt;</span><br><span class="line">  &lt;div class=&quot;category-nav-header&quot;&gt;资源分类&lt;/div&gt;</span><br><span class="line">  &lt;div class=&quot;category-nav-cell&quot; ng-repeat=&quot;firstItem in firstCategorys track by $index&quot; ng-init=&quot;outerIndex = $index;&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;category-nav-cell-header&quot;&gt;</span><br><span class="line">      &lt;h4 class=&quot;category-nav-firstTitle&quot; ng-click=&quot;clickFirstCategory($index)&quot;&gt;&#123;&#123;firstItem&#125;&#125;&lt;/h4&gt;</span><br><span class="line">      &lt;img src=&quot;&quot; alt=&quot;&quot; class=&quot;category-nav-expand&quot; ng-click=&quot;showOrHiden($index)&quot;&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;category-nav-secondContain&quot; ng-if=&quot;categoryStatus[$index]&quot;&gt;</span><br><span class="line">      &lt;div  class=&quot;category-nav-second&quot; ng-repeat=&quot;secondItem in secondCategory[$index]&quot; ng-click=&quot;clickNavSecondCategory(outerIndex,$index)&quot;&gt;&#123;&#123;secondItem&#125;&#125;&lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="JS"><a href="#JS" class="headerlink" title="JS"></a>JS</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$scope.clickNavSecondCategory = function (outerIndex,innerIndex) &#123;</span><br><span class="line">  console.log(&apos;点击了导航栏的分类页码&apos;+outerIndex+innerIndex);</span><br><span class="line">  $scope.showMainContentSecondCategory = false;</span><br><span class="line">  $scope.routes.splice(1,2,$scope.firstCategorys[outerIndex],$scope.secondCategory[outerIndex][innerIndex]);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.58h.com.cn/js-anglar JS使用两层ng-repeat嵌套使用，分辨$index/" data-id="cjhbayv6p0000k4hgtioh3eky" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-js-页面滚动显示动画JS" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/js-页面滚动显示动画JS/" class="article-date">
@@ -574,58 +622,6 @@ startForeground(NOTIFY_ID, notification);
 
 
   
-    <article id="post-layui学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/layui学习笔记/" class="article-date">
-  <time datetime="2018-03-22T03:17:07.673Z" itemprop="datePublished">2018-03-22</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/分类/前端/">前端</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/layui学习笔记/">LayUi学习笔记</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry  article-entry-index " itemprop="articleBody">
-      
-        <h3 id="layui-select-change事件如何响应"><a href="#layui-select-change事件如何响应" class="headerlink" title="layui select change事件如何响应?"></a>layui select change事件如何响应?</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">lay-filter</span>=<span class="string">"test"</span>&gt;</span><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> form = layui.form();</span><br><span class="line">form.on(<span class="string">'select(test)'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(data);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h3 id="layui-表单元素的选中问题"><a href="#layui-表单元素的选中问题" class="headerlink" title="layui 表单元素的选中问题"></a>layui 表单元素的选中问题</h3><ul>
-<li>layui对表单元素都作了美化,比如下拉列表,单选框,多选框.对表单美化后相应元素的操作,其实是在layui处理过后的div上操作,不能真的反映在原始我们编写的表单的元素上.这也会出现一个问题,如果想用JS对表单做些预处理,怎么做?操作原始的元素并不会展现在layui处理过的表单中的,那我们就对layui处理过的表单动手<br>这里要提两个我用过的,一个是单选框,一个是下拉列表 </li>
-</ul>
-<ul>
-<li>单选框,layui美化后,对应的type=radio的input项隐藏,在input之后追加了一个div,里面用i标签美化,所以我们需要做的事找到目标单选框的临近i标签,然后触发它的click事件 </li>
-<li>下拉框,layui把下拉框美化成了一个dl,每一个option标签都变成了一个dd标签表示,其中value更改为lay-value属性,我们要做的就是找到下拉框对应的dl标签,将符合要求值lay-value的dd的click事件触发<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var update=$(&quot;#update-form&quot;)</span><br><span class="line">update.find(&quot;input[type=radio][value=female]&quot;).next().find(&quot;i&quot;).click();//将value是female的单选框选中</span><br><span class="line">update.find(&quot;dd[lay-value=value-i-need]&quot;).click();//将下拉列表value为value-i-need的项选中</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://www.58h.com.cn/layui学习笔记/" data-id="cjf1y73xj0000nghgwcxeqz7p" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -681,6 +677,10 @@ startForeground(NOTIFY_ID, notification);
       <ul>
         
           <li>
+            <a href="/js-anglar JS使用两层ng-repeat嵌套使用，分辨$index/">anglar JS使用两层ng-repeat嵌套使用，分辨$index</a>
+          </li>
+        
+          <li>
             <a href="/js-页面滚动显示动画JS/">scrollReveal.js – 页面滚动显示动画JS</a>
           </li>
         
@@ -694,10 +694,6 @@ startForeground(NOTIFY_ID, notification);
         
           <li>
             <a href="/js-Windows.close无效/">javascript中Windows.close无效完美解决</a>
-          </li>
-        
-          <li>
-            <a href="/android使用Service在后台运行/">android使用Service在后台运行</a>
           </li>
         
       </ul>
