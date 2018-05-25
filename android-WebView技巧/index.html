@@ -3,18 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: dom | MJRBlOG</title>
+  <title>WebView技巧 | MJRBlOG</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="学习收藏">
-<meta property="og:type" content="website">
-<meta property="og:title" content="MJRBlOG">
-<meta property="og:url" content="https://www.58h.com.cn/tags/dom/index.html">
+  <meta name="description" content="WebView技巧WebView启用相关配置1234567891011   wv = (WebView) findViewById(R.id.article_webwiew);wv.getSettings().setSupportMultipleWindows(true);wv.getSettings().setJavaScriptEnabled(true);wv.setWebViewClien">
+<meta name="keywords" content="android,webview">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WebView技巧">
+<meta property="og:url" content="https://www.58h.com.cn/android-WebView技巧/index.html">
 <meta property="og:site_name" content="MJRBlOG">
-<meta property="og:description" content="学习收藏">
+<meta property="og:description" content="WebView技巧WebView启用相关配置1234567891011   wv = (WebView) findViewById(R.id.article_webwiew);wv.getSettings().setSupportMultipleWindows(true);wv.getSettings().setJavaScriptEnabled(true);wv.setWebViewClien">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-05-25T01:22:41.819Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MJRBlOG">
-<meta name="twitter:description" content="学习收藏">
+<meta name="twitter:title" content="WebView技巧">
+<meta name="twitter:description" content="WebView技巧WebView启用相关配置1234567891011   wv = (WebView) findViewById(R.id.article_webwiew);wv.getSettings().setSupportMultipleWindows(true);wv.getSettings().setJavaScriptEnabled(true);wv.setWebViewClien">
   
     <link rel="alternate" href="/atom.xml" title="MJRBlOG" type="application/atom+xml">
   
@@ -69,39 +71,62 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/DOM鼠标按下Scroll左右拖动/" class="archive-article-date">
-  <time datetime="2017-12-26T02:27:18.050Z" itemprop="datePublished">12月 26</time>
+        <section id="main"><article id="post-android-WebView技巧" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/android-WebView技巧/" class="article-date">
+  <time datetime="2018-05-25T01:20:11.612Z" itemprop="datePublished">2018-05-25</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/分类/android-安卓/">android-安卓</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/DOM鼠标按下Scroll左右拖动/">DOM鼠标按下Scroll左右拖动</a>
+    <h1 class="article-title" itemprop="name">
+      WebView技巧
     </h1>
   
 
-    </header>
+      </header>
+    
+    <div class="article-entry " itemprop="articleBody">
+      
+        <ul>
+<li>WebView技巧<h2 id="WebView启用相关配置"><a href="#WebView启用相关配置" class="headerlink" title="WebView启用相关配置"></a>WebView启用相关配置</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">   wv = (WebView) findViewById(R.id.article_webwiew);</span><br><span class="line">wv.getSettings().setSupportMultipleWindows(<span class="keyword">true</span>);</span><br><span class="line">wv.getSettings().setJavaScriptEnabled(<span class="keyword">true</span>);</span><br><span class="line">wv.setWebViewClient(<span class="keyword">new</span> WebViewClient());</span><br><span class="line">wv.setWebChromeClient(<span class="keyword">new</span> WebChromeClient());</span><br><span class="line">wv.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);<span class="comment">//关闭缓存</span></span><br><span class="line">wv.getSettings().setAllowFileAccess(<span class="keyword">true</span>);<span class="comment">//允许读取文件</span></span><br><span class="line">wv.getSettings().setAllowContentAccess(<span class="keyword">true</span>);</span><br><span class="line">wv.getSettings().setSupportZoom(<span class="keyword">false</span>);<span class="comment">//禁止缩放</span></span><br><span class="line">wv.getSettings().setDomStorageEnabled(<span class="keyword">true</span>);<span class="comment">//开启本地数据库储存</span></span><br><span class="line">wv.getSettings().setDatabaseEnabled(<span class="keyword">true</span>);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="WebView-JSON数据替换为String"><a href="#WebView-JSON数据替换为String" class="headerlink" title="WebView JSON数据替换为String"></a>WebView JSON数据替换为String</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">webView = (WebView) findViewById(R.id.bbs_webview);  </span><br><span class="line">webView.getSettings().setJavaScriptEnabled(<span class="keyword">true</span>);  </span><br><span class="line">special_content = special_content.replaceAll(<span class="string">"&amp;"</span>, <span class="string">""</span>);  </span><br><span class="line">special_content = special_content.replaceAll(<span class="string">""</span><span class="string">", "</span>\<span class="string">""</span>);  </span><br><span class="line">special_content = special_content.replaceAll(<span class="string">"&lt;"</span>, <span class="string">"&lt;"</span>);  </span><br><span class="line">special_content = special_content.replaceAll(<span class="string">"&gt;"</span>, <span class="string">"&gt;"</span>);  </span><br><span class="line">special_content = special_content.replaceAll(<span class="string">"\\n"</span>, <span class="string">"&lt;br&gt;"</span>);<span class="comment">//换行  </span></span><br><span class="line">special_content = special_content.replaceAll(<span class="string">"&lt;img"</span>, <span class="string">"&lt;img width=\"100%\""</span>);<span class="comment">//图片不超出屏幕  </span></span><br><span class="line">webView.loadDataWithBaseURL(<span class="keyword">null</span>, special_content, <span class="string">"text/html"</span>, <span class="string">"utf-8"</span>, <span class="keyword">null</span>);   <span class="comment">//加载html源码</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.58h.com.cn/android-WebView技巧/" data-id="cjhla8ebl00008khgrnk1dros" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webview/">webview</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/js-anglar JS使用两层ng-repeat嵌套使用，分辨$index/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">anglar JS使用两层ng-repeat嵌套使用，分辨$index</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
 </section>
         
