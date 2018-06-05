@@ -71,6 +71,127 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Git常用命令" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/Git常用命令/" class="article-date">
+  <time datetime="2017-12-07T06:17:30.734Z" itemprop="datePublished">2017-12-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/分类/前端/">前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Git常用命令/">Git常用命令</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry  article-entry-index " itemprop="articleBody">
+      
+        <h4 id="查看、添加、提交、删除、找回，重置修改文件"><a href="#查看、添加、提交、删除、找回，重置修改文件" class="headerlink" title="查看、添加、提交、删除、找回，重置修改文件"></a>查看、添加、提交、删除、找回，重置修改文件</h4><ul>
+<li>git help <command> # 显示command的help</li>
+<li>git show # 显示某次提交的内容 git show $id</li>
+<li>git co – <file> # 抛弃工作区修改</file></li>
+<li>git co . # 抛弃工作区修改</li>
+<li>git add <file> # 将工作文件修改提交到本地暂存区</file></li>
+<li>git add . # 将所有修改过的工作文件提交暂存区</li>
+<li>git rm <file> # 从版本库中删除文件</file></li>
+<li>git rm <file> –cached # 从版本库中删除文件，但不删除文件</file></li>
+<li>git reset <file> # 从暂存区恢复到工作文件</file></li>
+<li>git reset – . # 从暂存区恢复到工作文件</li>
+<li>git reset –hard # 恢复最近一次提交过的状态，即放弃上次提交后的所有本次修改</li>
+<li>git ci <file> git ci . git ci -a # 将git add, git rm和git ci等操作都合并在一起做　　git ci -am “some comments”</file></li>
+<li>git ci –amend # 修改最后一次提交记录</li>
+<li>git revert &lt;$id&gt; # 恢复某次提交的状态，恢复动作本身也创建次提交对象</li>
+<li>git revert HEAD # 恢复最后一次提交的状态</li>
+</ul>
+<h4 id="查看文件diff"><a href="#查看文件diff" class="headerlink" title="查看文件diff"></a>查看文件diff</h4><ul>
+<li>git diff <file> # 比较当前文件和暂存区文件差异 git diff</file></li>
+<li>git diff <id1><id2> # 比较两次提交之间的差异</id2></id1></li>
+<li>git diff <branch1>..<branch2> # 在两个分支之间比较</branch2></branch1></li>
+<li>git diff –staged # 比较暂存区和版本库差异</li>
+<li>git diff –cached # 比较暂存区和版本库差异</li>
+<li>git diff –stat # 仅仅比较统计信息<h4 id="查看提交记录"><a href="#查看提交记录" class="headerlink" title="查看提交记录"></a>查看提交记录</h4></li>
+<li>git log git log <file> # 查看该文件每次提交记录</file></li>
+<li>git log -p <file> # 查看每次详细修改内容的diff</file></li>
+<li>git log -p -2 # 查看最近两次详细修改内容的diff</li>
+<li>git log –stat #查看提交统计信息<h4 id="tig"><a href="#tig" class="headerlink" title="tig"></a>tig</h4></li>
+<li>Mac上可以使用tig代替diff和log，brew install tig<h4 id="Git-本地分支管理"><a href="#Git-本地分支管理" class="headerlink" title="Git 本地分支管理"></a>Git 本地分支管理</h4><h4 id="查看、切换、创建和删除分支"><a href="#查看、切换、创建和删除分支" class="headerlink" title="查看、切换、创建和删除分支"></a>查看、切换、创建和删除分支</h4></li>
+<li>git br -r # 查看远程分支</li>
+<li>git br &lt;new_branch&gt; # 创建新的分支</li>
+<li>git br -v # 查看各个分支最后提交信息</li>
+<li>git br –merged # 查看已经被合并到当前分支的分支</li>
+<li>git br –no-merged # 查看尚未被合并到当前分支的分支</li>
+<li>git co <branch> # 切换到某个分支</branch></li>
+<li>git co -b &lt;new_branch&gt; # 创建新的分支，并且切换过去</li>
+<li>git co -b &lt;new_branch&gt; <branch> # 基于branch创建新的new_branch</branch></li>
+<li>git co $id # 把某次历史提交记录checkout出来，但无分支信息，切换到其他分支会自动删除</li>
+<li>git co $id -b &lt;new_branch&gt; # 把某次历史提交记录checkout出来，创建成一个分支</li>
+<li>git br -d <branch> # 删除某个分支</branch></li>
+<li>git br -D <branch> # 强制删除某个分支 (未被合并的分支被删除的时候需要强制)<h4 id="分支合并和rebase"><a href="#分支合并和rebase" class="headerlink" title="分支合并和rebase"></a>分支合并和rebase</h4></branch></li>
+<li>git merge <branch> # 将branch分支合并到当前分支</branch></li>
+<li>git merge origin/master –no-ff # 不要Fast-Foward合并，这样可以生成merge提交</li>
+<li>git rebase master <branch> # 将master rebase到branch，相当于： git co <branch> &amp;&amp; git rebase master &amp;&amp; git co master &amp;&amp; git merge <branch><h4 id="Git补丁管理-方便在多台机器上开发同步时用"><a href="#Git补丁管理-方便在多台机器上开发同步时用" class="headerlink" title="Git补丁管理(方便在多台机器上开发同步时用)"></a>Git补丁管理(方便在多台机器上开发同步时用)</h4></branch></branch></branch></li>
+<li>git diff &gt; ../sync.patch # 生成补丁</li>
+<li>git apply ../sync.patch # 打补丁</li>
+<li>git apply –check ../sync.patch #测试补丁能否成功<h4 id="Git暂存管理"><a href="#Git暂存管理" class="headerlink" title="Git暂存管理"></a>Git暂存管理</h4></li>
+<li>git stash # 暂存</li>
+<li>git stash list # 列所有stash</li>
+<li>git stash apply # 恢复暂存的内容</li>
+<li>git stash drop # 删除暂存区<h4 id="Git远程分支管理"><a href="#Git远程分支管理" class="headerlink" title="Git远程分支管理"></a>Git远程分支管理</h4></li>
+<li>git pull # 抓取远程仓库所有分支更新并合并到本地</li>
+<li>git pull –no-ff # 抓取远程仓库所有分支更新并合并到本地，不要快进合并</li>
+<li>git fetch origin # 抓取远程仓库更新</li>
+<li>git merge origin/master # 将远程主分支合并到本地当前分支</li>
+<li>git co –track origin/branch # 跟踪某个远程分支创建相应的本地分支</li>
+<li>git co -b &lt;local_branch&gt; origin/&lt;remote_branch&gt; # 基于远程分支创建本地分支，功能同上</li>
+<li>git push # push所有分支</li>
+<li>git push origin master # 将本地主分支推到远程主分支</li>
+<li>git push -u origin master # 将本地主分支推到远程(如无远程主分支则创建，用于初始化远程仓库)</li>
+<li>git push origin &lt;local_branch&gt; # 创建远程分支， origin是远程仓库名</li>
+<li>git push origin &lt;local_branch&gt;:&lt;remote_branch&gt; # 创建远程分支</li>
+<li>git push origin :&lt;remote_branch&gt; #先删除本地分支(git br -d <branch>)，然后再push删除远程分支<h4 id="Git远程仓库管理"><a href="#Git远程仓库管理" class="headerlink" title="Git远程仓库管理"></a>Git远程仓库管理</h4></branch></li>
+<li>git remote -v # 查看远程服务器地址和仓库名称</li>
+<li>git remote show origin # 查看远程服务器仓库状态</li>
+<li>git remote add origin git@ github:robbin/robbin_site.git # 添加远程仓库地址</li>
+<li>git remote set-url origin git@ github.com:robbin/robbin_site.git # 设置远程仓库地址(用于修改远程仓库地址) git remote rm <repository> # 删除远程仓库<h4 id="创建远程仓库"><a href="#创建远程仓库" class="headerlink" title="创建远程仓库"></a>创建远程仓库</h4></repository></li>
+<li>git clone –bare robbin_site robbin_site.git # 用带版本的项目创建纯版本仓库</li>
+<li>scp -r my_project.git git@ git.csdn.net:~ # 将纯仓库上传到服务器上</li>
+<li>mkdir robbin_site.git &amp;&amp; cd robbin_site.git &amp;&amp; git –bare init # 在服务器创建纯仓库</li>
+<li>git remote add origin git@ github.com:robbin/robbin_site.git # 设置远程仓库地址</li>
+<li>git push -u origin master # 客户端首次提交</li>
+<li>git push -u origin develop # 首次将本地develop分支提交到远程develop分支，并且track</li>
+<li>git remote set-head origin master # 设置远程仓库的HEAD指向master分支<h3 id="git-添加第二个仓库"><a href="#git-添加第二个仓库" class="headerlink" title="git 添加第二个仓库"></a>git 添加第二个仓库</h3></li>
+<li>git remote add origin git@ github.com:robbin/robbin_site.git # 设置远程仓库地址</li>
+<li>git pull origin master —-allow-unrelated-histories<br>也可以命令设置跟踪远程库和本地库</li>
+<li>git branch –set-upstream master origin/master</li>
+<li>git branch –set-upstream develop origin/develop</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.58h.com.cn/Git常用命令/" data-id="cjaw3burm0000pohg85eo2aoz" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-RelativeLayout相对布局 安卓布局技巧" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/RelativeLayout相对布局 安卓布局技巧/" class="article-date">
@@ -639,66 +760,6 @@
 
 
   
-    <article id="post-android百度地图开发总结" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/android百度地图开发总结/" class="article-date">
-  <time datetime="2017-11-29T07:56:54.301Z" itemprop="datePublished">2017-11-29</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/分类/android-安卓/">android-安卓</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/android百度地图开发总结/">android百度地图开发总结</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry  article-entry-index " itemprop="articleBody">
-      
-        <p>项目近期开发加入百度地图的需求，初次使用遇到一些基础问题，总结如下：<br>    百度地图的KEY申请地址<a href="http://lbsyun.baidu.com/，基础使用直接看百度地图API就可以，有Demo。" target="_blank" rel="noopener">http://lbsyun.baidu.com/，基础使用直接看百度地图API就可以，有Demo。</a><br>    百度地图显示的时候全是网格没有地图，基本肯定就是KEY的问题。</p>
-<h2 id="1、BaiduMapOptions"><a href="#1、BaiduMapOptions" class="headerlink" title="1、BaiduMapOptions"></a>1、BaiduMapOptions</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">BaiduMapOptions <span class="title">compassEnabled</span><span class="params">(<span class="keyword">boolean</span> enabled)</span><span class="comment">//设置是否允许指南针，默认允许。</span></span></span><br><span class="line"><span class="function">BaiduMapOptions <span class="title">mapStatus</span><span class="params">(MapStatus status)</span><span class="comment">//设置地图初始化时的地图状态， 默认地图中心点为北京天安门，缩放级别为 12.0f</span></span></span><br><span class="line"><span class="function">BaiduMapOptions <span class="title">mapType</span><span class="params">(<span class="keyword">int</span> mapType)</span><span class="comment">//设置地图模式，默认普通地图</span></span></span><br><span class="line"><span class="function">BaiduMapOptions <span class="title">overlookingGesturesEnabled</span><span class="params">(<span class="keyword">boolean</span> enabled)</span> <span class="comment">//设置是否允许俯视手势，默认允许</span></span></span><br><span class="line"><span class="function">BaiduMapOptions <span class="title">rotateGesturesEnabled</span><span class="params">(<span class="keyword">boolean</span> enabled)</span><span class="comment">//设置是否允许旋转手势，默认允许</span></span></span><br><span class="line"><span class="function">BaiduMapOptions <span class="title">scaleControlEnabled</span><span class="params">(<span class="keyword">boolean</span> enabled)</span><span class="comment">//设置是否显示比例尺控件</span></span></span><br><span class="line"><span class="function">BaiduMapOptions <span class="title">scrollGesturesEnabled</span><span class="params">(<span class="keyword">boolean</span> enabled)</span><span class="comment">//设置是否允许拖拽手势，默认允许</span></span></span><br><span class="line"><span class="function">BaiduMapOptions <span class="title">zoomControlsEnabled</span><span class="params">(<span class="keyword">boolean</span> enabled)</span><span class="comment">//设置是否显示缩放控件</span></span></span><br><span class="line"><span class="function">BaiduMapOptions <span class="title">zoomGesturesEnabled</span><span class="params">(<span class="keyword">boolean</span> enabled)</span><span class="comment">//设置是否允许缩放手势</span></span></span><br></pre></td></tr></table></figure>
-<h2 id="2、UiSettings"><a href="#2、UiSettings" class="headerlink" title="2、UiSettings"></a>2、UiSettings</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">MapView mMapView = (MapView)findViewById(R.id.mapview);</span><br><span class="line">BaiduMap mBaiduMap = mMapView.getMap();</span><br><span class="line">UiSettings uiSettings = mBaiduMap.getUiSettings();</span><br><span class="line"><span class="comment">//设置是否允许旋转手势</span></span><br><span class="line">uiSettings.setRotateGesturesEnabled(<span class="keyword">false</span>);</span><br><span class="line"><span class="comment">//设置是否允许指南针</span></span><br><span class="line">uiSettings.setCompassEnabled(<span class="keyword">false</span>);</span><br><span class="line"><span class="comment">//设置是否允许俯视手势</span></span><br><span class="line">uiSettings.setOverlookingGesturesEnabled(<span class="keyword">false</span>);</span><br><span class="line"><span class="comment">//设置是否允许拖拽手势</span></span><br><span class="line">uiSettings.setScrollGesturesEnabled(<span class="keyword">true</span>);</span><br><span class="line"><span class="comment">//设置是否允许缩放手势</span></span><br><span class="line">uiSettings.setZoomGesturesEnabled(<span class="keyword">true</span>);</span><br><span class="line"><span class="comment">//隐藏地图上百度地图logo图标</span></span><br><span class="line">mMapView.removeViewAt(<span class="number">1</span>);</span><br><span class="line"><span class="comment">//隐藏地图上比例尺</span></span><br><span class="line">mMapView.showScaleControl(<span class="keyword">true</span>);</span><br><span class="line"><span class="comment">//隐藏缩放按钮</span></span><br><span class="line">mMapView.showZoomControls(<span class="keyword">false</span>);</span><br></pre></td></tr></table></figure>
-<h2 id="3、根据坐标和级别缩放地图"><a href="#3、根据坐标和级别缩放地图" class="headerlink" title="3、根据坐标和级别缩放地图"></a>3、根据坐标和级别缩放地图</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//地图级别3-2000km</span></span><br><span class="line"><span class="comment">//地图级别4-1000km</span></span><br><span class="line"><span class="comment">//地图级别5-500km</span></span><br><span class="line"><span class="comment">//地图级别6-200km</span></span><br><span class="line"><span class="comment">//地图级别7-100km</span></span><br><span class="line"><span class="comment">//地图级别8-50km</span></span><br><span class="line"><span class="comment">//地图级别9-25km</span></span><br><span class="line"><span class="comment">//地图级别10-20km</span></span><br><span class="line"><span class="comment">//地图级别11-10km</span></span><br><span class="line"><span class="comment">//地图级别12-5km</span></span><br><span class="line"><span class="comment">//地图级别13-2km</span></span><br><span class="line"><span class="comment">//地图级别14-1km</span></span><br><span class="line"><span class="comment">//地图级别15-500m</span></span><br><span class="line"><span class="comment">//地图级别16-200m</span></span><br><span class="line"><span class="comment">//地图级别17-100m</span></span><br><span class="line"><span class="comment">//地图级别18-50m</span></span><br><span class="line"><span class="comment">//地图级别19-20m</span></span><br><span class="line"><span class="comment">//地图级别20-10m</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">scalePosition</span><span class="params">(LatLng position,<span class="keyword">int</span> level)</span></span>&#123;</span><br><span class="line">   MapStatus.Builder builder = <span class="keyword">new</span> MapStatus.Builder();</span><br><span class="line">   <span class="keyword">if</span> (level != <span class="number">0</span>) &#123;</span><br><span class="line">      builder.zoom(level);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">if</span> (position != <span class="keyword">null</span>) &#123;</span><br><span class="line">      builder.target(position);</span><br><span class="line">   &#125;</span><br><span class="line">   MapStatus mapStatus = builder.build();</span><br><span class="line">       MapStatusUpdate statusUpdate = MapStatusUpdateFactory.newMapStatus(mapStatus);</span><br><span class="line">   <span class="keyword">if</span> (mBaiduMap!=<span class="keyword">null</span>) &#123;</span><br><span class="line">      mBaiduMap.animateMapStatus(statusUpdate);<span class="comment">//动画缩放，不用动画会直接刷新界面</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="4、根据城市名称获取城市中心坐标或根据坐标反编码"><a href="#4、根据城市名称获取城市中心坐标或根据坐标反编码" class="headerlink" title="4、根据城市名称获取城市中心坐标或根据坐标反编码"></a>4、根据城市名称获取城市中心坐标或根据坐标反编码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">**</span><br><span class="line"> * 地理编码查询接口</span><br><span class="line"> */</span><br><span class="line"><span class="keyword">private</span> GeoCoder geoCoder = GeoCoder.newInstance();</span><br><span class="line"></span><br><span class="line">String	City = <span class="string">"北京"</span>;</span><br><span class="line">geoCoder.geocode(<span class="keyword">new</span> GeoCodeOption().city(City).address(City));<span class="comment">//编码城市获取坐标</span></span><br><span class="line"></span><br><span class="line">Activity实现OnGetGeoCoderResultListener接口有如下方法：</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onGetGeoCodeResult</span><span class="params">(GeoCodeResult arg0)</span> </span>&#123;</span><br><span class="line">   LatLng lng = arg0.getLocation();<span class="comment">//获取编码城市坐标;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onGetReverseGeoCodeResult</span><span class="params">(ReverseGeoCodeResult arg0)</span> </span>&#123;</span><br><span class="line">   <span class="comment">// 反编码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="5、在地图上构建标志"><a href="#5、在地图上构建标志" class="headerlink" title="5、在地图上构建标志"></a>5、在地图上构建标志</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">BitmapDescriptor bitmap = BitmapDescriptorFactory</span><br><span class="line">      .fromResource(R.drawable.worksite_map_feidianshang);</span><br><span class="line">MarkerOptions option = <span class="keyword">new</span> MarkerOptions().position(point)</span><br><span class="line">      .icon(bitmap).zIndex(<span class="number">9</span>).extraInfo(bundle);<span class="comment">//bundle可以携带一些区分标志的信息等</span></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">   mBaiduMap.addOverlay(option);</span><br><span class="line">&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">   e.printStackTrace();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (bitmap != <span class="keyword">null</span>) &#123;</span><br><span class="line">   bitmap.recycle();</span><br><span class="line">   bitmap = <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//构建自定义布局标志</span></span><br><span class="line"></span><br><span class="line">这个用的时候小心，有个bug</span><br><span class="line"><span class="comment">//在4.4以下版本，空指针异常 </span></span><br><span class="line">View view = LayoutInflater.from(mContext).inflate(R.layout.worksite_marker_quxian, <span class="keyword">null</span>);</span><br><span class="line">BitmapDescriptor bitmap = BitmapDescriptorFactory.fromView(view);<span class="comment">//view不为空但报空指针异常</span></span><br><span class="line"><span class="comment">//解决办法：</span></span><br><span class="line"><span class="comment">//1、最外层要使用LinearLayout包住，才会不报错，我在第一次使用的RelativeLayout包住报错.</span></span><br><span class="line"><span class="comment">//2、view.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">View view = LayoutInflater.from(mContext).inflate(</span><br><span class="line">      R.layout.worksite_marker_quxian, <span class="keyword">null</span>);</span><br><span class="line">params = <span class="keyword">new</span> ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);</span><br><span class="line">view.setLayoutParams(params);</span><br><span class="line"></span><br><span class="line">TextView markerNum = (TextView) view</span><br><span class="line">      .findViewById(R.id.worksiteNum);</span><br><span class="line">TextView cityName = (TextView) view</span><br><span class="line">      .findViewById(R.id.cityName);</span><br><span class="line">cityName.setVisibility(View.VISIBLE);</span><br><span class="line">cityName.setText(info.get(i).RegionName);</span><br><span class="line">markerNum.setText(count + <span class="string">""</span>);</span><br><span class="line">BitmapDescriptor bitmap = BitmapDescriptorFactory</span><br><span class="line">      .fromView(view);</span><br><span class="line">option = <span class="keyword">new</span> MarkerOptions().position(point)</span><br><span class="line">      .icon(bitmap).zIndex(<span class="number">9</span>).extraInfo(bundle);</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">   mBaiduMap.addOverlay(option);</span><br><span class="line">&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">   e.printStackTrace();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (bitmap != <span class="keyword">null</span>) &#123;</span><br><span class="line">   bitmap.recycle();</span><br><span class="line">   bitmap = <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="百度地图在合适视野范围内显示所有的点"><a href="#百度地图在合适视野范围内显示所有的点" class="headerlink" title="百度地图在合适视野范围内显示所有的点"></a>百度地图在合适视野范围内显示所有的点</h3><ul>
-<li><p>通常地图会显示出多个点，如像行驶轨迹等，往往在屏幕上一次性就全部显示出来，那要怎么设置地图的显示宽高，才能将所有的点合理的显示出来呢。看看以下的代码实现：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">private void setMyLocation() &#123;  </span><br><span class="line">        list = new ArrayList&lt;&gt;();  </span><br><span class="line">        LatLng ll = new LatLng(24.475982,  </span><br><span class="line">                118.093132);  </span><br><span class="line">        LatLng ll1 = new LatLng(24.477382,  </span><br><span class="line">                118.093232);  </span><br><span class="line">        LatLng ll2 = new LatLng(24.478382,  </span><br><span class="line">                118.093832);  </span><br><span class="line">        LatLng ll3 = new LatLng(24.487382,  </span><br><span class="line">                118.094232);  </span><br><span class="line">        LatLng ll4 = new LatLng(24.497982,  </span><br><span class="line">                118.099562);  </span><br><span class="line">  </span><br><span class="line">        list.add(ll);  </span><br><span class="line">        list.add(ll1);  </span><br><span class="line">        list.add(ll2);  </span><br><span class="line">        list.add(ll3);  </span><br><span class="line">        list.add(ll4);  </span><br><span class="line">  </span><br><span class="line">        MapStatus.Builder builder = new MapStatus.Builder();  </span><br><span class="line">        builder.target(ll).zoom(18.0f);  </span><br><span class="line">//        mBaiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));  </span><br><span class="line">        for (LatLng latLng : list) &#123;  </span><br><span class="line">            mBaiduMap.addOverlay(new BaiduMapUtil().setMarker(latLng));  </span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">        mBaiduMap.addOverlay(new BaiduMapUtil().Polyline(list));  </span><br><span class="line">  </span><br><span class="line">//将所有的坐标显示出来的合理视图  </span><br><span class="line">        if (isFrist) &#123;  </span><br><span class="line">            mBaiduMap.setOnMapLoadedCallback(new BaiduMap.OnMapLoadedCallback() &#123;  </span><br><span class="line">  </span><br><span class="line">                @Override  </span><br><span class="line">                public void onMapLoaded() &#123;  </span><br><span class="line">                    isFrist=false;  </span><br><span class="line">                    mBaiduMap.animateMapStatus(new BaiduMapUtil().setLatLngBounds(list, mMapView));  </span><br><span class="line">                &#125;  </span><br><span class="line">            &#125;);  </span><br><span class="line">        &#125;else&#123;  </span><br><span class="line">            mBaiduMap.animateMapStatus(new BaiduMapUtil().setLatLngBounds(list, mMapView));  </span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>以下为工具类BaiduMapUtil的具体实现</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">public class BaiduMapUtil &#123;  </span><br><span class="line">  </span><br><span class="line">    /** </span><br><span class="line">     * 绘制Marker，地图上常见的类似气球形状的图层 </span><br><span class="line">     */  </span><br><span class="line">    public MarkerOptions setMarker(LatLng latLng) &#123;  </span><br><span class="line">        return setMarker(latLng, R.drawable.icon_defult_marker);  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">    public MarkerOptions setMarker(LatLng latLng, int drawableId) &#123;  </span><br><span class="line">        MarkerOptions markerOptions = new MarkerOptions();//参数设置类  </span><br><span class="line">        markerOptions.position(latLng);//marker坐标位置  </span><br><span class="line">        markerOptions.icon(BitmapDescriptorFactory  </span><br><span class="line">                .fromResource(drawableId));//marker图标，可以自定义  </span><br><span class="line">        markerOptions.draggable(false);//是否可拖拽，默认不可拖拽  </span><br><span class="line">        markerOptions.anchor(0.5f, 1.0f);//设置 marker覆盖物与位置点的位置关系，默认（0.5f, 1.0f）水平居中，垂直下对齐  </span><br><span class="line">        markerOptions.alpha(0.8f);//marker图标透明度，0~1.0，默认为1.0  </span><br><span class="line">        markerOptions.animateType(MarkerOptions.MarkerAnimateType.none);//marker出现的方式，从天上掉下  </span><br><span class="line">        markerOptions.flat(false);//marker突变是否平贴地面  </span><br><span class="line">        markerOptions.zIndex(1);//index  </span><br><span class="line">        return markerOptions;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    /** </span><br><span class="line">     * 绘制折线 </span><br><span class="line">     */  </span><br><span class="line">    public PolylineOptions Polyline(List&lt;LatLng&gt; points) &#123;  </span><br><span class="line">        PolylineOptions polylineOptions = new PolylineOptions();//参数设置类  </span><br><span class="line">        polylineOptions.width(10);//宽度,单位：像素  </span><br><span class="line">        polylineOptions.color(0xAAFF0000);//设置折线颜色  </span><br><span class="line">        polylineOptions.points(points);//折线顶点坐标集  </span><br><span class="line">        return polylineOptions;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    /** </span><br><span class="line">     * 多个点，在Android里面显示合理的缩放级 </span><br><span class="line">     */  </span><br><span class="line">    public MapStatusUpdate setLatLngBounds(List&lt;LatLng&gt; points, MapView mMapView) &#123;  </span><br><span class="line">        LatLngBounds.Builder builder2 = new LatLngBounds.Builder();  </span><br><span class="line">        for (LatLng p : points) &#123;  </span><br><span class="line">            builder2 = builder2.include(p);  </span><br><span class="line">        &#125;  </span><br><span class="line">        LatLngBounds latlngBounds = builder2.build();  </span><br><span class="line">        MapStatusUpdate u = MapStatusUpdateFactory.newLatLngBounds(latlngBounds, mMapView.getWidth(), mMapView.getHeight());  </span><br><span class="line">        return u;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">if (isFrist) &#123;  </span><br><span class="line">           mBaiduMap.setOnMapLoadedCallback(new BaiduMap.OnMapLoadedCallback() &#123;  </span><br><span class="line"> </span><br><span class="line">               @Override  </span><br><span class="line">               public void onMapLoaded() &#123;  </span><br><span class="line">                   isFrist=false;  </span><br><span class="line">                   mBaiduMap.animateMapStatus(new BaiduMapUtil().setLatLngBounds(list, mMapView));  </span><br><span class="line">               &#125;  </span><br><span class="line">           &#125;);  </span><br><span class="line">       &#125;else&#123;  </span><br><span class="line">           mBaiduMap.animateMapStatus(new BaiduMapUtil().setLatLngBounds(list, mMapView));  </span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>这段代码为显示合理范围的核心代码，加入是否为首次的判断，因为要在OnMapLoadedCallback中实现是关键，否则mapview的with和height取得是0，如果在其他视觉范围内，想恢复到这个合理的范围则经过首次加载后，就不会再执行OnMapLoadedCallback方法，所以要判断是否为第一次加载的状态。</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://www.58h.com.cn/android百度地图开发总结/" data-id="cjalty4m00000vghghprvl23e" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/百度地图/">百度地图</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -722,7 +783,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scroll/">Scroll</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/angular/">angular</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chrome/">chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/">css3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dom/">dom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/drawable/">drawable</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/">express</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/loading/">loading</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongodb整库备份与还原以及单个collection备份、恢复方法/">mongodb整库备份与还原以及单个collection备份、恢复方法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodeJs/">nodeJs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/relativelayout相对布局/">relativelayout相对布局</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/">ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ueditor/">ueditor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webview/">webview</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动态特效/">动态特效</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/实例/">实例</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/瀑布流/">瀑布流</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/百度地图/">百度地图</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/鼠标拖动/">鼠标拖动</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scroll/">Scroll</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/View/">View</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/angular/">angular</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chrome/">chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/">css3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dom/">dom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/drawable/">drawable</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/">express</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/loading/">loading</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongodb整库备份与还原以及单个collection备份、恢复方法/">mongodb整库备份与还原以及单个collection备份、恢复方法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodeJs/">nodeJs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/relativelayout相对布局/">relativelayout相对布局</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/">ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ueditor/">ueditor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webview/">webview</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动态特效/">动态特效</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/实例/">实例</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/瀑布流/">瀑布流</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/百度地图/">百度地图</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/鼠标拖动/">鼠标拖动</a></li></ul>
     </div>
   </div>
 
@@ -732,7 +793,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Scroll/" style="font-size: 10px;">Scroll</a> <a href="/tags/android/" style="font-size: 17.5px;">android</a> <a href="/tags/angular/" style="font-size: 12.5px;">angular</a> <a href="/tags/chrome/" style="font-size: 10px;">chrome</a> <a href="/tags/css3/" style="font-size: 12.5px;">css3</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/drawable/" style="font-size: 10px;">drawable</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/git/" style="font-size: 12.5px;">git</a> <a href="/tags/javascript/" style="font-size: 12.5px;">javascript</a> <a href="/tags/linux/" style="font-size: 15px;">linux</a> <a href="/tags/loading/" style="font-size: 10px;">loading</a> <a href="/tags/mongodb整库备份与还原以及单个collection备份、恢复方法/" style="font-size: 10px;">mongodb整库备份与还原以及单个collection备份、恢复方法</a> <a href="/tags/nginx/" style="font-size: 12.5px;">nginx</a> <a href="/tags/nodeJs/" style="font-size: 12.5px;">nodeJs</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/relativelayout相对布局/" style="font-size: 10px;">relativelayout相对布局</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/ubuntu/" style="font-size: 12.5px;">ubuntu</a> <a href="/tags/ueditor/" style="font-size: 10px;">ueditor</a> <a href="/tags/webview/" style="font-size: 10px;">webview</a> <a href="/tags/前端/" style="font-size: 20px;">前端</a> <a href="/tags/动态特效/" style="font-size: 10px;">动态特效</a> <a href="/tags/实例/" style="font-size: 10px;">实例</a> <a href="/tags/瀑布流/" style="font-size: 10px;">瀑布流</a> <a href="/tags/百度地图/" style="font-size: 10px;">百度地图</a> <a href="/tags/鼠标拖动/" style="font-size: 10px;">鼠标拖动</a>
+      <a href="/tags/Scroll/" style="font-size: 10px;">Scroll</a> <a href="/tags/View/" style="font-size: 10px;">View</a> <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/angular/" style="font-size: 13.33px;">angular</a> <a href="/tags/chrome/" style="font-size: 10px;">chrome</a> <a href="/tags/css3/" style="font-size: 13.33px;">css3</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/drawable/" style="font-size: 10px;">drawable</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/git/" style="font-size: 13.33px;">git</a> <a href="/tags/javascript/" style="font-size: 13.33px;">javascript</a> <a href="/tags/linux/" style="font-size: 16.67px;">linux</a> <a href="/tags/loading/" style="font-size: 10px;">loading</a> <a href="/tags/mongodb整库备份与还原以及单个collection备份、恢复方法/" style="font-size: 10px;">mongodb整库备份与还原以及单个collection备份、恢复方法</a> <a href="/tags/nginx/" style="font-size: 13.33px;">nginx</a> <a href="/tags/nodeJs/" style="font-size: 13.33px;">nodeJs</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/relativelayout相对布局/" style="font-size: 10px;">relativelayout相对布局</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/ubuntu/" style="font-size: 13.33px;">ubuntu</a> <a href="/tags/ueditor/" style="font-size: 10px;">ueditor</a> <a href="/tags/webview/" style="font-size: 10px;">webview</a> <a href="/tags/前端/" style="font-size: 20px;">前端</a> <a href="/tags/动态特效/" style="font-size: 10px;">动态特效</a> <a href="/tags/实例/" style="font-size: 10px;">实例</a> <a href="/tags/瀑布流/" style="font-size: 10px;">瀑布流</a> <a href="/tags/百度地图/" style="font-size: 10px;">百度地图</a> <a href="/tags/鼠标拖动/" style="font-size: 10px;">鼠标拖动</a>
     </div>
   </div>
 
@@ -741,7 +802,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li></ul>
     </div>
   </div>
 
@@ -752,6 +813,10 @@
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/Android LinearLayout动态增加item时Weight的设置/">Android LinearLayout动态增加item时Weight的设置</a>
+          </li>
         
           <li>
             <a href="/android-WebView技巧/">WebView技巧</a>
@@ -767,10 +832,6 @@
         
           <li>
             <a href="/js-判断是否手机端访问/">js简化判断是否为手机访问</a>
-          </li>
-        
-          <li>
-            <a href="/js-滚动到指定位置/">javascript中滚动到指定位置</a>
           </li>
         
       </ul>
