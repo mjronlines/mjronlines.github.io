@@ -71,6 +71,49 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-androidImageView保存图片到手机并更新媒体库" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/androidImageView保存图片到手机并更新媒体库/" class="article-date">
+  <time datetime="2018-07-02T06:18:43.952Z" itemprop="datePublished">2018-07-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/分类/ImageView/">ImageView</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/androidImageView保存图片到手机并更新媒体库/">android-ImageView保存图片到手机并更新媒体库</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry  article-entry-index " itemprop="articleBody">
+      
+        <h2 id="android-ImageView保存图片到手机并更新媒体库"><a href="#android-ImageView保存图片到手机并更新媒体库" class="headerlink" title="android-ImageView保存图片到手机并更新媒体库"></a>android-ImageView保存图片到手机并更新媒体库</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//调用执行</span></span><br><span class="line">imageview.setDrawingCacheEnabled(<span class="keyword">true</span>);</span><br><span class="line">Bitmap imageBitmap = imageview.getDrawingCache();</span><br><span class="line"><span class="keyword">if</span> (imageBitmap != <span class="keyword">null</span>) &#123;</span><br><span class="line">	<span class="keyword">new</span> SaveImageTask().execute(imageBitmap);</span><br><span class="line">&#125;</span><br><span class="line">	</span><br><span class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">SaveImageTask</span> <span class="keyword">extends</span> <span class="title">AsyncTask</span>&lt;<span class="title">Bitmap</span>, <span class="title">Void</span>, <span class="title">String</span>&gt; </span>&#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">protected</span> String <span class="title">doInBackground</span><span class="params">(Bitmap... params)</span> </span>&#123;</span><br><span class="line">		String result = getResources().getString(R.string.save_picture_failed);</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			String sdcard = Environment.getExternalStorageDirectory().toString();</span><br><span class="line"><span class="comment">//                String sdcard = Environment.getDataDirectory().toString();</span></span><br><span class="line"><span class="comment">//                String sdcard =  getBaseContext().getFilesDir().toString();;</span></span><br><span class="line">			File fileDir=<span class="keyword">new</span> File(getApplication().getExternalCacheDir(),<span class="string">"images"</span>);</span><br><span class="line">			System.out.println(sdcard);</span><br><span class="line"></span><br><span class="line"><span class="comment">//                File file = new File(sdcard + "/DCIM");</span></span><br><span class="line">			file = <span class="keyword">new</span> File(sdcard+ <span class="string">"/Download"</span>);</span><br><span class="line">			<span class="keyword">if</span> (!file.exists()) &#123;</span><br><span class="line">				file.mkdirs();</span><br><span class="line">			&#125;</span><br><span class="line">			fileName = <span class="string">"IMG_"</span> + <span class="keyword">new</span> Date().getTime() + <span class="string">".jpg"</span>;</span><br><span class="line">			File imageFile = <span class="keyword">new</span> File(file.getAbsolutePath(),fileName);</span><br><span class="line">			FileOutputStream outStream = <span class="keyword">null</span>;</span><br><span class="line">			outStream = <span class="keyword">new</span> FileOutputStream(imageFile);</span><br><span class="line">			Bitmap image = params[<span class="number">0</span>];</span><br><span class="line">			image.compress(Bitmap.CompressFormat.JPEG, <span class="number">100</span>, outStream);</span><br><span class="line">			outStream.flush();</span><br><span class="line">			outStream.close();</span><br><span class="line">			result = getResources().getString(R.string.save_picture_success,  file.getAbsolutePath());</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> result;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onPostExecute</span><span class="params">(String result)</span> </span>&#123;</span><br><span class="line">		Toast.makeText(getApplicationContext(),result,Toast.LENGTH_SHORT).show();</span><br><span class="line"></span><br><span class="line">		share_code_img.setDrawingCacheEnabled(<span class="keyword">false</span>);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//后面两句是重点不然不会再媒体库中显示(或者重启后显示)</span></span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			MediaStore.Images.Media.insertImage(getBaseContext().getContentResolver(),</span><br><span class="line">					file.getAbsolutePath(), fileName, <span class="keyword">null</span>);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (FileNotFoundException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		getBaseContext().sendBroadcast(<span class="keyword">new</span> Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.parse(<span class="string">"file://"</span> + file.getAbsolutePath()+fileName)));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.58h.com.cn/androidImageView保存图片到手机并更新媒体库/" data-id="cjj3vug04000004hgi6ii3hxj" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Android LinearLayout动态增加item时Weight的设置" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/Android LinearLayout动态增加item时Weight的设置/" class="article-date">
@@ -539,53 +582,6 @@ startForeground(NOTIFY_ID, notification);
 
 
   
-    <article id="post-实用JS案例收集" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/实用JS案例收集/" class="article-date">
-  <time datetime="2018-04-02T01:40:02.738Z" itemprop="datePublished">2018-04-02</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/分类/前端/">前端</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/实用JS案例收集/">JS实用案例收集</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry  article-entry-index " itemprop="articleBody">
-      
-        <h3 id="js-正则匹配（去掉html标签）"><a href="#js-正则匹配（去掉html标签）" class="headerlink" title="js 正则匹配（去掉html标签）"></a>js 正则匹配（去掉html标签）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- 得到网页上的链接地址：</span><br></pre></td></tr></table></figure>
-<p>string matchString = @”&lt;a[^&gt;]+href=\s<em>(?:’(?<href>[^’]+)’|””(?<href>[^””]+)””|(?<href>[^&gt;\s]+))\s</href></href></href></em>[^&gt;]*&gt;”;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- 得到网页的标题：</span><br></pre></td></tr></table></figure></p>
-<p>string matchString = @”<title>(?<title>.*)</title>“;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- 去掉网页中的所有的html标记：</span><br></pre></td></tr></table></figure></title></p>
-<p>string temp = Regex.Replace(html, “&lt;[^&gt;]<em>&gt;”, “”); //html是一个要去除html标记的文档<br>string matchString = @”<title>([\S\s\t]</title></em>?)“;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- js去掉所有html标记的函数：</span><br></pre></td></tr></table></figure></p>
-<p>function delHtmlTag(str)<br>{<br>return str.replace(/&lt;[^&gt;]+&gt;/g,””);//去掉所有的html标记<br>}<br><code>`</code></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://www.58h.com.cn/实用JS案例收集/" data-id="cjfqh2208000380hgau90z1p5" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -599,7 +595,7 @@ startForeground(NOTIFY_ID, notification);
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/分类/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/分类/android-安卓/">android-安卓</a></li><li class="category-list-item"><a class="category-list-link" href="/分类/javascript/">javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/分类/前端/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/分类/服务端/">服务端</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/分类/ImageView/">ImageView</a></li><li class="category-list-item"><a class="category-list-link" href="/分类/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/分类/android-安卓/">android-安卓</a></li><li class="category-list-item"><a class="category-list-link" href="/分类/javascript/">javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/分类/前端/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/分类/服务端/">服务端</a></li></ul>
     </div>
   </div>
 
@@ -619,7 +615,7 @@ startForeground(NOTIFY_ID, notification);
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Scroll/" style="font-size: 10px;">Scroll</a> <a href="/tags/View/" style="font-size: 10px;">View</a> <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/angular/" style="font-size: 13.33px;">angular</a> <a href="/tags/chrome/" style="font-size: 10px;">chrome</a> <a href="/tags/css3/" style="font-size: 13.33px;">css3</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/drawable/" style="font-size: 10px;">drawable</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/git/" style="font-size: 13.33px;">git</a> <a href="/tags/javascript/" style="font-size: 13.33px;">javascript</a> <a href="/tags/linux/" style="font-size: 16.67px;">linux</a> <a href="/tags/loading/" style="font-size: 10px;">loading</a> <a href="/tags/mongodb整库备份与还原以及单个collection备份、恢复方法/" style="font-size: 10px;">mongodb整库备份与还原以及单个collection备份、恢复方法</a> <a href="/tags/nginx/" style="font-size: 13.33px;">nginx</a> <a href="/tags/nodeJs/" style="font-size: 13.33px;">nodeJs</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/relativelayout相对布局/" style="font-size: 10px;">relativelayout相对布局</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/ubuntu/" style="font-size: 13.33px;">ubuntu</a> <a href="/tags/ueditor/" style="font-size: 10px;">ueditor</a> <a href="/tags/webview/" style="font-size: 10px;">webview</a> <a href="/tags/前端/" style="font-size: 20px;">前端</a> <a href="/tags/动态特效/" style="font-size: 10px;">动态特效</a> <a href="/tags/实例/" style="font-size: 10px;">实例</a> <a href="/tags/瀑布流/" style="font-size: 10px;">瀑布流</a> <a href="/tags/百度地图/" style="font-size: 10px;">百度地图</a> <a href="/tags/鼠标拖动/" style="font-size: 10px;">鼠标拖动</a>
+      <a href="/tags/Scroll/" style="font-size: 10px;">Scroll</a> <a href="/tags/View/" style="font-size: 10px;">View</a> <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/angular/" style="font-size: 12.5px;">angular</a> <a href="/tags/chrome/" style="font-size: 10px;">chrome</a> <a href="/tags/css3/" style="font-size: 12.5px;">css3</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/drawable/" style="font-size: 10px;">drawable</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/git/" style="font-size: 12.5px;">git</a> <a href="/tags/javascript/" style="font-size: 12.5px;">javascript</a> <a href="/tags/linux/" style="font-size: 15px;">linux</a> <a href="/tags/loading/" style="font-size: 10px;">loading</a> <a href="/tags/mongodb整库备份与还原以及单个collection备份、恢复方法/" style="font-size: 10px;">mongodb整库备份与还原以及单个collection备份、恢复方法</a> <a href="/tags/nginx/" style="font-size: 12.5px;">nginx</a> <a href="/tags/nodeJs/" style="font-size: 12.5px;">nodeJs</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/relativelayout相对布局/" style="font-size: 10px;">relativelayout相对布局</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/ubuntu/" style="font-size: 12.5px;">ubuntu</a> <a href="/tags/ueditor/" style="font-size: 10px;">ueditor</a> <a href="/tags/webview/" style="font-size: 10px;">webview</a> <a href="/tags/前端/" style="font-size: 17.5px;">前端</a> <a href="/tags/动态特效/" style="font-size: 10px;">动态特效</a> <a href="/tags/实例/" style="font-size: 10px;">实例</a> <a href="/tags/瀑布流/" style="font-size: 10px;">瀑布流</a> <a href="/tags/百度地图/" style="font-size: 10px;">百度地图</a> <a href="/tags/鼠标拖动/" style="font-size: 10px;">鼠标拖动</a>
     </div>
   </div>
 
@@ -628,7 +624,7 @@ startForeground(NOTIFY_ID, notification);
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li></ul>
     </div>
   </div>
 
@@ -639,6 +635,10 @@ startForeground(NOTIFY_ID, notification);
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/androidImageView保存图片到手机并更新媒体库/">android-ImageView保存图片到手机并更新媒体库</a>
+          </li>
         
           <li>
             <a href="/Android LinearLayout动态增加item时Weight的设置/">Android LinearLayout动态增加item时Weight的设置</a>
@@ -654,10 +654,6 @@ startForeground(NOTIFY_ID, notification);
         
           <li>
             <a href="/js-页面滚动显示动画JS/">scrollReveal.js – 页面滚动显示动画JS</a>
-          </li>
-        
-          <li>
-            <a href="/js-判断是否手机端访问/">js简化判断是否为手机访问</a>
           </li>
         
       </ul>
