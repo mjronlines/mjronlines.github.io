@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="android,GPS," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="在Android中定位是属于危险权限，需要在添加Mainfest.xml中添加。12&amp;lt;uses-permission android:name=&amp;quot;android.permission.ACCESS_COARSE_LOCATION&amp;quot; /&amp;gt;&amp;lt;uses-permission android:name=&amp;quot;android.permission.ACCESS_">
+<meta name="keywords" content="android,GPS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android中使用GPS和NetWork获取定位信息">
+<meta property="og:url" content="https://www.58h.com.cn/Android中使用GPS和NetWork获取定位信息/index.html">
+<meta property="og:site_name" content="牟骏荣博客">
+<meta property="og:description" content="在Android中定位是属于危险权限，需要在添加Mainfest.xml中添加。12&amp;lt;uses-permission android:name=&amp;quot;android.permission.ACCESS_COARSE_LOCATION&amp;quot; /&amp;gt;&amp;lt;uses-permission android:name=&amp;quot;android.permission.ACCESS_">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-09-19T02:11:47.498Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android中使用GPS和NetWork获取定位信息">
+<meta name="twitter:description" content="在Android中定位是属于危险权限，需要在添加Mainfest.xml中添加。12&amp;lt;uses-permission android:name=&amp;quot;android.permission.ACCESS_COARSE_LOCATION&amp;quot; /&amp;gt;&amp;lt;uses-permission android:name=&amp;quot;android.permission.ACCESS_">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://www.58h.com.cn/Android中使用GPS和NetWork获取定位信息/"/>
+
+
+
+
+
+  <title>Android中使用GPS和NetWork获取定位信息 | 牟骏荣博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">牟骏荣博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-首页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-安卓学习">
+          <a href="/分类/android-安卓/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            安卓学习
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-linux学习">
+          <a href="/分类/Linux/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Linux学习
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-前端">
+          <a href="/分类/前端/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            前端
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-服务端">
+          <a href="/分类/服务端/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            服务端
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.58h.com.cn/Android中使用GPS和NetWork获取定位信息/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="牟骏荣">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="牟骏荣博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Android中使用GPS和NetWork获取定位信息</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-19T10:08:25+08:00">
+                2018-09-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/分类/android-安卓/" itemprop="url" rel="index">
+                    <span itemprop="name">android-安卓</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li>在Android中定位是属于危险权限，需要在添加Mainfest.xml中添加。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;uses-permission android:name=&quot;android.permission.ACCESS_COARSE_LOCATION&quot; /&gt;</span><br><span class="line">&lt;uses-permission android:name=&quot;android.permission.ACCESS_FINE_LOCATION&quot; /&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="定位的几种方式"><a href="#定位的几种方式" class="headerlink" title="定位的几种方式"></a>定位的几种方式</h2><ul>
+<li>在Android系统当中，给我们提供了四种定位方式，分别是：</li>
+<li>network<br>它是依靠信号塔或WiFi来定位的。对应的provider字段是LocationManager.NETWORK_PROVIDER，是一种低精度，低耗电的初略定位方式。</li>
+<li>gps 它是依靠GPS来定位的。对应的provider字段是LocationManager.GPS_PROVIDER，是高精度，高耗电的精准定位方式。</li>
+<li><p>passive 被动的获取定位信息，通过接受其他APP或service的定位信息。不过需要这个权限ACCESS_FINE_LOCATION。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;uses-permission android:name=&quot;android.permission.ACCESS_FINE_LOCATION&quot; /&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>fused Google已经将这个定位方式hide了。</p>
+</li>
+</ul>
+<h2 id="获取定位的api封装"><a href="#获取定位的api封装" class="headerlink" title="获取定位的api封装"></a>获取定位的api封装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br></pre></td><td class="code"><pre><span class="line">public class LocationUtils &#123;</span><br><span class="line"></span><br><span class="line">    private static final long REFRESH_TIME = 5000L;</span><br><span class="line">    private static final float METER_POSITION = 0.0f;</span><br><span class="line">    private static ILocationListener mLocationListener;</span><br><span class="line">    private static LocationListener listener = new MyLocationListener();</span><br><span class="line"></span><br><span class="line">    private static class MyLocationListener implements LocationListener &#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void onLocationChanged(Location location) &#123;//定位改变监听</span><br><span class="line">            if (mLocationListener != null) &#123;</span><br><span class="line">                mLocationListener.onSuccessLocation(location);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        public void onStatusChanged(String provider, int status, Bundle extras) &#123;//定位状态监听</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        public void onProviderEnabled(String provider) &#123;//定位状态可用监听</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        public void onProviderDisabled(String provider) &#123;//定位状态不可用监听</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * GPS获取定位方式</span><br><span class="line">     */</span><br><span class="line">    public static Location getGPSLocation(@NonNull Context context) &#123;</span><br><span class="line">        Location location = null;</span><br><span class="line">        LocationManager manager = getLocationManager(context);</span><br><span class="line">        //高版本的权限检查</span><br><span class="line">        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) &#123;</span><br><span class="line">            return null;</span><br><span class="line">        &#125;</span><br><span class="line">        if (manager.isProviderEnabled(LocationManager.GPS_PROVIDER)) &#123;//是否支持GPS定位</span><br><span class="line">            //获取最后的GPS定位信息，如果是第一次打开，一般会拿不到定位信息，一般可以请求监听，在有效的时间范围可以获取定位信息</span><br><span class="line">            location = manager.getLastKnownLocation(LocationManager.GPS_PROVIDER);</span><br><span class="line">        &#125;</span><br><span class="line">        return location;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * network获取定位方式</span><br><span class="line">     */</span><br><span class="line">    public static Location getNetWorkLocation(Context context) &#123;</span><br><span class="line">        Location location = null;</span><br><span class="line">        LocationManager manager = getLocationManager(context);</span><br><span class="line">        //高版本的权限检查</span><br><span class="line">        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) &#123;</span><br><span class="line">            return null;</span><br><span class="line">        &#125;</span><br><span class="line">        if (manager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) &#123;//是否支持Network定位</span><br><span class="line">            //获取最后的network定位信息</span><br><span class="line">            location = manager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);</span><br><span class="line">        &#125;</span><br><span class="line">        return location;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 获取最好的定位方式</span><br><span class="line">     */</span><br><span class="line">    public static Location getBestLocation(Context context, Criteria criteria) &#123;</span><br><span class="line">        Location location;</span><br><span class="line">        LocationManager manager = getLocationManager(context);</span><br><span class="line">        if (criteria == null) &#123;</span><br><span class="line">            criteria = new Criteria();</span><br><span class="line">        &#125;</span><br><span class="line">        String provider = manager.getBestProvider(criteria, true);</span><br><span class="line">        if (TextUtils.isEmpty(provider)) &#123;</span><br><span class="line">            //如果找不到最适合的定位，使用network定位</span><br><span class="line">            location = getNetWorkLocation(context);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            //高版本的权限检查</span><br><span class="line">            if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED</span><br><span class="line">                    &amp;&amp; ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) &#123;</span><br><span class="line">                return null;</span><br><span class="line">            &#125;</span><br><span class="line">            //获取最适合的定位方式的最后的定位权限</span><br><span class="line">            location = manager.getLastKnownLocation(provider);</span><br><span class="line">        &#125;</span><br><span class="line">        return location;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 定位监听</span><br><span class="line">     */</span><br><span class="line">    public static void addLocationListener(Context context, String provider, ILocationListener locationListener) &#123;</span><br><span class="line"></span><br><span class="line">        addLocationListener(context, provider, REFRESH_TIME, METER_POSITION, locationListener);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 定位监听</span><br><span class="line">     */</span><br><span class="line">    public static void addLocationListener(Context context, String provider, long time, float meter, ILocationListener locationListener) &#123;</span><br><span class="line">        if (locationListener != null) &#123;</span><br><span class="line">            mLocationListener = locationListener;</span><br><span class="line">        &#125;</span><br><span class="line">        if (listener == null) &#123;</span><br><span class="line">            listener = new MyLocationListener();</span><br><span class="line">        &#125;</span><br><span class="line">        LocationManager manager = getLocationManager(context);</span><br><span class="line">        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED</span><br><span class="line">                &amp;&amp; ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) &#123;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        manager.requestLocationUpdates(provider, time, meter, listener);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 取消定位监听</span><br><span class="line">     */</span><br><span class="line">    public static void unRegisterListener(Context context) &#123;</span><br><span class="line">        if (listener != null) &#123;</span><br><span class="line">            LocationManager manager = getLocationManager(context);</span><br><span class="line">            if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED</span><br><span class="line">                    &amp;&amp; ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) &#123;</span><br><span class="line">                return;</span><br><span class="line">            &#125;</span><br><span class="line">            //移除定位监听</span><br><span class="line">            manager.removeUpdates(listener);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private static LocationManager getLocationManager(@NonNull Context context) &#123;</span><br><span class="line">        return (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 自定义接口</span><br><span class="line">     */</span><br><span class="line">    public interface ILocationListener &#123;</span><br><span class="line">        void onSuccessLocation(Location location);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="获取定位使用实例"><a href="#获取定位使用实例" class="headerlink" title="获取定位使用实例"></a>获取定位使用实例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br></pre></td><td class="code"><pre><span class="line">public class MainActivity extends AppCompatActivity implements View.OnClickListener &#123;</span><br><span class="line"></span><br><span class="line">    private boolean flag;</span><br><span class="line">    private Button gsp_btn;</span><br><span class="line">    private Button network_btn;</span><br><span class="line">    private Button best_btn;</span><br><span class="line">    private static Context context;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        context = getApplicationContext();</span><br><span class="line"></span><br><span class="line">        initView();</span><br><span class="line">        initListener();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void initListener() &#123;</span><br><span class="line">        gsp_btn.setOnClickListener(this);</span><br><span class="line">        network_btn.setOnClickListener(this);</span><br><span class="line">        best_btn.setOnClickListener(this);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onResume() &#123;</span><br><span class="line">        super.onResume();</span><br><span class="line">        initPermission();//针对6.0以上版本做权限适配</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void initView() &#123;</span><br><span class="line">        gsp_btn = (Button) findViewById(R.id.gps);</span><br><span class="line">        network_btn = (Button) findViewById(R.id.net);</span><br><span class="line">        best_btn = (Button) findViewById(R.id.best);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void initPermission() &#123;</span><br><span class="line">        if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.M) &#123;</span><br><span class="line">            //检查权限</span><br><span class="line">            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED</span><br><span class="line">                    || ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) &#123;</span><br><span class="line">                //请求权限</span><br><span class="line">                ActivityCompat.requestPermissions(this, new String[]&#123;Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION&#125;, 1);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                flag = true;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            flag = true;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 权限的结果回调函数</span><br><span class="line">     */</span><br><span class="line">    @Override</span><br><span class="line">    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) &#123;</span><br><span class="line">        super.onRequestPermissionsResult(requestCode, permissions, grantResults);</span><br><span class="line">        if (requestCode == 1) &#123;</span><br><span class="line">            flag = grantResults[0] == PackageManager.PERMISSION_GRANTED &amp;&amp; grantResults[1] == PackageManager.PERMISSION_GRANTED;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onClick(View v) &#123;</span><br><span class="line">        switch (v.getId()) &#123;</span><br><span class="line">            case R.id.gps:</span><br><span class="line">                if (flag) &#123;</span><br><span class="line">                    getGPSLocation();</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    Toast.makeText(this, &quot;no permission&quot;, Toast.LENGTH_SHORT).show();</span><br><span class="line">                &#125;</span><br><span class="line">                break;</span><br><span class="line">            case R.id.net:</span><br><span class="line">                if (flag) &#123;</span><br><span class="line">                    getNetworkLocation();</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    Toast.makeText(this, &quot;no permission&quot;, Toast.LENGTH_SHORT).show();</span><br><span class="line">                &#125;</span><br><span class="line">                break;</span><br><span class="line">            case R.id.best:</span><br><span class="line">                if (flag) &#123;</span><br><span class="line">                    getBestLocation();</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    Toast.makeText(this, &quot;no permission&quot;, Toast.LENGTH_SHORT).show();</span><br><span class="line">                &#125;</span><br><span class="line">                break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 通过GPS获取定位信息</span><br><span class="line">     */</span><br><span class="line">    public void getGPSLocation() &#123;</span><br><span class="line">        Location gps = LocationUtils.getGPSLocation(this);</span><br><span class="line">        if (gps == null) &#123;</span><br><span class="line">            //设置定位监听，因为GPS定位，第一次进来可能获取不到，通过设置监听，可以在有效的时间范围内获取定位信息</span><br><span class="line">            LocationUtils.addLocationListener(context, LocationManager.GPS_PROVIDER, new LocationUtils.ILocationListener() &#123;</span><br><span class="line">                @Override</span><br><span class="line">                public void onSuccessLocation(Location location) &#123;</span><br><span class="line">                    if (location != null) &#123;</span><br><span class="line">                        Toast.makeText(MainActivity.this, &quot;gps onSuccessLocation location:  lat==&quot; + location.getLatitude() + &quot;     lng==&quot; + location.getLongitude(), Toast.LENGTH_SHORT).show();</span><br><span class="line">                    &#125; else &#123;</span><br><span class="line">                        Toast.makeText(MainActivity.this, &quot;gps location is null&quot;, Toast.LENGTH_SHORT).show();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            Toast.makeText(this, &quot;gps location: lat==&quot; + gps.getLatitude() + &quot;  lng==&quot; + gps.getLongitude(), Toast.LENGTH_SHORT).show();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 通过网络等获取定位信息</span><br><span class="line">     */</span><br><span class="line">    private void getNetworkLocation() &#123;</span><br><span class="line">        Location net = LocationUtils.getNetWorkLocation(this);</span><br><span class="line">        if (net == null) &#123;</span><br><span class="line">            Toast.makeText(this, &quot;net location is null&quot;, Toast.LENGTH_SHORT).show();</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            Toast.makeText(this, &quot;network location: lat==&quot; + net.getLatitude() + &quot;  lng==&quot; + net.getLongitude(), Toast.LENGTH_SHORT).show();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 采用最好的方式获取定位信息</span><br><span class="line">     */</span><br><span class="line">    private void getBestLocation() &#123;</span><br><span class="line">        Criteria c = new Criteria();//Criteria类是设置定位的标准信息（系统会根据你的要求，匹配最适合你的定位供应商），一个定位的辅助信息的类</span><br><span class="line">        c.setPowerRequirement(Criteria.POWER_LOW);//设置低耗电</span><br><span class="line">        c.setAltitudeRequired(true);//设置需要海拔</span><br><span class="line">        c.setBearingAccuracy(Criteria.ACCURACY_COARSE);//设置COARSE精度标准</span><br><span class="line">        c.setAccuracy(Criteria.ACCURACY_LOW);//设置低精度</span><br><span class="line">        //... Criteria 还有其他属性，就不一一介绍了</span><br><span class="line">        Location best = LocationUtils.getBestLocation(this, c);</span><br><span class="line">        if (best == null) &#123;</span><br><span class="line">            Toast.makeText(this, &quot; best location is null&quot;, Toast.LENGTH_SHORT).show();</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            Toast.makeText(this, &quot;best location: lat==&quot; + best.getLatitude() + &quot; lng==&quot; + best.getLongitude(), Toast.LENGTH_SHORT).show();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>关于GPS定位的信息还有比较多的内容，在API24中GpsStauts类过时，使用GnssStatus类替换，同时在LocationManager中的一些GPS状态的监听，也被新的API退换。</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/android/" rel="tag"># android</a>
+          
+            <a href="/tags/GPS/" rel="tag"># GPS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/ubuntu上gitee设置好公钥后pull-push-clone还是需要输入账号密码/" rel="next" title="ubuntu上gitee设置好公钥后pull/push/clone还是需要输入账号密码">
+                <i class="fa fa-chevron-left"></i> ubuntu上gitee设置好公钥后pull/push/clone还是需要输入账号密码
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/解决 Could not find lint-gradle-api.jar/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">牟骏荣</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+          
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+              
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+              
+            <div class="lefttagbox"> 
+                
+                  <a class="lefttag" href="/tags/loading">
+                     loading
+                  </span>
+                
+                  <a class="lefttag" href="/tags/css3">
+                     css3
+                  </span>
+                
+                  <a class="lefttag" href="/tags/动态特效">
+                     动态特效
+                  </span>
+                
+                  <a class="lefttag" href="/tags/android">
+                     android
+                  </span>
+                
+                  <a class="lefttag" href="/tags/View">
+                     View
+                  </span>
+                
+                  <a class="lefttag" href="/tags/angular">
+                     angular
+                  </span>
+                
+                  <a class="lefttag" href="/tags/drawable">
+                     drawable
+                  </span>
+                
+                  <a class="lefttag" href="/tags/dom">
+                     dom
+                  </span>
+                
+                  <a class="lefttag" href="/tags/Scroll">
+                     Scroll
+                  </span>
+                
+                  <a class="lefttag" href="/tags/鼠标拖动">
+                     鼠标拖动
+                  </span>
+                
+                  <a class="lefttag" href="/tags/express">
+                     express
+                  </span>
+                
+                  <a class="lefttag" href="/tags/nodejs">
+                     nodejs
+                  </span>
+                
+                  <a class="lefttag" href="/tags/git">
+                     git
+                  </span>
+                
+                  <a class="lefttag" href="/tags/前端">
+                     前端
+                  </span>
+                
+                  <a class="lefttag" href="/tags/ubuntu">
+                     ubuntu
+                  </span>
+                
+                  <a class="lefttag" href="/tags/linux">
+                     linux
+                  </span>
+                
+                  <a class="lefttag" href="/tags/ionic">
+                     ionic
+                  </span>
+                
+                  <a class="lefttag" href="/tags/relativelayout">
+                     relativelayout
+                  </span>
+                
+                  <a class="lefttag" href="/tags/相对布局">
+                     相对布局
+                  </span>
+                
+                  <a class="lefttag" href="/tags/VSCode">
+                     VSCode
+                  </span>
+                
+                  <a class="lefttag" href="/tags/webview">
+                     webview
+                  </span>
+                
+                  <a class="lefttag" href="/tags/RecyclerView">
+                     RecyclerView
+                  </span>
+                
+                  <a class="lefttag" href="/tags/javascript">
+                     javascript
+                  </span>
+                
+                  <a class="lefttag" href="/tags/nginx">
+                     nginx
+                  </span>
+                
+                  <a class="lefttag" href="/tags/ueditor">
+                     ueditor
+                  </span>
+                
+                  <a class="lefttag" href="/tags/nodeJs">
+                     nodeJs
+                  </span>
+                
+                  <a class="lefttag" href="/tags/shell">
+                     shell
+                  </span>
+                
+                  <a class="lefttag" href="/tags/chrome">
+                     chrome
+                  </span>
+                
+                  <a class="lefttag" href="/tags/gitee">
+                     gitee
+                  </span>
+                
+                  <a class="lefttag" href="/tags/VUE">
+                     VUE
+                  </span>
+                
+                  <a class="lefttag" href="/tags/linearlayout">
+                     linearlayout
+                  </span>
+                
+                  <a class="lefttag" href="/tags/瀑布流">
+                     瀑布流
+                  </span>
+                
+                  <a class="lefttag" href="/tags/实例">
+                     实例
+                  </span>
+                
+                  <a class="lefttag" href="/tags/php">
+                     php
+                  </span>
+                
+                  <a class="lefttag" href="/tags/GPS">
+                     GPS
+                  </span>
+                
+                  <a class="lefttag" href="/tags/工具类">
+                     工具类
+                  </span>
+                
+                  <a class="lefttag" href="/tags/mongodb">
+                     mongodb
+                  </span>
+                
+                  <a class="lefttag" href="/tags/百度地图">
+                     百度地图
+                  </span>
+                
+                </div>
+            
+          
+
+
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#定位的几种方式"><span class="nav-number">1.</span> <span class="nav-text">定位的几种方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取定位的api封装"><span class="nav-number">2.</span> <span class="nav-text">获取定位的api封装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取定位使用实例"><span class="nav-number">3.</span> <span class="nav-text">获取定位使用实例</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">牟骏荣</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/exturl.js?v=5.1.4"></script>
+
+
+</body>
+</html>

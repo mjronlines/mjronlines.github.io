@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="android,工具类," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Android 设备工具DeviceUtil Android 设备工具DeviceUtil dp转换px px转换dp 设备宽度 设备高度 SD卡判断 网络判断 VersionName VersionCode DeviceId 手机品牌 手机型号 系统Android API等级 系统Android 版本 App进程id App进程Name 创建App缓存文件夹 Uri转换File 获取Andro">
+<meta name="keywords" content="android,工具类">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android开发——DeviceUtil，获取Android设备信息的工具类">
+<meta property="og:url" content="https://www.58h.com.cn/Android开发——DeviceUtil，获取Android设备信息的工具类/index.html">
+<meta property="og:site_name" content="牟骏荣博客">
+<meta property="og:description" content="Android 设备工具DeviceUtil Android 设备工具DeviceUtil dp转换px px转换dp 设备宽度 设备高度 SD卡判断 网络判断 VersionName VersionCode DeviceId 手机品牌 手机型号 系统Android API等级 系统Android 版本 App进程id App进程Name 创建App缓存文件夹 Uri转换File 获取Andro">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-12-03T02:57:15.643Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android开发——DeviceUtil，获取Android设备信息的工具类">
+<meta name="twitter:description" content="Android 设备工具DeviceUtil Android 设备工具DeviceUtil dp转换px px转换dp 设备宽度 设备高度 SD卡判断 网络判断 VersionName VersionCode DeviceId 手机品牌 手机型号 系统Android API等级 系统Android 版本 App进程id App进程Name 创建App缓存文件夹 Uri转换File 获取Andro">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://www.58h.com.cn/Android开发——DeviceUtil，获取Android设备信息的工具类/"/>
+
+
+
+
+
+  <title>Android开发——DeviceUtil，获取Android设备信息的工具类 | 牟骏荣博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">牟骏荣博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-首页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-安卓学习">
+          <a href="/分类/android-安卓/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            安卓学习
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-linux学习">
+          <a href="/分类/Linux/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Linux学习
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-前端">
+          <a href="/分类/前端/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            前端
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-服务端">
+          <a href="/分类/服务端/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            服务端
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.58h.com.cn/Android开发——DeviceUtil，获取Android设备信息的工具类/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="牟骏荣">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="牟骏荣博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Android开发——DeviceUtil，获取Android设备信息的工具类</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-03T10:51:11+08:00">
+                2018-12-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/分类/android-安卓/" itemprop="url" rel="index">
+                    <span itemprop="name">android-安卓</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li>Android 设备工具DeviceUtil</li>
+<li>Android 设备工具DeviceUtil dp转换px px转换dp 设备宽度 设备高度 SD卡判断 网络判断 VersionName VersionCode DeviceId 手机品牌 手机型号 系统Android API等级 系统Android 版本 App进程id App进程Name 创建App缓存文件夹 Uri转换File 获取AndroidManifestxml里meta data的值 DeviceUtil全部源码</li>
+<li>dp转换px</li>
+<li>在自定义View中必须用到这个方法。自定义View的时候，不能像在xml那样可以设置dp（密度），只能设置px（像素）。不同分辨率的设备，设置px，显示就不会一样了。为了结合设计图设置dp，需要将dp转换为px值，然后再设置。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import android.annotation.SuppressLint;</span><br><span class="line">import android.app.Activity;</span><br><span class="line">import android.app.ActivityManager;</span><br><span class="line">import android.app.Application;</span><br><span class="line">import android.content.Context;</span><br><span class="line">import android.content.pm.ApplicationInfo;</span><br><span class="line">import android.content.pm.PackageInfo;</span><br><span class="line">import android.content.pm.PackageManager;</span><br><span class="line">import android.database.Cursor;</span><br><span class="line">import android.net.ConnectivityManager;</span><br><span class="line">import android.net.NetworkInfo;</span><br><span class="line">import android.net.Uri;</span><br><span class="line">import android.os.Environment;</span><br><span class="line">import android.provider.MediaStore;</span><br><span class="line">import android.telephony.TelephonyManager;</span><br><span class="line">import android.util.Log;</span><br><span class="line">import java.io.File;</span><br><span class="line">import java.util.Iterator;</span><br><span class="line">import java.util.List;</span><br><span class="line">public class DeviceUtil &#123;</span><br><span class="line">	 /**</span><br><span class="line">	     * dp 转化为 px</span><br><span class="line">	     * @param context</span><br><span class="line">	     * @param pxValue</span><br><span class="line">	     * @return</span><br><span class="line">	     */</span><br><span class="line">	  public static int dp2px(Context context, float dpValue) &#123;</span><br><span class="line">	        final float scale = context.getResources().getDisplayMetrics().density;</span><br><span class="line">	        return (int) (dpValue * scale + 0.5f);</span><br><span class="line">	    &#125;</span><br><span class="line">	px转换dp</span><br><span class="line">	    /**</span><br><span class="line">	     * px 转化为 dp</span><br><span class="line">	     * @param context</span><br><span class="line">	     * @param pxValue</span><br><span class="line">	     * @return</span><br><span class="line">	     */</span><br><span class="line">	    public static int px2dp(Context context, float pxValue) &#123;</span><br><span class="line">	        final float scale = context.getResources().getDisplayMetrics().density;</span><br><span class="line">	        return (int) (pxValue / scale + 0.5f);</span><br><span class="line">	    &#125;</span><br><span class="line">	设备宽度</span><br><span class="line">	    /**</span><br><span class="line">	     * 获取设备宽度（px）</span><br><span class="line">	     * @param context</span><br><span class="line">	     * @return</span><br><span class="line">	     */</span><br><span class="line">	    public static int deviceWidth(Context context) &#123;</span><br><span class="line">	        return context.getResources().getDisplayMetrics().widthPixels;</span><br><span class="line">	    &#125;</span><br><span class="line">	设备高度</span><br><span class="line">	    /**</span><br><span class="line">	     * 获取设备高度（px）</span><br><span class="line">	     * @param context</span><br><span class="line">	     * @return</span><br><span class="line">	     */</span><br><span class="line">	    public static int deviceHeight(Context context) &#123;</span><br><span class="line">	        return context.getResources().getDisplayMetrics().heightPixels;</span><br><span class="line">	    &#125;</span><br><span class="line">	SD卡判断</span><br><span class="line">	    /**</span><br><span class="line">	     * SD卡判断</span><br><span class="line">	     * @return</span><br><span class="line">	     */</span><br><span class="line">	    public static boolean isSDCardAvailable() &#123;</span><br><span class="line">	        return Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED);</span><br><span class="line">	    &#125;	</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        /**</span><br><span class="line">         * SD卡判断</span><br><span class="line">         *</span><br><span class="line">         * @return</span><br><span class="line">         */</span><br><span class="line">        public static boolean isSDCardAvailable() &#123;</span><br><span class="line">            return Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        /**</span><br><span class="line">         * 是否有网</span><br><span class="line">         *</span><br><span class="line">         * @param context</span><br><span class="line">         * @return</span><br><span class="line">         */</span><br><span class="line">        public static boolean isNetworkConnected(Context context) &#123;</span><br><span class="line">            if (context != null) &#123;</span><br><span class="line">                ConnectivityManager mConnectivityManager = (ConnectivityManager) context</span><br><span class="line">                        .getSystemService(Context.CONNECTIVITY_SERVICE);</span><br><span class="line">                NetworkInfo mNetworkInfo = mConnectivityManager</span><br><span class="line">                        .getActiveNetworkInfo();</span><br><span class="line">                if (mNetworkInfo != null) &#123;</span><br><span class="line">                    return mNetworkInfo.isAvailable();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        /**</span><br><span class="line">         * 返回版本名字</span><br><span class="line">         * 对应build.gradle中的versionName</span><br><span class="line">         *</span><br><span class="line">         * @param context</span><br><span class="line">         * @return</span><br><span class="line">         */</span><br><span class="line">        public static String getVersionName(Context context) &#123;</span><br><span class="line">            String versionName =&quot;&quot; ;</span><br><span class="line">            try &#123;</span><br><span class="line">                PackageManager packageManager = context.getPackageManager();</span><br><span class="line">                PackageInfo packInfo = packageManager.getPackageInfo(context.getPackageName(), 0);</span><br><span class="line">                versionName = packInfo.versionName;</span><br><span class="line">            &#125; catch (Exception e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">            return versionName;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        /**</span><br><span class="line">         * 返回版本号</span><br><span class="line">         * 对应build.gradle中的versionCode</span><br><span class="line">         *</span><br><span class="line">         * @param context</span><br><span class="line">         * @return</span><br><span class="line">         */</span><br><span class="line">        public static String getVersionCode(Context context) &#123;</span><br><span class="line">            String versionCode = &quot;&quot;;</span><br><span class="line">            try &#123;</span><br><span class="line">                PackageManager packageManager = context.getPackageManager();</span><br><span class="line">                PackageInfo packInfo = packageManager.getPackageInfo(context.getPackageName(), 0);</span><br><span class="line">                versionCode = String.valueOf(packInfo.versionCode);</span><br><span class="line">            &#125; catch (Exception e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">            return versionCode;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        /**</span><br><span class="line">         * 获取设备的唯一标识，deviceId</span><br><span class="line">         *</span><br><span class="line">         * @param context</span><br><span class="line">         * @return</span><br><span class="line">         */</span><br><span class="line">        public static String getDeviceId(Context context) &#123;</span><br><span class="line">            TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);</span><br><span class="line">            @SuppressLint(&quot;MissingPermission&quot;) String deviceId = tm.getDeviceId();</span><br><span class="line">            if (deviceId == null) &#123;</span><br><span class="line">                return &quot;&quot;;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                return deviceId;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        /**</span><br><span class="line">         * 获取手机品牌</span><br><span class="line">         *</span><br><span class="line">         * @return</span><br><span class="line">         */</span><br><span class="line">        public static String getPhoneBrand() &#123;</span><br><span class="line">            return android.os.Build.BRAND;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        /**</span><br><span class="line">         * 获取手机型号</span><br><span class="line">         *</span><br><span class="line">         * @return</span><br><span class="line">         */</span><br><span class="line">        public static String getPhoneModel() &#123;</span><br><span class="line">            return android.os.Build.MODEL;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        /**</span><br><span class="line">         * 获取手机Android API等级（22、23 ...）</span><br><span class="line">         *</span><br><span class="line">         * @return</span><br><span class="line">         */</span><br><span class="line">        public static int getBuildLevel() &#123;</span><br><span class="line">            return android.os.Build.VERSION.SDK_INT;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        /**</span><br><span class="line">         * 获取手机Android 版本（4.4、5.0、5.1 ...）</span><br><span class="line">         *</span><br><span class="line">         * @return</span><br><span class="line">         */</span><br><span class="line">        public static String getBuildVersion() &#123;</span><br><span class="line">            return android.os.Build.VERSION.RELEASE;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        /**</span><br><span class="line">         * 获取当前App进程的id</span><br><span class="line">         *</span><br><span class="line">         * @return</span><br><span class="line">         */</span><br><span class="line">        public static int getAppProcessId() &#123;</span><br><span class="line">            return android.os.Process.myPid();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        /**</span><br><span class="line">         * 获取当前App进程的Name</span><br><span class="line">         *</span><br><span class="line">         * @param context</span><br><span class="line">         * @param processId</span><br><span class="line">         * @return</span><br><span class="line">         */</span><br><span class="line">        public static String getAppProcessName(Context context, int processId) &#123;</span><br><span class="line">            String processName = null;</span><br><span class="line">            ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);</span><br><span class="line">            // 获取所有运行App的进程集合</span><br><span class="line">            List l = am.getRunningAppProcesses();</span><br><span class="line">            Iterator i = l.iterator();</span><br><span class="line">            PackageManager pm = context.getPackageManager();</span><br><span class="line">            while (i.hasNext()) &#123;</span><br><span class="line">                ActivityManager.RunningAppProcessInfo info = (ActivityManager.RunningAppProcessInfo) (i.next());</span><br><span class="line">                try &#123;</span><br><span class="line">                    if (info.pid == processId) &#123;</span><br><span class="line">                        CharSequence c = pm.getApplicationLabel(pm.getApplicationInfo(info.processName, PackageManager.GET_META_DATA));</span><br><span class="line"></span><br><span class="line">                        processName = info.processName;</span><br><span class="line">                        return processName;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125; catch (Exception e) &#123;</span><br><span class="line">                    Log.e(DeviceUtil.class.getName(), e.getMessage(), e);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            return processName;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        /**</span><br><span class="line">         * 创建App文件夹</span><br><span class="line">         *</span><br><span class="line">         * @param appName</span><br><span class="line">         * @param application</span><br><span class="line">         * @return</span><br><span class="line">         */</span><br><span class="line">        public static String createAPPFolder(String appName, Application application) &#123;</span><br><span class="line">            return createAPPFolder(appName, application, null);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        /**</span><br><span class="line">         * 创建App文件夹</span><br><span class="line">         *</span><br><span class="line">         * @param appName</span><br><span class="line">         * @param application</span><br><span class="line">         * @param folderName</span><br><span class="line">         * @return</span><br><span class="line">         */</span><br><span class="line">        public static String createAPPFolder(String appName, Application application, String folderName) &#123;</span><br><span class="line">            File root = Environment.getExternalStorageDirectory();</span><br><span class="line">            File folder;</span><br><span class="line">            /**</span><br><span class="line">             * 如果存在SD卡</span><br><span class="line">             */</span><br><span class="line">            if (DeviceUtil.isSDCardAvailable() &amp;&amp; root != null) &#123;</span><br><span class="line">                folder = new File(root, appName);</span><br><span class="line">                if (!folder.exists()) &#123;</span><br><span class="line">                    folder.mkdirs();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                /**</span><br><span class="line">                 * 不存在SD卡，就放到缓存文件夹内</span><br><span class="line">                 */</span><br><span class="line">                root = application.getCacheDir();</span><br><span class="line">                folder = new File(root, appName);</span><br><span class="line">                if (!folder.exists()) &#123;</span><br><span class="line">                    folder.mkdirs();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            if (folderName != null) &#123;</span><br><span class="line">                folder = new File(folder, folderName);</span><br><span class="line">                if (!folder.exists()) &#123;</span><br><span class="line">                    folder.mkdirs();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            return folder.getAbsolutePath();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        /**</span><br><span class="line">         * 通过Uri找到File</span><br><span class="line">         *</span><br><span class="line">         * @param context</span><br><span class="line">         * @param uri</span><br><span class="line">         * @return</span><br><span class="line">         */</span><br><span class="line">        public static File uri2File(Activity context, Uri uri) &#123;</span><br><span class="line">            File file;</span><br><span class="line">            String[] project = &#123;MediaStore.Images.Media.DATA&#125;;</span><br><span class="line">            Cursor actualImageCursor = context.getContentResolver().query(uri, project, null, null, null);</span><br><span class="line">            if (actualImageCursor != null) &#123;</span><br><span class="line">                int actual_image_column_index = actualImageCursor</span><br><span class="line">                        .getColumnIndexOrThrow(MediaStore.Images.Media.DATA);</span><br><span class="line">                actualImageCursor.moveToFirst();</span><br><span class="line">                String img_path = actualImageCursor</span><br><span class="line">                        .getString(actual_image_column_index);</span><br><span class="line">                file = new File(img_path);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                file = new File(uri.getPath());</span><br><span class="line">            &#125;</span><br><span class="line">            if (actualImageCursor != null) actualImageCursor.close();</span><br><span class="line">            return file;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        /**</span><br><span class="line">         * 获取AndroidManifest.xml里 的值</span><br><span class="line">         *</span><br><span class="line">         * @param context</span><br><span class="line">         * @param name</span><br><span class="line">         * @return</span><br><span class="line">         */</span><br><span class="line">        public static String getMetaData(Context context, String name) &#123;</span><br><span class="line">            String value = null;</span><br><span class="line">            try &#123;</span><br><span class="line">                ApplicationInfo appInfo = context.getPackageManager().getApplicationInfo(context.getPackageName(), PackageManager.GET_META_DATA);</span><br><span class="line">                value = appInfo.metaData.getString(name);</span><br><span class="line">            &#125; catch (PackageManager.NameNotFoundException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">            return value;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/android/" rel="tag"># android</a>
+          
+            <a href="/tags/工具类/" rel="tag"># 工具类</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/使用JAVA代码实现Android布局/" rel="next" title="使用JAVA代码实现Android布局">
+                <i class="fa fa-chevron-left"></i> 使用JAVA代码实现Android布局
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Ionic安卓自动更新/" rel="prev" title="Ionic android 端自动更新">
+                Ionic android 端自动更新 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">牟骏荣</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+          
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+              
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+              
+            <div class="lefttagbox"> 
+                
+                  <a class="lefttag" href="/tags/loading">
+                     loading
+                  </span>
+                
+                  <a class="lefttag" href="/tags/css3">
+                     css3
+                  </span>
+                
+                  <a class="lefttag" href="/tags/动态特效">
+                     动态特效
+                  </span>
+                
+                  <a class="lefttag" href="/tags/android">
+                     android
+                  </span>
+                
+                  <a class="lefttag" href="/tags/View">
+                     View
+                  </span>
+                
+                  <a class="lefttag" href="/tags/angular">
+                     angular
+                  </span>
+                
+                  <a class="lefttag" href="/tags/drawable">
+                     drawable
+                  </span>
+                
+                  <a class="lefttag" href="/tags/dom">
+                     dom
+                  </span>
+                
+                  <a class="lefttag" href="/tags/Scroll">
+                     Scroll
+                  </span>
+                
+                  <a class="lefttag" href="/tags/鼠标拖动">
+                     鼠标拖动
+                  </span>
+                
+                  <a class="lefttag" href="/tags/express">
+                     express
+                  </span>
+                
+                  <a class="lefttag" href="/tags/nodejs">
+                     nodejs
+                  </span>
+                
+                  <a class="lefttag" href="/tags/git">
+                     git
+                  </span>
+                
+                  <a class="lefttag" href="/tags/前端">
+                     前端
+                  </span>
+                
+                  <a class="lefttag" href="/tags/ubuntu">
+                     ubuntu
+                  </span>
+                
+                  <a class="lefttag" href="/tags/linux">
+                     linux
+                  </span>
+                
+                  <a class="lefttag" href="/tags/ionic">
+                     ionic
+                  </span>
+                
+                  <a class="lefttag" href="/tags/relativelayout">
+                     relativelayout
+                  </span>
+                
+                  <a class="lefttag" href="/tags/相对布局">
+                     相对布局
+                  </span>
+                
+                  <a class="lefttag" href="/tags/VSCode">
+                     VSCode
+                  </span>
+                
+                  <a class="lefttag" href="/tags/webview">
+                     webview
+                  </span>
+                
+                  <a class="lefttag" href="/tags/RecyclerView">
+                     RecyclerView
+                  </span>
+                
+                  <a class="lefttag" href="/tags/javascript">
+                     javascript
+                  </span>
+                
+                  <a class="lefttag" href="/tags/nginx">
+                     nginx
+                  </span>
+                
+                  <a class="lefttag" href="/tags/ueditor">
+                     ueditor
+                  </span>
+                
+                  <a class="lefttag" href="/tags/nodeJs">
+                     nodeJs
+                  </span>
+                
+                  <a class="lefttag" href="/tags/shell">
+                     shell
+                  </span>
+                
+                  <a class="lefttag" href="/tags/chrome">
+                     chrome
+                  </span>
+                
+                  <a class="lefttag" href="/tags/gitee">
+                     gitee
+                  </span>
+                
+                  <a class="lefttag" href="/tags/VUE">
+                     VUE
+                  </span>
+                
+                  <a class="lefttag" href="/tags/linearlayout">
+                     linearlayout
+                  </span>
+                
+                  <a class="lefttag" href="/tags/瀑布流">
+                     瀑布流
+                  </span>
+                
+                  <a class="lefttag" href="/tags/实例">
+                     实例
+                  </span>
+                
+                  <a class="lefttag" href="/tags/php">
+                     php
+                  </span>
+                
+                  <a class="lefttag" href="/tags/GPS">
+                     GPS
+                  </span>
+                
+                  <a class="lefttag" href="/tags/工具类">
+                     工具类
+                  </span>
+                
+                  <a class="lefttag" href="/tags/mongodb">
+                     mongodb
+                  </span>
+                
+                  <a class="lefttag" href="/tags/百度地图">
+                     百度地图
+                  </span>
+                
+                </div>
+            
+          
+
+
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">牟骏荣</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/exturl.js?v=5.1.4"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="VSCode," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1.使用Beautify插件配置 自动格式化按如下步骤设置 在工作目录下建立.jsbeautifyrc文件12345678910&amp;#123;  &amp;quot;brace_style&amp;quot;: &amp;quot;none,preserve-inline&amp;quot;,  &amp;quot;indent_size&amp;quot;: 2,  &amp;quot;indent_char&amp;quot;: &amp;quot; &amp;quot;,">
+<meta name="keywords" content="VSCode">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VSCode - Beautify插件配置">
+<meta property="og:url" content="https://www.58h.com.cn/VSCode - Beautify插件配置 /index.html">
+<meta property="og:site_name" content="牟骏荣博客">
+<meta property="og:description" content="1.使用Beautify插件配置 自动格式化按如下步骤设置 在工作目录下建立.jsbeautifyrc文件12345678910&amp;#123;  &amp;quot;brace_style&amp;quot;: &amp;quot;none,preserve-inline&amp;quot;,  &amp;quot;indent_size&amp;quot;: 2,  &amp;quot;indent_char&amp;quot;: &amp;quot; &amp;quot;,">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-02-28T03:22:02.155Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="VSCode - Beautify插件配置">
+<meta name="twitter:description" content="1.使用Beautify插件配置 自动格式化按如下步骤设置 在工作目录下建立.jsbeautifyrc文件12345678910&amp;#123;  &amp;quot;brace_style&amp;quot;: &amp;quot;none,preserve-inline&amp;quot;,  &amp;quot;indent_size&amp;quot;: 2,  &amp;quot;indent_char&amp;quot;: &amp;quot; &amp;quot;,">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://www.58h.com.cn/VSCode - Beautify插件配置 /"/>
+
+
+
+
+
+  <title>VSCode - Beautify插件配置 | 牟骏荣博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">牟骏荣博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-首页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-安卓学习">
+          <a href="/分类/android-安卓/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            安卓学习
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-linux学习">
+          <a href="/分类/Linux/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Linux学习
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-前端">
+          <a href="/分类/前端/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            前端
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-服务端">
+          <a href="/分类/服务端/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            服务端
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.58h.com.cn/VSCode - Beautify插件配置 /">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="牟骏荣">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="牟骏荣博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">VSCode - Beautify插件配置</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-28T10:57:01+08:00">
+                2019-02-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/分类/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-使用Beautify插件配置-自动格式化按如下步骤设置"><a href="#1-使用Beautify插件配置-自动格式化按如下步骤设置" class="headerlink" title="1.使用Beautify插件配置 自动格式化按如下步骤设置"></a>1.使用Beautify插件配置 自动格式化按如下步骤设置</h2><ul>
+<li>在工作目录下建立.jsbeautifyrc文件<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;brace_style&quot;: &quot;none,preserve-inline&quot;,</span><br><span class="line">  &quot;indent_size&quot;: 2,</span><br><span class="line">  &quot;indent_char&quot;: &quot; &quot;,</span><br><span class="line">  &quot;jslint_happy&quot;: true,</span><br><span class="line">  &quot;unformatted&quot;: [&quot;&quot;],</span><br><span class="line">  &quot;css&quot;: &#123;</span><br><span class="line">    &quot;indent_size&quot;: 2</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>注释</p>
+<ul>
+<li>brace_style，格式风格，详见官方说明（为避免和eslint默认检查冲突，建议此属性设置为 none,preserve-inline）</li>
+<li>indent_size，缩进长度（为避免和eslint默认检查冲突，建议此属性设置为 2）</li>
+<li>indent_char，缩进填充的内容（充满♂）</li>
+<li>jslint_happy:true，若你要搭配jslint使用，请开启此选项</li>
+<li>unformatted:[“a”,”pre”]，这里放不需要格式化的标签类型。注意 template 也是默认不格式化的，.vue 的template 标签如果需要格式化请在 .jsbeautifyrc 重新定义不带 template 的声明属性</li>
+</ul>
+<h2 id="2-启用保存时自动"><a href="#2-启用保存时自动" class="headerlink" title="2.启用保存时自动"></a>2.启用保存时自动</h2><p>在VSCode的配置文件里添加 editor.formatOnSave:true 即可实现保存时自动格式化</p>
+<h2 id="3-快捷键"><a href="#3-快捷键" class="headerlink" title="3.快捷键"></a>3.快捷键</h2><p>在 VS Code 的键盘快捷方式文件里添加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;key&quot;: &quot;cmd+b&quot;, // 自己定键位</span><br><span class="line">  &quot;command&quot;: &quot;HookyQR.beautify&quot;,</span><br><span class="line">  &quot;when&quot;: &quot;editorFocus&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="4-单独配置vue"><a href="#4-单独配置vue" class="headerlink" title="4.单独配置vue"></a>4.单独配置vue</h2><ul>
+<li>文件-&gt; 设置 -&gt; settings.json 中添加属性<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&quot;beautify.language&quot;: &#123;</span><br><span class="line">      &quot;js&quot;: &#123;</span><br><span class="line">          &quot;type&quot;: [</span><br><span class="line">              &quot;javascript&quot;,</span><br><span class="line">              &quot;json&quot;</span><br><span class="line">          ],</span><br><span class="line">          &quot;filename&quot;: [</span><br><span class="line">              &quot;.jshintrc&quot;,</span><br><span class="line">              &quot;.jsbeautify&quot;</span><br><span class="line">          ]</span><br><span class="line">      &#125;,</span><br><span class="line">      &quot;css&quot;: [</span><br><span class="line">          &quot;css&quot;,</span><br><span class="line">          &quot;scss&quot;</span><br><span class="line">      ],</span><br><span class="line">      &quot;html&quot;: [</span><br><span class="line">          &quot;htm&quot;,</span><br><span class="line">          &quot;html&quot;,</span><br><span class="line">          &quot;vue&quot;  //&lt; 这条给vue配置</span><br><span class="line">      ]</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="插件备份（自己研究）"><a href="#插件备份（自己研究）" class="headerlink" title="插件备份（自己研究）"></a>插件备份（自己研究）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  // The plugin looks for a .jsbeautifyrc file in the same directory as the</span><br><span class="line">  // source file you&apos;re prettifying (or any directory above if it doesn&apos;t exist,</span><br><span class="line">  // or in your home folder if everything else fails) and uses those options</span><br><span class="line">  // along the default ones.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  // Details: https://github.com/victorporof/Sublime-HTMLPrettify#using-your-own-jsbeautifyrc-options</span><br><span class="line">  // Documentation: https://github.com/einars/js-beautify/</span><br><span class="line">  &quot;html&quot;: &#123;</span><br><span class="line">    &quot;allowed_file_extensions&quot;: [&quot;htm&quot;, &quot;html&quot;, &quot;xhtml&quot;, &quot;shtml&quot;, &quot;xml&quot;, &quot;svg&quot;,&quot;aspx&quot;,&quot;jsp&quot;],</span><br><span class="line">    &quot;brace_style&quot;: &quot;collapse&quot;, // [collapse|expand|end-expand|none] Put braces on the same line as control statements (default), or put braces on own line (Allman / ANSI style), or just put end braces on own line, or attempt to keep them where they are</span><br><span class="line">    &quot;end_with_newline&quot;: false, // End output with newline</span><br><span class="line">    &quot;indent_char&quot;: &quot;\t&quot;, // Indentation character</span><br><span class="line">    &quot;indent_handlebars&quot;: false, // e.g. &#123;&#123;#foo&#125;&#125;, &#123;&#123;/foo&#125;&#125;</span><br><span class="line">    &quot;indent_inner_html&quot;: false, // Indent &lt;head&gt; and &lt;body&gt; sections</span><br><span class="line">    &quot;indent_scripts&quot;: &quot;keep&quot;, // [keep|separate|normal]</span><br><span class="line">    &quot;indent_size&quot;: 1, // Indentation size</span><br><span class="line">    &quot;max_preserve_newlines&quot;: 10, // Maximum number of line breaks to be preserved in one chunk (0 disables)</span><br><span class="line">    &quot;preserve_newlines&quot;: true, // Whether existing line breaks before elements should be preserved (only works before elements, not inside tags or for text)</span><br><span class="line">    &quot;unformatted&quot;: [&quot;a&quot;, &quot;span&quot;, &quot;img&quot;, &quot;code&quot;, &quot;pre&quot;, &quot;sub&quot;, &quot;sup&quot;, &quot;em&quot;, &quot;strong&quot;, &quot;b&quot;, &quot;i&quot;, &quot;u&quot;, &quot;strike&quot;, &quot;big&quot;, &quot;small&quot;, &quot;pre&quot;, &quot;h1&quot;, &quot;h2&quot;, &quot;h3&quot;, &quot;h4&quot;, &quot;h5&quot;, &quot;h6&quot;], // List of tags that should not be reformatted</span><br><span class="line">    &quot;wrap_line_length&quot;: 0 // Lines should wrap at next opportunity after this number of characters (0 disables)</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;css&quot;: &#123;</span><br><span class="line">    &quot;allowed_file_extensions&quot;: [&quot;css&quot;, &quot;scss&quot;, &quot;sass&quot;, &quot;less&quot;],</span><br><span class="line">    &quot;end_with_newline&quot;: false, // End output with newline</span><br><span class="line">    &quot;indent_char&quot;: &quot;\t&quot;, // Indentation character</span><br><span class="line">    &quot;indent_size&quot;: 1, // Indentation size</span><br><span class="line">    &quot;newline_between_rules&quot;: true, // Add a new line after every css rule</span><br><span class="line">    &quot;selector_separator&quot;: &quot; &quot;,</span><br><span class="line">    &quot;selector_separator_newline&quot;: false // Separate selectors with newline or not (e.g. &quot;a,\nbr&quot; or &quot;a, br&quot;)</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;js&quot;: &#123;</span><br><span class="line">    &quot;allowed_file_extensions&quot;: [&quot;js&quot;, &quot;json&quot;, &quot;jshintrc&quot;, &quot;jsbeautifyrc&quot;,&quot;csslintrc&quot;],</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    // Set brace_style</span><br><span class="line">    //  collapse: (old default) Put braces on the same line as control statements</span><br><span class="line">    //  collapse-preserve-inline: (new default) Same as collapse but better support for ES6 destructuring and other features. https://github.com/victorporof/Sublime-HTMLPrettify/issues/231</span><br><span class="line">    //  expand: Put braces on own line (Allman / ANSI style)</span><br><span class="line">    //  end-expand: Put end braces on own line</span><br><span class="line">    //  none: Keep them where they are</span><br><span class="line">    &quot;brace_style&quot;: &quot;collapse&quot;,//&quot;collapse-preserve-inline&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &quot;break_chained_methods&quot;: false, // Break chained method calls across subsequent lines</span><br><span class="line">    &quot;e4x&quot;: false, // Pass E4X xml literals through untouched</span><br><span class="line">    &quot;end_with_newline&quot;: false, // End output with newline</span><br><span class="line">    &quot;indent_char&quot;: &quot;\t&quot;, // Indentation character</span><br><span class="line">    &quot;indent_level&quot;: 0, // Initial indentation level</span><br><span class="line">    &quot;indent_size&quot;: 1, // Indentation size</span><br><span class="line">    &quot;indent_with_tabs&quot;: true, // Indent with tabs, overrides `indent_size` and `indent_char`</span><br><span class="line">    &quot;jslint_happy&quot;: true, // If true, then jslint-stricter mode is enforced</span><br><span class="line">    &quot;keep_array_indentation&quot;: false, // Preserve array indentation</span><br><span class="line">    &quot;keep_function_indentation&quot;: false, // Preserve function indentation</span><br><span class="line">    &quot;max_preserve_newlines&quot;: 0, // Maximum number of line breaks to be preserved in one chunk (0 disables)</span><br><span class="line">    &quot;preserve_newlines&quot;: true, // Whether existing line breaks should be preserved</span><br><span class="line">    &quot;space_after_anon_function&quot;: false, // Should the space before an anonymous function&apos;s parens be added, &quot;function()&quot; vs &quot;function ()&quot;</span><br><span class="line">    &quot;space_before_conditional&quot;: true, // Should the space before conditional statement be added, &quot;if(true)&quot; vs &quot;if (true)&quot;</span><br><span class="line">    &quot;space_in_empty_paren&quot;: false, // Add padding spaces within empty paren, &quot;f()&quot; vs &quot;f( )&quot;</span><br><span class="line">    &quot;space_in_paren&quot;: false, // Add padding spaces within paren, ie. f( a, b )</span><br><span class="line">    &quot;unescape_strings&quot;: false, // Should printable characters in strings encoded in \xNN notation be unescaped, &quot;example&quot; vs &quot;\x65\x78\x61\x6d\x70\x6c\x65&quot;</span><br><span class="line">    &quot;wrap_line_length&quot;: 0 // Lines should wrap at next opportunity after this number of characters (0 disables)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/VSCode/" rel="tag"># VSCode</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/vue 使用技巧/" rel="next" title="VUE实用案例收集">
+                <i class="fa fa-chevron-left"></i> VUE实用案例收集
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">牟骏荣</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+          
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+              
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+              
+            <div class="lefttagbox"> 
+                
+                  <a class="lefttag" href="/tags/loading">
+                     loading
+                  </span>
+                
+                  <a class="lefttag" href="/tags/css3">
+                     css3
+                  </span>
+                
+                  <a class="lefttag" href="/tags/动态特效">
+                     动态特效
+                  </span>
+                
+                  <a class="lefttag" href="/tags/android">
+                     android
+                  </span>
+                
+                  <a class="lefttag" href="/tags/View">
+                     View
+                  </span>
+                
+                  <a class="lefttag" href="/tags/angular">
+                     angular
+                  </span>
+                
+                  <a class="lefttag" href="/tags/drawable">
+                     drawable
+                  </span>
+                
+                  <a class="lefttag" href="/tags/dom">
+                     dom
+                  </span>
+                
+                  <a class="lefttag" href="/tags/Scroll">
+                     Scroll
+                  </span>
+                
+                  <a class="lefttag" href="/tags/鼠标拖动">
+                     鼠标拖动
+                  </span>
+                
+                  <a class="lefttag" href="/tags/express">
+                     express
+                  </span>
+                
+                  <a class="lefttag" href="/tags/nodejs">
+                     nodejs
+                  </span>
+                
+                  <a class="lefttag" href="/tags/git">
+                     git
+                  </span>
+                
+                  <a class="lefttag" href="/tags/前端">
+                     前端
+                  </span>
+                
+                  <a class="lefttag" href="/tags/ubuntu">
+                     ubuntu
+                  </span>
+                
+                  <a class="lefttag" href="/tags/linux">
+                     linux
+                  </span>
+                
+                  <a class="lefttag" href="/tags/ionic">
+                     ionic
+                  </span>
+                
+                  <a class="lefttag" href="/tags/relativelayout">
+                     relativelayout
+                  </span>
+                
+                  <a class="lefttag" href="/tags/相对布局">
+                     相对布局
+                  </span>
+                
+                  <a class="lefttag" href="/tags/VSCode">
+                     VSCode
+                  </span>
+                
+                  <a class="lefttag" href="/tags/webview">
+                     webview
+                  </span>
+                
+                  <a class="lefttag" href="/tags/RecyclerView">
+                     RecyclerView
+                  </span>
+                
+                  <a class="lefttag" href="/tags/javascript">
+                     javascript
+                  </span>
+                
+                  <a class="lefttag" href="/tags/nginx">
+                     nginx
+                  </span>
+                
+                  <a class="lefttag" href="/tags/ueditor">
+                     ueditor
+                  </span>
+                
+                  <a class="lefttag" href="/tags/nodeJs">
+                     nodeJs
+                  </span>
+                
+                  <a class="lefttag" href="/tags/shell">
+                     shell
+                  </span>
+                
+                  <a class="lefttag" href="/tags/chrome">
+                     chrome
+                  </span>
+                
+                  <a class="lefttag" href="/tags/gitee">
+                     gitee
+                  </span>
+                
+                  <a class="lefttag" href="/tags/VUE">
+                     VUE
+                  </span>
+                
+                  <a class="lefttag" href="/tags/linearlayout">
+                     linearlayout
+                  </span>
+                
+                  <a class="lefttag" href="/tags/瀑布流">
+                     瀑布流
+                  </span>
+                
+                  <a class="lefttag" href="/tags/实例">
+                     实例
+                  </span>
+                
+                  <a class="lefttag" href="/tags/php">
+                     php
+                  </span>
+                
+                  <a class="lefttag" href="/tags/GPS">
+                     GPS
+                  </span>
+                
+                  <a class="lefttag" href="/tags/工具类">
+                     工具类
+                  </span>
+                
+                  <a class="lefttag" href="/tags/mongodb">
+                     mongodb
+                  </span>
+                
+                  <a class="lefttag" href="/tags/百度地图">
+                     百度地图
+                  </span>
+                
+                </div>
+            
+          
+
+
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-使用Beautify插件配置-自动格式化按如下步骤设置"><span class="nav-number">1.</span> <span class="nav-text">1.使用Beautify插件配置 自动格式化按如下步骤设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-启用保存时自动"><span class="nav-number">2.</span> <span class="nav-text">2.启用保存时自动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-快捷键"><span class="nav-number">3.</span> <span class="nav-text">3.快捷键</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-单独配置vue"><span class="nav-number">4.</span> <span class="nav-text">4.单独配置vue</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插件备份（自己研究）"><span class="nav-number">5.</span> <span class="nav-text">插件备份（自己研究）</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">牟骏荣</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/exturl.js?v=5.1.4"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,8 @@
+.lefttagbox {
+  padding: 10px;
+}
+.lefttag {
+  border-bottom-width: 0px;
+  display: inline-block;
+  margin-right: 8px;
+}
