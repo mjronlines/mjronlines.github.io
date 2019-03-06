@@ -80,7 +80,7 @@
 <meta name="description" content="精益求精">
 <meta property="og:type" content="website">
 <meta property="og:title" content="牟骏荣博客">
-<meta property="og:url" content="https://www.58h.com.cn/page/2/index.html">
+<meta property="og:url" content="https://mjronlines.github.io/page/2/index.html">
 <meta property="og:site_name" content="牟骏荣博客">
 <meta property="og:description" content="精益求精">
 <meta property="og:locale" content="zh-CN">
@@ -116,7 +116,7 @@
 
 
 
-  <link rel="canonical" href="https://www.58h.com.cn/page/2/"/>
+  <link rel="canonical" href="https://mjronlines.github.io/page/2/"/>
 
 
 
@@ -260,7 +260,162 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.58h.com.cn/编译安装php nginx部分代码/">
+    <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/ubuntu上gitee设置好公钥后pull-push-clone还是需要输入账号密码/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="牟骏荣">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="牟骏荣博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/ubuntu上gitee设置好公钥后pull-push-clone还是需要输入账号密码/" itemprop="url">ubuntu上gitee设置好公钥后pull/push/clone还是需要输入账号密码</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-14T11:34:54+08:00">
+                2018-09-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/分类/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li>设置公钥步骤请看 <a href="https://gitee.com/help/articles/4181" target="_blank" rel="noopener">https://gitee.com/help/articles/4181</a><h2 id="修改部分"><a href="#修改部分" class="headerlink" title="修改部分"></a>修改部分</h2></li>
+<li><p>配置后出现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hi XXX! You&apos;ve successfully authenticated, but Gitee.com does not provide shell access.</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>进入 .git/config</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[remote &quot;origin&quot;]</span><br><span class="line">   url = https://gitee.com/username/xxx.git</span><br><span class="line">   fetch = +refs/heads/*:refs/remotes/origin/*</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改成</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[remote &quot;origin&quot;]</span><br><span class="line">    url =git@gitee.com:username/xxx.git</span><br><span class="line">    fetch = +refs/heads/*:refs/remotes/origin/*</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置好之后还需要输入密码原因是 https 是一种安全传输模式默认需要输入密码</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/编译安装php nginx部分代码/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="牟骏荣">
@@ -403,7 +558,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.58h.com.cn/瀑布流布局页面滚动自动加载实例/">
+    <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/瀑布流布局页面滚动自动加载实例/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="牟骏荣">
@@ -497,7 +652,7 @@
         
           
             <p><img src="/images/waterfall-layout.jpg" alt="瀑布流布局页面滚动自动加载实例"></p>
-<h2 id="测试地址"><a href="#测试地址" class="headerlink" title="测试地址"></a>测试地址</h2><p><a href="https://www.58h.com.cn/demo/waterfall-layout/index.html">瀑布流测试地址</a><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> divbox = $(<span class="string">".fboxone"</span>);</span><br><span class="line">        <span class="keyword">var</span> divs = $(<span class="built_in">document</span>).find(<span class="string">".fbox"</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; divs.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (divbox.height() &gt; $(divs[i]).height()) &#123;</span><br><span class="line">                divbox = $(divs[i]);<span class="comment">//取高度最低的一个添加</span></span><br><span class="line">            &#125;</span><br><span class="line">     &#125;</span><br><span class="line">divbox.find(<span class="string">".container"</span>).append(<span class="string">`<span class="subst">$&#123;db[x].name&#125;</span>`</span>);</span><br></pre></td></tr></table></figure></p>
+<h2 id="测试地址"><a href="#测试地址" class="headerlink" title="测试地址"></a>测试地址</h2><p><a href="https://mjronlines.github.io/assets/waterfall-layout/index.html">瀑布流测试地址</a><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> divbox = $(<span class="string">".fboxone"</span>);</span><br><span class="line">        <span class="keyword">var</span> divs = $(<span class="built_in">document</span>).find(<span class="string">".fbox"</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; divs.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (divbox.height() &gt; $(divs[i]).height()) &#123;</span><br><span class="line">                divbox = $(divs[i]);<span class="comment">//取高度最低的一个添加</span></span><br><span class="line">            &#125;</span><br><span class="line">     &#125;</span><br><span class="line">divbox.find(<span class="string">".container"</span>).append(<span class="string">`<span class="subst">$&#123;db[x].name&#125;</span>`</span>);</span><br></pre></td></tr></table></figure></p>
 <h2 id="原理"><a href="#原理" class="headerlink" title="原理:"></a>原理:</h2><p>每次添加内容是先计算当前列表的高度,取高度最低的一个添加</p>
 
           
@@ -547,7 +702,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.58h.com.cn/实用JS案例收集/">
+    <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/实用JS案例收集/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="牟骏荣">
@@ -697,7 +852,7 @@ console.log(zz,&quot;zz&quot;);// 正则表达式
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.58h.com.cn/window下nodejs爬取gb2312网页出现乱码的解决方案/">
+    <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/window下nodejs爬取gb2312网页出现乱码的解决方案/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="牟骏荣">
@@ -842,7 +997,7 @@ console.log(zz,&quot;zz&quot;);// 正则表达式
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.58h.com.cn/ubuntu16.0.4 系统中chrome浏览器的代理配置/">
+    <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/ubuntu16.0.4 系统中chrome浏览器的代理配置/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="牟骏荣">
@@ -999,7 +1154,7 @@ console.log(zz,&quot;zz&quot;);// 正则表达式
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.58h.com.cn/shell获取当前系统时间/">
+    <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/shell获取当前系统时间/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="牟骏荣">
@@ -1191,7 +1346,7 @@ console.log(zz,&quot;zz&quot;);// 正则表达式
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.58h.com.cn/nodejs express制作后台引入富文本编辑器/">
+    <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/nodejs express制作后台引入富文本编辑器/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="牟骏荣">
@@ -1362,7 +1517,7 @@ console.log(zz,&quot;zz&quot;);// 正则表达式
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.58h.com.cn/nginx 生成一个新的https签名/">
+    <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/nginx 生成一个新的https签名/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="牟骏荣">
@@ -1506,7 +1661,7 @@ console.log(zz,&quot;zz&quot;);// 正则表达式
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.58h.com.cn/layui学习笔记/">
+    <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/layui学习笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="牟骏荣">
@@ -1644,171 +1799,6 @@ console.log(zz,&quot;zz&quot;);// 正则表达式
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.58h.com.cn/js-页面滚动显示动画JS/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="牟骏荣">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="牟骏荣博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/js-页面滚动显示动画JS/" itemprop="url">scrollReveal.js – 页面滚动显示动画JS</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-14T11:29:31+08:00">
-                2018-09-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/分类/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="scrollReveal-js-–-页面滚动显示动画JS"><a href="#scrollReveal-js-–-页面滚动显示动画JS" class="headerlink" title="scrollReveal.js – 页面滚动显示动画JS"></a>scrollReveal.js – 页面滚动显示动画JS</h2><ul>
-<li>和 WOW.js 一样，scrollReveal.js 也是一款页面滚动显示动画的 JavaScript，能让页面更加有趣，更吸引用户眼球。不同的是 WOW.js 的动画只播放一次，而 scrollReveal.js 的动画可以播放一次或无限次；WOW.js 依赖 animate.css，而 scrollReveal.js 不依赖其他任何文件。虽然 scrollReveal.js 不依赖 animate.css，但它的动画也是用 CSS3 创建的，所以它不支持 IE10 以下的浏览器。</li>
-</ul>
-<h4 id="基本方法"><a href="#基本方法" class="headerlink" title="基本方法"></a>基本方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">基本方法</span><br></pre></td></tr></table></figure>
-<h4 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div data-scroll-reveal&gt;dowebok.com&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>必须给元素加上 data-scroll-reveal 属性，加上之后会执行默认的动画效果，你也可以自定义改属性以显示不同的动画效果，如：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div data-scroll-reveal=&quot;enter left and move 50px over 1.33s&quot;&gt;dowebok.com&lt;/div&gt;</span><br><span class="line">&lt;div data-scroll-reveal=&quot;enter from the bottom after 1s&quot;&gt;Hello world!&lt;/div&gt;</span><br><span class="line">&lt;div data-scroll-reveal=&quot;wait 2.5s and then ease-in-out 100px&quot;&gt;iPhone 6&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">window.scrollReveal = new scrollReveal();</span><br><span class="line">//或者，elem 为动画元素的任何级别的父元素</span><br><span class="line">window.scrollReveal2 = new scrollReveal(&#123;elem: document.getElementById(&apos;srcontainer&apos;)&#125;);</span><br></pre></td></tr></table></figure>
-<h4 id="data-scroll-reveal属性"><a href="#data-scroll-reveal属性" class="headerlink" title="data-scroll-reveal属性"></a>data-scroll-reveal属性</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">上面说了可以自定义 data-scroll-reveal 属性，下面来看看该属性的关键词和值（可选）。</span><br><span class="line"></span><br><span class="line">enter</span><br><span class="line">说明: 动画起始方向</span><br><span class="line">值: top | right | bottom | left</span><br><span class="line">move</span><br><span class="line">说明: 动画执行距离</span><br><span class="line">值: 数字，以 px 为单位</span><br><span class="line">over</span><br><span class="line">说明: 动画持续时间</span><br><span class="line">值: 数字，以秒为单位</span><br><span class="line">after/wait</span><br><span class="line">说明: 动画延迟时间</span><br><span class="line">值: 数字，以秒为单位</span><br><span class="line">填充（可选）</span><br><span class="line">可以在 data-scroll-reveal 属性里填充（添加）一些类似编程的“语句”，使其更有可读性，scrollReveal.js 支持以下“语句”：</span><br><span class="line">	from</span><br><span class="line">	the</span><br><span class="line">	and</span><br><span class="line">	then</span><br><span class="line">	but</span><br><span class="line">	with</span><br></pre></td></tr></table></figure>
-<ul>
-<li>也就是可以像这样写 HTML：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div data-scroll-reveal=&quot;wait 0.3s, then enter left and move 40px over 2s&quot;&gt;dowebok.com&lt;/div&gt;</span><br><span class="line">&lt;div data-scroll-reveal=&quot;enter from the left after 0.3s, move 40px, over 2s&quot;&gt;Hello world!&lt;/div&gt;</span><br><span class="line">&lt;div data-scroll-reveal=&quot;enter left move 40px over 2s after 0.3s&quot;&gt;iPhone 6&lt;/div&gt;</span><br><span class="line">&lt;div data-scroll-reveal=&quot;enter left, move 40px, over 2s, wait 0.3s&quot;&gt;I love you&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="高级用法"><a href="#高级用法" class="headerlink" title="高级用法"></a>高级用法</h3><ul>
-<li>自定义默认值</li>
-<li>可以更改 scrollReveal.js 的默认配置，如：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var config = &#123;</span><br><span class="line">    after: &apos;0s&apos;,</span><br><span class="line">    enter: &apos;bottom&apos;,</span><br><span class="line">    move: &apos;24px&apos;,</span><br><span class="line">    over: &apos;0.66s&apos;,</span><br><span class="line">    easing: &apos;ease-in-out&apos;,</span><br><span class="line">    viewportFactor: 0.33,</span><br><span class="line">    reset: false,</span><br><span class="line">    init: true</span><br><span class="line">&#125;;</span><br><span class="line">window.scrollReveal = new scrollReveal(config);</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="动态HTML"><a href="#动态HTML" class="headerlink" title="动态HTML"></a>动态HTML</h4><ul>
-<li>scrollReveal.init() 方法可以检测所有含有 data-scroll-reveal 属性的元素，并进行初始化，所以对于动态加载的元素，可以这样操作：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var config = &#123;</span><br><span class="line">    enter: &apos;bottom&apos;,</span><br><span class="line">    move: &apos;40px&apos;,</span><br><span class="line">    over: &apos;0.16s&apos;,</span><br><span class="line">    reset: true,</span><br><span class="line">    init: false</span><br><span class="line">&#125;;</span><br><span class="line">window.scrollReveal = new scrollReveal(config);</span><br><span class="line">var data = &#123;newElementHtml: &apos;&lt;div data-scroll-reveal&gt;dowebok.com&lt;/div&gt;&apos;&#125;;</span><br><span class="line">var container = document.getElementById(&apos;#container&apos;);</span><br><span class="line">container.innerHTML(data.newElementHTML);</span><br><span class="line">scrollReveal.init();</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1859,7 +1849,7 @@ console.log(zz,&quot;zz&quot;);// 正则表达式
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1870,10 +1860,10 @@ console.log(zz,&quot;zz&quot;);// 正则表达式
               
               <div class="site-state-item site-state-categories">
               
-                
+                <a href="/categories/index.html">
                   <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">categories</span>
-                
+                </a>
               </div>
             
 
@@ -1881,10 +1871,10 @@ console.log(zz,&quot;zz&quot;);// 正则表达式
               
               
               <div class="site-state-item site-state-tags">
-                
-                  <span class="site-state-item-count">38</span>
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">42</span>
                   <span class="site-state-item-name">tags</span>
-                
+                </a>
               </div>
             
 
@@ -2044,6 +2034,22 @@ console.log(zz,&quot;zz&quot;);// 正则表达式
                 
                   <a class="lefttag" href="/tags/百度地图">
                      百度地图
+                  </a>
+                
+                  <a class="lefttag" href="/tags/demo">
+                     demo
+                  </a>
+                
+                  <a class="lefttag" href="/tags/echart">
+                     echart
+                  </a>
+                
+                  <a class="lefttag" href="/tags/图标">
+                     图标
+                  </a>
+                
+                  <a class="lefttag" href="/tags/资源">
+                     资源
                   </a>
                 
                 </div>

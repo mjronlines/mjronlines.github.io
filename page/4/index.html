@@ -80,7 +80,7 @@
 <meta name="description" content="精益求精">
 <meta property="og:type" content="website">
 <meta property="og:title" content="牟骏荣博客">
-<meta property="og:url" content="https://www.58h.com.cn/page/4/index.html">
+<meta property="og:url" content="https://mjronlines.github.io/page/4/index.html">
 <meta property="og:site_name" content="牟骏荣博客">
 <meta property="og:description" content="精益求精">
 <meta property="og:locale" content="zh-CN">
@@ -116,7 +116,7 @@
 
 
 
-  <link rel="canonical" href="https://www.58h.com.cn/page/4/"/>
+  <link rel="canonical" href="https://mjronlines.github.io/page/4/"/>
 
 
 
@@ -260,7 +260,160 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.58h.com.cn/android使用Service在后台运行/">
+    <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/android布局技巧/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="牟骏荣">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="牟骏荣博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/android布局技巧/" itemprop="url">android布局技巧</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-14T11:29:31+08:00">
+                2018-09-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/分类/android-安卓/" itemprop="url" rel="index">
+                    <span itemprop="name">android-安卓</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li>安卓布局技巧收藏<h2 id="隐藏Activity的头部默认导航"><a href="#隐藏Activity的头部默认导航" class="headerlink" title="隐藏Activity的头部默认导航"></a>隐藏Activity的头部默认导航</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ActionBar actionBar=getSupportActionBar();</span><br><span class="line"><span class="keyword">if</span>(actionBar!=<span class="keyword">null</span>)&#123;</span><br><span class="line">    actionBar.hide();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="ListView的setOnItemClickListener点击无效问题"><a href="#ListView的setOnItemClickListener点击无效问题" class="headerlink" title="ListView的setOnItemClickListener点击无效问题"></a>ListView的setOnItemClickListener点击无效问题</h2><ul>
+<li>如果ListView中的单个Item的view中存在checkbox，button等view，会导致ListView.setOnItemClickListener无效，事件会被子View捕获到，ListView无法捕获处理该事件.</li>
+</ul>
+<p>####解决方法：</p>
+<ul>
+<li>在checkbox、button对应的view处加:</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">android:focusable=<span class="string">"false"</span></span><br><span class="line">android:clickable=<span class="string">"false"</span></span><br><span class="line">android:focusableInTouchMode=<span class="string">"false"</span></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/android使用Service在后台运行/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="牟骏荣">
@@ -423,7 +576,7 @@ startForeground(NOTIFY_ID, notification);
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.58h.com.cn/androidImageView保存图片到手机并更新媒体库/">
+    <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/androidImageView保存图片到手机并更新媒体库/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="牟骏荣">
@@ -544,7 +697,7 @@ startForeground(NOTIFY_ID, notification);
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.58h.com.cn/android-WebView技巧/">
+    <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/android-WebView技巧/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="牟骏荣">
@@ -691,7 +844,7 @@ startForeground(NOTIFY_ID, notification);
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.58h.com.cn/RelativeLayout相对布局 安卓布局技巧/">
+    <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/RelativeLayout相对布局 安卓布局技巧/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="牟骏荣">
@@ -879,7 +1032,7 @@ startForeground(NOTIFY_ID, notification);
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.58h.com.cn/MongoDB整库备份与还原以及单个collection备份、恢复方法/">
+    <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/MongoDB整库备份与还原以及单个collection备份、恢复方法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="牟骏荣">
@@ -1029,7 +1182,7 @@ startForeground(NOTIFY_ID, notification);
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.58h.com.cn/Linux常用命令收藏/">
+    <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/Linux常用命令收藏/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="牟骏荣">
@@ -1183,7 +1336,7 @@ startForeground(NOTIFY_ID, notification);
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.58h.com.cn/Git常用命令/">
+    <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/Git常用命令/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="牟骏荣">
@@ -1403,7 +1556,7 @@ startForeground(NOTIFY_ID, notification);
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.58h.com.cn/Express使用html模板/">
+    <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/Express使用html模板/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="牟骏荣">
@@ -1595,7 +1748,7 @@ startForeground(NOTIFY_ID, notification);
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.58h.com.cn/Drawable类，在不同分辨率下的设置/">
+    <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/Drawable类，在不同分辨率下的设置/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="牟骏荣">
@@ -1728,152 +1881,6 @@ startForeground(NOTIFY_ID, notification);
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.58h.com.cn/DOM鼠标按下Scroll左右拖动/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="牟骏荣">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="牟骏荣博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/DOM鼠标按下Scroll左右拖动/" itemprop="url">DOM鼠标按下Scroll左右拖动</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-14T11:29:30+08:00">
-                2018-09-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/分类/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>DOM鼠标按下Scroll左右拖动<h2 id="DOM鼠标按下Scroll左右拖动"><a href="#DOM鼠标按下Scroll左右拖动" class="headerlink" title="DOM鼠标按下Scroll左右拖动"></a>DOM鼠标按下Scroll左右拖动</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> box = <span class="built_in">document</span>.getElementById(<span class="string">"box"</span>);</span><br><span class="line">box.onmousedown = <span class="function"><span class="keyword">function</span> (<span class="params">ev</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"---"</span>);</span><br><span class="line">    <span class="keyword">var</span> scrollx = box.scrollLeft;</span><br><span class="line">    <span class="keyword">var</span> ev = ev || <span class="built_in">window</span>.event;</span><br><span class="line">    <span class="keyword">var</span> topleft = ev.clientX - box.offsetLeft;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"topleft"</span>, topleft);</span><br><span class="line">    <span class="built_in">document</span>.onmousemove = <span class="function"><span class="keyword">function</span> (<span class="params">ev</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> ev = ev || <span class="built_in">window</span>.event;</span><br><span class="line">        <span class="keyword">var</span> nowx = ev.clientX - box.offsetLeft;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"move"</span>, topleft - nowx);</span><br><span class="line">        box.scrollLeft = scrollx + (topleft - nowx);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">document</span>.onmouseup = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">document</span>.onmousemove = <span class="literal">null</span>;</span><br><span class="line">        <span class="built_in">document</span>.onmouseup = <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p><a href="https://www.58h.com.cn/demo/mouseScrollX/index.html">DOM鼠标按下Scroll左右拖动</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1924,7 +1931,7 @@ startForeground(NOTIFY_ID, notification);
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1935,10 +1942,10 @@ startForeground(NOTIFY_ID, notification);
               
               <div class="site-state-item site-state-categories">
               
-                
+                <a href="/categories/index.html">
                   <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">categories</span>
-                
+                </a>
               </div>
             
 
@@ -1946,10 +1953,10 @@ startForeground(NOTIFY_ID, notification);
               
               
               <div class="site-state-item site-state-tags">
-                
-                  <span class="site-state-item-count">38</span>
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">42</span>
                   <span class="site-state-item-name">tags</span>
-                
+                </a>
               </div>
             
 
@@ -2109,6 +2116,22 @@ startForeground(NOTIFY_ID, notification);
                 
                   <a class="lefttag" href="/tags/百度地图">
                      百度地图
+                  </a>
+                
+                  <a class="lefttag" href="/tags/demo">
+                     demo
+                  </a>
+                
+                  <a class="lefttag" href="/tags/echart">
+                     echart
+                  </a>
+                
+                  <a class="lefttag" href="/tags/图标">
+                     图标
+                  </a>
+                
+                  <a class="lefttag" href="/tags/资源">
+                     资源
                   </a>
                 
                 </div>
