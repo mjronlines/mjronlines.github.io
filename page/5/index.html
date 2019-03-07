@@ -260,6 +260,152 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/Drawable类，在不同分辨率下的设置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="牟骏荣">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="牟骏荣博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/Drawable类，在不同分辨率下的设置/" itemprop="url">Drawable类，在不同分辨率下的设置</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-14T11:29:30+08:00">
+                2018-09-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/分类/android-安卓/" itemprop="url" rel="index">
+                    <span itemprop="name">android-安卓</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>手工设置文本与图片相对位置时，常用到如下方法：<br>setCompoundDrawables(left, top, right, bottom)；<br>setCompoundDrawablesWithIntrinsicBounds(left, top, right, bottom)</p>
+<p>意思是设置Drawable显示在text的左、上、右、下位置。（Textview、Button都可以）</p>
+<p>但是两者有些区别：<br>setCompoundDrawables 画的drawable的宽高是按drawable.setBound()设置的宽高，所以才有The Drawables must already have had setBounds(Rect) called.意思是说使用之前必须使用Drawable.setBounds设置Drawable的长宽。<br>而setCompoundDrawablesWithIntrinsicBounds是画的drawable的宽高是按drawable固定的宽高，所以才有The Drawables’ bounds will be set to their intrinsic bounds.这句话之说！</p>
+<h2 id="获取资源文件夹图片的Drawable对象"><a href="#获取资源文件夹图片的Drawable对象" class="headerlink" title="获取资源文件夹图片的Drawable对象"></a>获取资源文件夹图片的Drawable对象</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.getResources().getDrawable(R.drawable.icon)</span><br></pre></td></tr></table></figure>
+<h2 id="获取与设置Drawable的长和宽"><a href="#获取与设置Drawable的长和宽" class="headerlink" title="获取与设置Drawable的长和宽"></a>获取与设置Drawable的长和宽</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">RadioButton rr =(RadioButton)<span class="keyword">this</span>.findViewById(R.id.radio_button0);</span><br><span class="line">  Drawable d1 = rr.getCompoundDrawables()[<span class="number">1</span>];  <span class="comment">//此处取的是android:drawableTop的图片</span></span><br><span class="line"> drawable.setBounds(<span class="number">0</span>, <span class="number">0</span>, d1.getIntrinsicWidth(), d1.getIntrinsicHeight());</span><br><span class="line"> <span class="comment">//getIntrinsicWidth()取得的是Drawable在手机上的宽度，所以不同分辨率下获取到的值是不同的，关键所在处</span></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/DOM鼠标按下Scroll左右拖动/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -911,7 +1057,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-count">45</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -934,7 +1080,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">43</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -1112,6 +1258,10 @@
                 
                   <a class="lefttag" href="/tags/资源">
                      资源
+                  </a>
+                
+                  <a class="lefttag" href="/tags/Promise">
+                     Promise
                   </a>
                 
                 </div>

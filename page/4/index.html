@@ -260,6 +260,165 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/android百度地图开发总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="牟骏荣">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="牟骏荣博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/android百度地图开发总结/" itemprop="url">android百度地图开发总结</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-14T11:29:31+08:00">
+                2018-09-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/分类/android-安卓/" itemprop="url" rel="index">
+                    <span itemprop="name">android-安卓</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>项目近期开发加入百度地图的需求，初次使用遇到一些基础问题，总结如下：<br>    百度地图的KEY申请地址<a href="http://lbsyun.baidu.com/，基础使用直接看百度地图API就可以，有Demo。" target="_blank" rel="noopener">http://lbsyun.baidu.com/，基础使用直接看百度地图API就可以，有Demo。</a><br>    百度地图显示的时候全是网格没有地图，基本肯定就是KEY的问题。</p>
+<h2 id="1、BaiduMapOptions"><a href="#1、BaiduMapOptions" class="headerlink" title="1、BaiduMapOptions"></a>1、BaiduMapOptions</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">BaiduMapOptions <span class="title">compassEnabled</span><span class="params">(<span class="keyword">boolean</span> enabled)</span><span class="comment">//设置是否允许指南针，默认允许。</span></span></span><br><span class="line"><span class="function">BaiduMapOptions <span class="title">mapStatus</span><span class="params">(MapStatus status)</span><span class="comment">//设置地图初始化时的地图状态， 默认地图中心点为北京天安门，缩放级别为 12.0f</span></span></span><br><span class="line"><span class="function">BaiduMapOptions <span class="title">mapType</span><span class="params">(<span class="keyword">int</span> mapType)</span><span class="comment">//设置地图模式，默认普通地图</span></span></span><br><span class="line"><span class="function">BaiduMapOptions <span class="title">overlookingGesturesEnabled</span><span class="params">(<span class="keyword">boolean</span> enabled)</span> <span class="comment">//设置是否允许俯视手势，默认允许</span></span></span><br><span class="line"><span class="function">BaiduMapOptions <span class="title">rotateGesturesEnabled</span><span class="params">(<span class="keyword">boolean</span> enabled)</span><span class="comment">//设置是否允许旋转手势，默认允许</span></span></span><br><span class="line"><span class="function">BaiduMapOptions <span class="title">scaleControlEnabled</span><span class="params">(<span class="keyword">boolean</span> enabled)</span><span class="comment">//设置是否显示比例尺控件</span></span></span><br><span class="line"><span class="function">BaiduMapOptions <span class="title">scrollGesturesEnabled</span><span class="params">(<span class="keyword">boolean</span> enabled)</span><span class="comment">//设置是否允许拖拽手势，默认允许</span></span></span><br><span class="line"><span class="function">BaiduMapOptions <span class="title">zoomControlsEnabled</span><span class="params">(<span class="keyword">boolean</span> enabled)</span><span class="comment">//设置是否显示缩放控件</span></span></span><br><span class="line"><span class="function">BaiduMapOptions <span class="title">zoomGesturesEnabled</span><span class="params">(<span class="keyword">boolean</span> enabled)</span><span class="comment">//设置是否允许缩放手势</span></span></span><br></pre></td></tr></table></figure>
+<h2 id="2、UiSettings"><a href="#2、UiSettings" class="headerlink" title="2、UiSettings"></a>2、UiSettings</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">MapView mMapView = (MapView)findViewById(R.id.mapview);</span><br><span class="line">BaiduMap mBaiduMap = mMapView.getMap();</span><br><span class="line">UiSettings uiSettings = mBaiduMap.getUiSettings();</span><br><span class="line"><span class="comment">//设置是否允许旋转手势</span></span><br><span class="line">uiSettings.setRotateGesturesEnabled(<span class="keyword">false</span>);</span><br><span class="line"><span class="comment">//设置是否允许指南针</span></span><br><span class="line">uiSettings.setCompassEnabled(<span class="keyword">false</span>);</span><br><span class="line"><span class="comment">//设置是否允许俯视手势</span></span><br><span class="line">uiSettings.setOverlookingGesturesEnabled(<span class="keyword">false</span>);</span><br><span class="line"><span class="comment">//设置是否允许拖拽手势</span></span><br><span class="line">uiSettings.setScrollGesturesEnabled(<span class="keyword">true</span>);</span><br><span class="line"><span class="comment">//设置是否允许缩放手势</span></span><br><span class="line">uiSettings.setZoomGesturesEnabled(<span class="keyword">true</span>);</span><br><span class="line"><span class="comment">//隐藏地图上百度地图logo图标</span></span><br><span class="line">mMapView.removeViewAt(<span class="number">1</span>);</span><br><span class="line"><span class="comment">//隐藏地图上比例尺</span></span><br><span class="line">mMapView.showScaleControl(<span class="keyword">true</span>);</span><br><span class="line"><span class="comment">//隐藏缩放按钮</span></span><br><span class="line">mMapView.showZoomControls(<span class="keyword">false</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="3、根据坐标和级别缩放地图"><a href="#3、根据坐标和级别缩放地图" class="headerlink" title="3、根据坐标和级别缩放地图"></a>3、根据坐标和级别缩放地图</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//地图级别3-2000km</span></span><br><span class="line"><span class="comment">//地图级别4-1000km</span></span><br><span class="line"><span class="comment">//地图级别5-500km</span></span><br><span class="line"><span class="comment">//地图级别6-200km</span></span><br><span class="line"><span class="comment">//地图级别7-100km</span></span><br><span class="line"><span class="comment">//地图级别8-50km</span></span><br><span class="line"><span class="comment">//地图级别9-25km</span></span><br><span class="line"><span class="comment">//地图级别10-20km</span></span><br><span class="line"><span class="comment">//地图级别11-10km</span></span><br><span class="line"><span class="comment">//地图级别12-5km</span></span><br><span class="line"><span class="comment">//地图级别13-2km</span></span><br><span class="line"><span class="comment">//地图级别14-1km</span></span><br><span class="line"><span class="comment">//地图级别15-500m</span></span><br><span class="line"><span class="comment">//地图级别16-200m</span></span><br><span class="line"><span class="comment">//地图级别17-100m</span></span><br><span class="line"><span class="comment">//地图级别18-50m</span></span><br><span class="line"><span class="comment">//地图级别19-20m</span></span><br><span class="line"><span class="comment">//地图级别20-10m</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">scalePosition</span><span class="params">(LatLng position,<span class="keyword">int</span> level)</span></span>&#123;</span><br><span class="line">   MapStatus.Builder builder = <span class="keyword">new</span> MapStatus.Builder();</span><br><span class="line">   <span class="keyword">if</span> (level != <span class="number">0</span>) &#123;</span><br><span class="line">      builder.zoom(level);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">if</span> (position != <span class="keyword">null</span>) &#123;</span><br><span class="line">      builder.target(position);</span><br><span class="line">   &#125;</span><br><span class="line">   MapStatus mapStatus = builder.build();</span><br><span class="line">       MapStatusUpdate statusUpdate = MapStatusUpdateFactory.newMapStatus(mapStatus);</span><br><span class="line">   <span class="keyword">if</span> (mBaiduMap!=<span class="keyword">null</span>) &#123;</span><br><span class="line">      mBaiduMap.animateMapStatus(statusUpdate);<span class="comment">//动画缩放，不用动画会直接刷新界面</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="4、根据城市名称获取城市中心坐标或根据坐标反编码"><a href="#4、根据城市名称获取城市中心坐标或根据坐标反编码" class="headerlink" title="4、根据城市名称获取城市中心坐标或根据坐标反编码"></a>4、根据城市名称获取城市中心坐标或根据坐标反编码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">**</span><br><span class="line"> * 地理编码查询接口</span><br><span class="line"> */</span><br><span class="line"><span class="keyword">private</span> GeoCoder geoCoder = GeoCoder.newInstance();</span><br><span class="line"></span><br><span class="line">String	City = <span class="string">"北京"</span>;</span><br><span class="line">geoCoder.geocode(<span class="keyword">new</span> GeoCodeOption().city(City).address(City));<span class="comment">//编码城市获取坐标</span></span><br><span class="line"></span><br><span class="line">Activity实现OnGetGeoCoderResultListener接口有如下方法：</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onGetGeoCodeResult</span><span class="params">(GeoCodeResult arg0)</span> </span>&#123;</span><br><span class="line">   LatLng lng = arg0.getLocation();<span class="comment">//获取编码城市坐标;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onGetReverseGeoCodeResult</span><span class="params">(ReverseGeoCodeResult arg0)</span> </span>&#123;</span><br><span class="line">   <span class="comment">// 反编码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="5、在地图上构建标志"><a href="#5、在地图上构建标志" class="headerlink" title="5、在地图上构建标志"></a>5、在地图上构建标志</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">BitmapDescriptor bitmap = BitmapDescriptorFactory</span><br><span class="line">      .fromResource(R.drawable.worksite_map_feidianshang);</span><br><span class="line">MarkerOptions option = <span class="keyword">new</span> MarkerOptions().position(point)</span><br><span class="line">      .icon(bitmap).zIndex(<span class="number">9</span>).extraInfo(bundle);<span class="comment">//bundle可以携带一些区分标志的信息等</span></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">   mBaiduMap.addOverlay(option);</span><br><span class="line">&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">   e.printStackTrace();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (bitmap != <span class="keyword">null</span>) &#123;</span><br><span class="line">   bitmap.recycle();</span><br><span class="line">   bitmap = <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//构建自定义布局标志</span></span><br><span class="line"></span><br><span class="line">这个用的时候小心，有个bug</span><br><span class="line"><span class="comment">//在4.4以下版本，空指针异常 </span></span><br><span class="line">View view = LayoutInflater.from(mContext).inflate(R.layout.worksite_marker_quxian, <span class="keyword">null</span>);</span><br><span class="line">BitmapDescriptor bitmap = BitmapDescriptorFactory.fromView(view);<span class="comment">//view不为空但报空指针异常</span></span><br><span class="line"><span class="comment">//解决办法：</span></span><br><span class="line"><span class="comment">//1、最外层要使用LinearLayout包住，才会不报错，我在第一次使用的RelativeLayout包住报错.</span></span><br><span class="line"><span class="comment">//2、view.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">View view = LayoutInflater.from(mContext).inflate(</span><br><span class="line">      R.layout.worksite_marker_quxian, <span class="keyword">null</span>);</span><br><span class="line">params = <span class="keyword">new</span> ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);</span><br><span class="line">view.setLayoutParams(params);</span><br><span class="line"></span><br><span class="line">TextView markerNum = (TextView) view</span><br><span class="line">      .findViewById(R.id.worksiteNum);</span><br><span class="line">TextView cityName = (TextView) view</span><br><span class="line">      .findViewById(R.id.cityName);</span><br><span class="line">cityName.setVisibility(View.VISIBLE);</span><br><span class="line">cityName.setText(info.get(i).RegionName);</span><br><span class="line">markerNum.setText(count + <span class="string">""</span>);</span><br><span class="line">BitmapDescriptor bitmap = BitmapDescriptorFactory</span><br><span class="line">      .fromView(view);</span><br><span class="line">option = <span class="keyword">new</span> MarkerOptions().position(point)</span><br><span class="line">      .icon(bitmap).zIndex(<span class="number">9</span>).extraInfo(bundle);</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">   mBaiduMap.addOverlay(option);</span><br><span class="line">&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">   e.printStackTrace();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (bitmap != <span class="keyword">null</span>) &#123;</span><br><span class="line">   bitmap.recycle();</span><br><span class="line">   bitmap = <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="百度地图在合适视野范围内显示所有的点"><a href="#百度地图在合适视野范围内显示所有的点" class="headerlink" title="百度地图在合适视野范围内显示所有的点"></a>百度地图在合适视野范围内显示所有的点</h3><ul>
+<li><p>通常地图会显示出多个点，如像行驶轨迹等，往往在屏幕上一次性就全部显示出来，那要怎么设置地图的显示宽高，才能将所有的点合理的显示出来呢。看看以下的代码实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">private void setMyLocation() &#123;  </span><br><span class="line">        list = new ArrayList&lt;&gt;();  </span><br><span class="line">        LatLng ll = new LatLng(24.475982,  </span><br><span class="line">                118.093132);  </span><br><span class="line">        LatLng ll1 = new LatLng(24.477382,  </span><br><span class="line">                118.093232);  </span><br><span class="line">        LatLng ll2 = new LatLng(24.478382,  </span><br><span class="line">                118.093832);  </span><br><span class="line">        LatLng ll3 = new LatLng(24.487382,  </span><br><span class="line">                118.094232);  </span><br><span class="line">        LatLng ll4 = new LatLng(24.497982,  </span><br><span class="line">                118.099562);  </span><br><span class="line">  </span><br><span class="line">        list.add(ll);  </span><br><span class="line">        list.add(ll1);  </span><br><span class="line">        list.add(ll2);  </span><br><span class="line">        list.add(ll3);  </span><br><span class="line">        list.add(ll4);  </span><br><span class="line">  </span><br><span class="line">        MapStatus.Builder builder = new MapStatus.Builder();  </span><br><span class="line">        builder.target(ll).zoom(18.0f);  </span><br><span class="line">//        mBaiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));  </span><br><span class="line">        for (LatLng latLng : list) &#123;  </span><br><span class="line">            mBaiduMap.addOverlay(new BaiduMapUtil().setMarker(latLng));  </span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">        mBaiduMap.addOverlay(new BaiduMapUtil().Polyline(list));  </span><br><span class="line">  </span><br><span class="line">//将所有的坐标显示出来的合理视图  </span><br><span class="line">        if (isFrist) &#123;  </span><br><span class="line">            mBaiduMap.setOnMapLoadedCallback(new BaiduMap.OnMapLoadedCallback() &#123;  </span><br><span class="line">  </span><br><span class="line">                @Override  </span><br><span class="line">                public void onMapLoaded() &#123;  </span><br><span class="line">                    isFrist=false;  </span><br><span class="line">                    mBaiduMap.animateMapStatus(new BaiduMapUtil().setLatLngBounds(list, mMapView));  </span><br><span class="line">                &#125;  </span><br><span class="line">            &#125;);  </span><br><span class="line">        &#125;else&#123;  </span><br><span class="line">            mBaiduMap.animateMapStatus(new BaiduMapUtil().setLatLngBounds(list, mMapView));  </span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>以下为工具类BaiduMapUtil的具体实现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">public class BaiduMapUtil &#123;  </span><br><span class="line">  </span><br><span class="line">    /** </span><br><span class="line">     * 绘制Marker，地图上常见的类似气球形状的图层 </span><br><span class="line">     */  </span><br><span class="line">    public MarkerOptions setMarker(LatLng latLng) &#123;  </span><br><span class="line">        return setMarker(latLng, R.drawable.icon_defult_marker);  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">    public MarkerOptions setMarker(LatLng latLng, int drawableId) &#123;  </span><br><span class="line">        MarkerOptions markerOptions = new MarkerOptions();//参数设置类  </span><br><span class="line">        markerOptions.position(latLng);//marker坐标位置  </span><br><span class="line">        markerOptions.icon(BitmapDescriptorFactory  </span><br><span class="line">                .fromResource(drawableId));//marker图标，可以自定义  </span><br><span class="line">        markerOptions.draggable(false);//是否可拖拽，默认不可拖拽  </span><br><span class="line">        markerOptions.anchor(0.5f, 1.0f);//设置 marker覆盖物与位置点的位置关系，默认（0.5f, 1.0f）水平居中，垂直下对齐  </span><br><span class="line">        markerOptions.alpha(0.8f);//marker图标透明度，0~1.0，默认为1.0  </span><br><span class="line">        markerOptions.animateType(MarkerOptions.MarkerAnimateType.none);//marker出现的方式，从天上掉下  </span><br><span class="line">        markerOptions.flat(false);//marker突变是否平贴地面  </span><br><span class="line">        markerOptions.zIndex(1);//index  </span><br><span class="line">        return markerOptions;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    /** </span><br><span class="line">     * 绘制折线 </span><br><span class="line">     */  </span><br><span class="line">    public PolylineOptions Polyline(List&lt;LatLng&gt; points) &#123;  </span><br><span class="line">        PolylineOptions polylineOptions = new PolylineOptions();//参数设置类  </span><br><span class="line">        polylineOptions.width(10);//宽度,单位：像素  </span><br><span class="line">        polylineOptions.color(0xAAFF0000);//设置折线颜色  </span><br><span class="line">        polylineOptions.points(points);//折线顶点坐标集  </span><br><span class="line">        return polylineOptions;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    /** </span><br><span class="line">     * 多个点，在Android里面显示合理的缩放级 </span><br><span class="line">     */  </span><br><span class="line">    public MapStatusUpdate setLatLngBounds(List&lt;LatLng&gt; points, MapView mMapView) &#123;  </span><br><span class="line">        LatLngBounds.Builder builder2 = new LatLngBounds.Builder();  </span><br><span class="line">        for (LatLng p : points) &#123;  </span><br><span class="line">            builder2 = builder2.include(p);  </span><br><span class="line">        &#125;  </span><br><span class="line">        LatLngBounds latlngBounds = builder2.build();  </span><br><span class="line">        MapStatusUpdate u = MapStatusUpdateFactory.newLatLngBounds(latlngBounds, mMapView.getWidth(), mMapView.getHeight());  </span><br><span class="line">        return u;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">if (isFrist) &#123;  </span><br><span class="line">           mBaiduMap.setOnMapLoadedCallback(new BaiduMap.OnMapLoadedCallback() &#123;  </span><br><span class="line"> </span><br><span class="line">               @Override  </span><br><span class="line">               public void onMapLoaded() &#123;  </span><br><span class="line">                   isFrist=false;  </span><br><span class="line">                   mBaiduMap.animateMapStatus(new BaiduMapUtil().setLatLngBounds(list, mMapView));  </span><br><span class="line">               &#125;  </span><br><span class="line">           &#125;);  </span><br><span class="line">       &#125;else&#123;  </span><br><span class="line">           mBaiduMap.animateMapStatus(new BaiduMapUtil().setLatLngBounds(list, mMapView));  </span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>这段代码为显示合理范围的核心代码，加入是否为首次的判断，因为要在OnMapLoadedCallback中实现是关键，否则mapview的with和height取得是0，如果在其他视觉范围内，想恢复到这个合理的范围则经过首次加载后，就不会再执行OnMapLoadedCallback方法，所以要判断是否为第一次加载的状态。</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/android布局技巧/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1735,152 +1894,6 @@ startForeground(NOTIFY_ID, notification);
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/Drawable类，在不同分辨率下的设置/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="牟骏荣">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="牟骏荣博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Drawable类，在不同分辨率下的设置/" itemprop="url">Drawable类，在不同分辨率下的设置</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-14T11:29:30+08:00">
-                2018-09-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/分类/android-安卓/" itemprop="url" rel="index">
-                    <span itemprop="name">android-安卓</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>手工设置文本与图片相对位置时，常用到如下方法：<br>setCompoundDrawables(left, top, right, bottom)；<br>setCompoundDrawablesWithIntrinsicBounds(left, top, right, bottom)</p>
-<p>意思是设置Drawable显示在text的左、上、右、下位置。（Textview、Button都可以）</p>
-<p>但是两者有些区别：<br>setCompoundDrawables 画的drawable的宽高是按drawable.setBound()设置的宽高，所以才有The Drawables must already have had setBounds(Rect) called.意思是说使用之前必须使用Drawable.setBounds设置Drawable的长宽。<br>而setCompoundDrawablesWithIntrinsicBounds是画的drawable的宽高是按drawable固定的宽高，所以才有The Drawables’ bounds will be set to their intrinsic bounds.这句话之说！</p>
-<h2 id="获取资源文件夹图片的Drawable对象"><a href="#获取资源文件夹图片的Drawable对象" class="headerlink" title="获取资源文件夹图片的Drawable对象"></a>获取资源文件夹图片的Drawable对象</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.getResources().getDrawable(R.drawable.icon)</span><br></pre></td></tr></table></figure>
-<h2 id="获取与设置Drawable的长和宽"><a href="#获取与设置Drawable的长和宽" class="headerlink" title="获取与设置Drawable的长和宽"></a>获取与设置Drawable的长和宽</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">RadioButton rr =(RadioButton)<span class="keyword">this</span>.findViewById(R.id.radio_button0);</span><br><span class="line">  Drawable d1 = rr.getCompoundDrawables()[<span class="number">1</span>];  <span class="comment">//此处取的是android:drawableTop的图片</span></span><br><span class="line"> drawable.setBounds(<span class="number">0</span>, <span class="number">0</span>, d1.getIntrinsicWidth(), d1.getIntrinsicHeight());</span><br><span class="line"> <span class="comment">//getIntrinsicWidth()取得的是Drawable在手机上的宽度，所以不同分辨率下获取到的值是不同的，关键所在处</span></span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1931,7 +1944,7 @@ startForeground(NOTIFY_ID, notification);
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-count">45</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1954,7 +1967,7 @@ startForeground(NOTIFY_ID, notification);
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">43</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -2132,6 +2145,10 @@ startForeground(NOTIFY_ID, notification);
                 
                   <a class="lefttag" href="/tags/资源">
                      资源
+                  </a>
+                
+                  <a class="lefttag" href="/tags/Promise">
+                     Promise
                   </a>
                 
                 </div>
