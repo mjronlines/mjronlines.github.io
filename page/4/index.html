@@ -1437,7 +1437,7 @@ startForeground(NOTIFY_ID, notification);
             <ul>
 <li>crontab是Unix和Linux用于设置周期性被执行的指令，是互联网很常用的技术，很多任务都会设置在crontab循环执行，如果不使用crontab，那么任务就是常驻程序，这对你的程序要求比较高，一个要求你的程序是24X7小时不宕机，一个是要求你的调度程序比较可靠，实际工作中，90%的程序都没有必要花这么多时间和精力去解决上面的两个问题的，只需要写好自己的业务逻辑，通过crond这个工业级程序去调度就行了，crond的可靠性，健壮性，大家应该是毫无疑问的。</li>
 </ul>
-<h2 id="显示定时任务列表"><a href="#显示定时任务列表" class="headerlink" title="显示定时任务列表"></a>显示定时任务列表</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">crontab -e</span><br><span class="line">* * * * * /home/blue/do/rsyncfile.sh</span><br></pre></td></tr></table></figure>
+<h2 id="crontab显示定时任务列表"><a href="#crontab显示定时任务列表" class="headerlink" title="crontab显示定时任务列表"></a>crontab显示定时任务列表</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">crontab -e</span><br><span class="line">* * * * * /home/blue/do/rsyncfile.sh</span><br></pre></td></tr></table></figure>
 <ul>
 <li>特殊关键词附图说明<div align="left"><img src="/images/linuxcrontab.png" alt="crontab"></div></li>
 <li>在以上各个字段中，还可以使用以下特殊字符：</li>
@@ -1447,6 +1447,7 @@ startForeground(NOTIFY_ID, notification);
 <li>正斜线（/）：可以用正斜线指定时间的间隔频率，例如“0-23/2”表示每两小时执行一次。同时正斜线可以和星号一起使用，例如*/10，如果用在minute字段，表示每十分钟执行一次。<h3 id="服务操作说明："><a href="#服务操作说明：" class="headerlink" title="服务操作说明："></a>服务操作说明：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/sbin/service crond start //启动服务</span><br><span class="line">/sbin/service crond stop //关闭服务</span><br><span class="line">/sbin/service crond restart //重启服务</span><br><span class="line">/sbin/service crond reload //重新载入配置</span><br><span class="line">/sbin/service crond status //启动服务</span><br><span class="line">/etc/init.d/cron restart //重启服务</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
+<h2 id="Screen-常用命令"><a href="#Screen-常用命令" class="headerlink" title="Screen 常用命令"></a>Screen 常用命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">screen -R name ;//启动一个窗口命令</span><br><span class="line">screen -S name -X quit ;//强行关闭窗口命令</span><br><span class="line">screen -r name ; 启动一个存在的窗口</span><br></pre></td></tr></table></figure>
 
           
         
