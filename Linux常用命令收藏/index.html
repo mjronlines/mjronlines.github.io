@@ -88,7 +88,7 @@
 <meta property="og:description" content="crontab是Unix和Linux用于设置周期性被执行的指令，是互联网很常用的技术，很多任务都会设置在crontab循环执行，如果不使用crontab，那么任务就是常驻程序，这对你的程序要求比较高，一个要求你的程序是24X7小时不宕机，一个是要求你的调度程序比较可靠，实际工作中，90%的程序都没有必要花这么多时间和精力去解决上面的两个问题的，只需要写好自己的业务逻辑，通过crond这个工业级程">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://mjronlines.github.io/images/linuxcrontab.png">
-<meta property="og:updated_time" content="2019-03-08T02:45:27.437Z">
+<meta property="og:updated_time" content="2019-03-11T08:59:34.228Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux常用命令收藏">
 <meta name="twitter:description" content="crontab是Unix和Linux用于设置周期性被执行的指令，是互联网很常用的技术，很多任务都会设置在crontab循环执行，如果不使用crontab，那么任务就是常驻程序，这对你的程序要求比较高，一个要求你的程序是24X7小时不宕机，一个是要求你的调度程序比较可靠，实际工作中，90%的程序都没有必要花这么多时间和精力去解决上面的两个问题的，只需要写好自己的业务逻辑，通过crond这个工业级程">
@@ -368,6 +368,35 @@
 </li>
 </ul>
 <h2 id="Screen-常用命令"><a href="#Screen-常用命令" class="headerlink" title="Screen 常用命令"></a>Screen 常用命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">screen -R name ;//启动一个窗口命令</span><br><span class="line">screen -S name -X quit ;//强行关闭窗口命令</span><br><span class="line">screen -r name ; 启动一个存在的窗口</span><br></pre></td></tr></table></figure>
+<h2 id="ubuntu开放指定端口"><a href="#ubuntu开放指定端口" class="headerlink" title="ubuntu开放指定端口"></a>ubuntu开放指定端口</h2><h4 id="开放端口"><a href="#开放端口" class="headerlink" title="开放端口"></a>开放端口</h4><ul>
+<li>由于我的服务器使用的os是Ubuntu,所以这里就介绍一下Ubuntu下的方法，其他linux应该也是大同小异，需要自己去尝试</li>
+</ul>
+<h4 id="安装iptables"><a href="#安装iptables" class="headerlink" title="安装iptables"></a>安装iptables</h4><ul>
+<li>一般情况下，ubuntu安装好的时候，iptables会被安装上，如果没有的话那就安装上吧</li>
+<li>在终端输入</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install iptables</span><br></pre></td></tr></table></figure>
+<h4 id="添加规则"><a href="#添加规则" class="headerlink" title="添加规则"></a>添加规则</h4><ul>
+<li>在终端输入</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ iptables -I INPUT -p tcp --dport 80 -j ACCEPT</span><br></pre></td></tr></table></figure>
+<ul>
+<li>中间的80为所需要开放的端口</li>
+</ul>
+<h4 id="保存规则"><a href="#保存规则" class="headerlink" title="保存规则"></a>保存规则</h4><ul>
+<li>在终端输入</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables-save</span><br></pre></td></tr></table></figure>
+<ul>
+<li>完成上述命令我们就完成了开放指定的端口，但是如果此时服务器重启，上述规则就没有了，所以我们需要对规则进行一下持续化操作</li>
+</ul>
+<h4 id="持续化规则"><a href="#持续化规则" class="headerlink" title="持续化规则"></a>持续化规则</h4><ul>
+<li>这里我们需要在安装一下工具来帮我们实现，这里我们使用 iptables-persistent</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install iptables-persistent //安装iptables-persistent</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$ sudo netfilter-persistent save  //持久化规则</span><br><span class="line">$ sudo netfilter-persistent reload</span><br></pre></td></tr></table></figure>
+<ul>
+<li>完成上述操作就可以永久打开我们需要的端口了</li>
+</ul>
 
       
     </div>
@@ -723,7 +752,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#crontab显示定时任务列表"><span class="nav-number">1.</span> <span class="nav-text">crontab显示定时任务列表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#服务操作说明："><span class="nav-number">1.1.</span> <span class="nav-text">服务操作说明：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Screen-常用命令"><span class="nav-number">2.</span> <span class="nav-text">Screen 常用命令</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#crontab显示定时任务列表"><span class="nav-number">1.</span> <span class="nav-text">crontab显示定时任务列表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#服务操作说明："><span class="nav-number">1.1.</span> <span class="nav-text">服务操作说明：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Screen-常用命令"><span class="nav-number">2.</span> <span class="nav-text">Screen 常用命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ubuntu开放指定端口"><span class="nav-number">3.</span> <span class="nav-text">ubuntu开放指定端口</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#开放端口"><span class="nav-number">3.0.1.</span> <span class="nav-text">开放端口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装iptables"><span class="nav-number">3.0.2.</span> <span class="nav-text">安装iptables</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加规则"><span class="nav-number">3.0.3.</span> <span class="nav-text">添加规则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#保存规则"><span class="nav-number">3.0.4.</span> <span class="nav-text">保存规则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#持续化规则"><span class="nav-number">3.0.5.</span> <span class="nav-text">持续化规则</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
