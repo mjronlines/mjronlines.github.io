@@ -227,6 +227,16 @@
           </a>
         </li>
       
+        
+        <li class="menu-item menu-item-python">
+          <a href="/分类/Python/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Python
+          </a>
+        </li>
+      
 
       
     </ul>
@@ -246,6 +256,153 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/Python学习之爬虫案例 /">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="牟骏荣">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="牟骏荣博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/Python学习之爬虫案例 /" itemprop="url">Python学习之爬虫案例</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-15T10:39:21+08:00">
+                2019-03-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/分类/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Python学习之爬虫案例"><a href="#Python学习之爬虫案例" class="headerlink" title="Python学习之爬虫案例"></a>Python学习之爬虫案例</h2><p>– 直接上代码</p>
+<h3 id="python引入模块"><a href="#python引入模块" class="headerlink" title="python引入模块"></a>python引入模块</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">from urllib.request import urlopen</span><br></pre></td></tr></table></figure>
+<h3 id="获取网页内容并返回"><a href="#获取网页内容并返回" class="headerlink" title="获取网页内容并返回"></a>获取网页内容并返回</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">def getPage(url):</span><br><span class="line">    response = urlopen(url)</span><br><span class="line">    return response.read().decode(&apos;utf-8&apos;)</span><br></pre></td></tr></table></figure>
+<h3 id="正则获取需要的内容"><a href="#正则获取需要的内容" class="headerlink" title="正则获取需要的内容"></a>正则获取需要的内容</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def parseHtml(s):</span><br><span class="line">    ret = re.findall(</span><br><span class="line">        &apos;&lt;li&gt;.*?&lt;span class=&quot;view&quot;&gt;\s\W+(?P&lt;vcount&gt;\d+).*?&lt;em&gt;.*?&lt;/em&gt;.*?&lt;/span&gt;&apos;</span><br><span class="line">        &apos;.*?&lt;div class=&quot;a1&quot;&gt;.*?&lt;a href=&quot;(?P&lt;href&gt;.*?)&quot;&gt;(?P&lt;title&gt;.*?)&lt;/a&gt;.*?&lt;/div&gt;.*?&lt;/li&gt;&apos;, s, re.S</span><br><span class="line">    )</span><br><span class="line">    return ret</span><br></pre></td></tr></table></figure>
+<h3 id="内容保存"><a href="#内容保存" class="headerlink" title="内容保存"></a>内容保存</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def writefile(dbs):</span><br><span class="line">    f = open(r&apos;new.txt&apos;, &quot;w+&quot;,encoding=&quot;utf-8&quot;)</span><br><span class="line">    for i in dbs:</span><br><span class="line">        print(i[0]+i[1]+i[2])</span><br><span class="line">        f.writelines(i[0]+i[1]+i[2] + &apos;\n&apos;)</span><br><span class="line">    f.close()</span><br></pre></td></tr></table></figure>
+<h3 id="启动调用方法"><a href="#启动调用方法" class="headerlink" title="启动调用方法"></a>启动调用方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def main():</span><br><span class="line">    url = &quot;http://www.yichang100.com/&quot;</span><br><span class="line">    respones_html = getPage(url)</span><br><span class="line">    ret = parseHtml(respones_html)</span><br><span class="line">    writefile(ret)</span><br><span class="line">main()</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -1591,131 +1748,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/解决 Could not find lint-gradle-api.jar/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="牟骏荣">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="牟骏荣博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/解决 Could not find lint-gradle-api.jar/" itemprop="url">Untitled</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-20T13:42:35+08:00">
-                2018-11-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="解决-Could-not-find-lint-gradle-api-jar"><a href="#解决-Could-not-find-lint-gradle-api-jar" class="headerlink" title="解决 Could not find lint-gradle-api.jar"></a>解决 Could not find lint-gradle-api.jar</h1><ul>
-<li><p>怎么打开都报Could not find lint-gradle-api.jar ，网上百度好多方法，只有这样解决了，贴下链接：</p>
-</li>
-<li><p><img src="../assets/image/Couldnotfindlint-gradle-api.png" alt="解决 Could not find lint-gradle-api.jar"></p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">maven &#123; url &apos;https://maven.aliyun.com/repository/google&apos; &#125;</span><br><span class="line">maven &#123; url &apos;https://maven.aliyun.com/repository/jcenter&apos; &#125;</span><br><span class="line">maven &#123; url &apos;http://maven.aliyun.com/nexus/content/groups/public&apos; &#125;</span><br><span class="line">maven&#123;url &quot;https://jitpack.io&quot;&#125;//部分github上资源获取不到可以使用</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1766,7 +1798,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">45</span>
+                  <span class="site-state-item-count">46</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1778,7 +1810,7 @@
               <div class="site-state-item site-state-categories">
               
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -1789,7 +1821,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-count">45</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -1971,6 +2003,14 @@
                 
                   <a class="lefttag" href="/tags/Promise">
                      Promise
+                  </a>
+                
+                  <a class="lefttag" href="/tags/python">
+                     python
+                  </a>
+                
+                  <a class="lefttag" href="/tags/爬虫">
+                     爬虫
                   </a>
                 
                 </div>
