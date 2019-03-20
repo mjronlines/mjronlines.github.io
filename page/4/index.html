@@ -270,6 +270,163 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/css-实用Css案例收集/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="牟骏荣">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="牟骏荣博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/css-实用Css案例收集/" itemprop="url">Css实用案例收集</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-14T11:29:31+08:00">
+                2018-09-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/分类/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li><p>CSS实现单行、多行文本溢出显示省略号</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">display: -webkit-box;</span><br><span class="line">-webkit-box-orient: vertical;</span><br><span class="line">-webkit-line-clamp: 3;//数组填写1则一行超出省略号</span><br><span class="line">overflow: hidden;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>CSS常用div阴影效果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">box-shadow: 0 1px 5px 0 rgba(0,0,0,.5);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>CSS常用文字阴影效果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">text-shadow: 0 0 0.1em #666, 0 0 0.3em #666,0 0 0.1em #666</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="css设置各种中文字体如雅黑、黑体、宋体、楷体等等"><a href="#css设置各种中文字体如雅黑、黑体、宋体、楷体等等" class="headerlink" title="css设置各种中文字体如雅黑、黑体、宋体、楷体等等"></a>css设置各种中文字体如雅黑、黑体、宋体、楷体等等</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">在css中推荐使用中文字体的英文表示法，以下附常见中文字体的英文名： </span><br><span class="line">Mac OS的一些： </span><br><span class="line"></span><br><span class="line">华文细黑：STHeiti Light [STXihei] </span><br><span class="line">华文黑体：STHeiti </span><br><span class="line">华文楷体：STKaiti </span><br><span class="line">华文宋体：STSong </span><br><span class="line">华文仿宋：STFangsong </span><br><span class="line">儷黑 Pro：LiHei Pro Medium </span><br><span class="line">儷宋 Pro：LiSong Pro Light </span><br><span class="line">標楷體：BiauKai </span><br><span class="line">蘋果儷中黑：Apple LiGothic Medium </span><br><span class="line">蘋果儷細宋：Apple LiSung Light </span><br><span class="line">Windows的一些： </span><br><span class="line">新細明體：PMingLiU </span><br><span class="line">細明體：MingLiU </span><br><span class="line">標楷體：DFKai-SB </span><br><span class="line">黑体：SimHei </span><br><span class="line">宋体：SimSun </span><br><span class="line">新宋体：NSimSun </span><br><span class="line">仿宋：FangSong </span><br><span class="line">楷体：KaiTi </span><br><span class="line">仿宋_GB2312：FangSong_GB2312 </span><br><span class="line">楷体_GB2312：KaiTi_GB2312 </span><br><span class="line">微軟正黑體：Microsoft JhengHei </span><br><span class="line">微软雅黑体：Microsoft YaHei </span><br><span class="line">装Office会生出来的一些： </span><br><span class="line"></span><br><span class="line">隶书：LiSu </span><br><span class="line">幼圆：YouYuan </span><br><span class="line">华文细黑：STXihei </span><br><span class="line">华文楷体：STKaiti </span><br><span class="line">华文宋体：STSong </span><br><span class="line">华文中宋：STZhongsong </span><br><span class="line">华文仿宋：STFangsong </span><br><span class="line">方正舒体：FZShuTi </span><br><span class="line">方正姚体：FZYaoti </span><br><span class="line">华文彩云：STCaiyun </span><br><span class="line">华文琥珀：STHupo </span><br><span class="line">华文隶书：STLiti </span><br><span class="line">华文行楷：STXingkai </span><br><span class="line">华文新魏：STXinwei</span><br></pre></td></tr></table></figure>
+<ul>
+<li>ul 中li在一行显示<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&amp;_ul &#123;</span><br><span class="line">     height: 50px;</span><br><span class="line">     display: block;</span><br><span class="line">     white-space:nowrap;//重点</span><br><span class="line">     overflow-x: auto;</span><br><span class="line">     overflow-y: hidden;</span><br><span class="line"></span><br><span class="line">     li &#123;</span><br><span class="line">       display: inline-block;//重点</span><br><span class="line">       width: 80px;</span><br><span class="line">       list-style: none;</span><br><span class="line">       text-align: center;</span><br><span class="line">       font-size: 10px;</span><br><span class="line">       color: @offactive;</span><br><span class="line">       overflow: hidden;</span><br><span class="line">    </span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/angular路由中Ueditor第二次无法初始化/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1664,226 +1821,6 @@ startForeground(NOTIFY_ID, notification);
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/Git常用命令/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="牟骏荣">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="牟骏荣博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Git常用命令/" itemprop="url">Git常用命令</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-14T11:29:30+08:00">
-                2018-09-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/分类/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="查看、添加、提交、删除、找回，重置修改文件"><a href="#查看、添加、提交、删除、找回，重置修改文件" class="headerlink" title="查看、添加、提交、删除、找回，重置修改文件"></a>查看、添加、提交、删除、找回，重置修改文件</h4><ul>
-<li>git help <command> # 显示command的help</li>
-<li>git show # 显示某次提交的内容 git show $id</li>
-<li>git co – <file> # 抛弃工作区修改</file></li>
-<li>git co . # 抛弃工作区修改</li>
-<li>git add <file> # 将工作文件修改提交到本地暂存区</file></li>
-<li>git add . # 将所有修改过的工作文件提交暂存区</li>
-<li>git rm <file> # 从版本库中删除文件</file></li>
-<li>git rm <file> –cached # 从版本库中删除文件，但不删除文件</file></li>
-<li>git reset <file> # 从暂存区恢复到工作文件</file></li>
-<li>git reset – . # 从暂存区恢复到工作文件</li>
-<li>git reset –hard # 恢复最近一次提交过的状态，即放弃上次提交后的所有本次修改</li>
-<li>git ci <file> git ci . git ci -a # 将git add, git rm和git ci等操作都合并在一起做　　git ci -am “some comments”</file></li>
-<li>git ci –amend # 修改最后一次提交记录</li>
-<li>git revert &lt;$id&gt; # 恢复某次提交的状态，恢复动作本身也创建次提交对象</li>
-<li>git revert HEAD # 恢复最后一次提交的状态</li>
-</ul>
-<h4 id="查看文件diff"><a href="#查看文件diff" class="headerlink" title="查看文件diff"></a>查看文件diff</h4><ul>
-<li>git diff <file> # 比较当前文件和暂存区文件差异 git diff</file></li>
-<li>git diff <id1><id2> # 比较两次提交之间的差异</id2></id1></li>
-<li>git diff <branch1>..<branch2> # 在两个分支之间比较</branch2></branch1></li>
-<li>git diff –staged # 比较暂存区和版本库差异</li>
-<li>git diff –cached # 比较暂存区和版本库差异</li>
-<li>git diff –stat # 仅仅比较统计信息<h4 id="查看提交记录"><a href="#查看提交记录" class="headerlink" title="查看提交记录"></a>查看提交记录</h4></li>
-<li>git log git log <file> # 查看该文件每次提交记录</file></li>
-<li>git log -p <file> # 查看每次详细修改内容的diff</file></li>
-<li>git log -p -2 # 查看最近两次详细修改内容的diff</li>
-<li>git log –stat #查看提交统计信息<h4 id="tig"><a href="#tig" class="headerlink" title="tig"></a>tig</h4></li>
-<li>Mac上可以使用tig代替diff和log，brew install tig<h4 id="Git-本地分支管理"><a href="#Git-本地分支管理" class="headerlink" title="Git 本地分支管理"></a>Git 本地分支管理</h4><h4 id="查看、切换、创建和删除分支"><a href="#查看、切换、创建和删除分支" class="headerlink" title="查看、切换、创建和删除分支"></a>查看、切换、创建和删除分支</h4></li>
-<li>git br -r # 查看远程分支</li>
-<li>git br &lt;new_branch&gt; # 创建新的分支</li>
-<li>git br -v # 查看各个分支最后提交信息</li>
-<li>git br –merged # 查看已经被合并到当前分支的分支</li>
-<li>git br –no-merged # 查看尚未被合并到当前分支的分支</li>
-<li>git co <branch> # 切换到某个分支</branch></li>
-<li>git co -b &lt;new_branch&gt; # 创建新的分支，并且切换过去</li>
-<li>git co -b &lt;new_branch&gt; <branch> # 基于branch创建新的new_branch</branch></li>
-<li>git co $id # 把某次历史提交记录checkout出来，但无分支信息，切换到其他分支会自动删除</li>
-<li>git co $id -b &lt;new_branch&gt; # 把某次历史提交记录checkout出来，创建成一个分支</li>
-<li>git br -d <branch> # 删除某个分支</branch></li>
-<li>git br -D <branch> # 强制删除某个分支 (未被合并的分支被删除的时候需要强制)<h4 id="分支合并和rebase"><a href="#分支合并和rebase" class="headerlink" title="分支合并和rebase"></a>分支合并和rebase</h4></branch></li>
-<li>git merge <branch> # 将branch分支合并到当前分支</branch></li>
-<li>git merge origin/master –no-ff # 不要Fast-Foward合并，这样可以生成merge提交</li>
-<li>git rebase master <branch> # 将master rebase到branch，相当于： git co <branch> &amp;&amp; git rebase master &amp;&amp; git co master &amp;&amp; git merge <branch><h4 id="Git补丁管理-方便在多台机器上开发同步时用"><a href="#Git补丁管理-方便在多台机器上开发同步时用" class="headerlink" title="Git补丁管理(方便在多台机器上开发同步时用)"></a>Git补丁管理(方便在多台机器上开发同步时用)</h4></branch></branch></branch></li>
-<li>git diff &gt; ../sync.patch # 生成补丁</li>
-<li>git apply ../sync.patch # 打补丁</li>
-<li>git apply –check ../sync.patch #测试补丁能否成功<h4 id="Git暂存管理"><a href="#Git暂存管理" class="headerlink" title="Git暂存管理"></a>Git暂存管理</h4></li>
-<li>git stash # 暂存</li>
-<li>git stash list # 列所有stash</li>
-<li>git stash apply # 恢复暂存的内容</li>
-<li>git stash drop # 删除暂存区<h4 id="Git远程分支管理"><a href="#Git远程分支管理" class="headerlink" title="Git远程分支管理"></a>Git远程分支管理</h4></li>
-<li>git pull # 抓取远程仓库所有分支更新并合并到本地</li>
-<li>git pull –no-ff # 抓取远程仓库所有分支更新并合并到本地，不要快进合并</li>
-<li>git fetch origin # 抓取远程仓库更新</li>
-<li>git merge origin/master # 将远程主分支合并到本地当前分支</li>
-<li>git co –track origin/branch # 跟踪某个远程分支创建相应的本地分支</li>
-<li>git co -b &lt;local_branch&gt; origin/&lt;remote_branch&gt; # 基于远程分支创建本地分支，功能同上</li>
-<li>git push # push所有分支</li>
-<li>git push origin master # 将本地主分支推到远程主分支</li>
-<li>git push -u origin master # 将本地主分支推到远程(如无远程主分支则创建，用于初始化远程仓库)</li>
-<li>git push origin &lt;local_branch&gt; # 创建远程分支， origin是远程仓库名</li>
-<li>git push origin &lt;local_branch&gt;:&lt;remote_branch&gt; # 创建远程分支</li>
-<li>git push origin :&lt;remote_branch&gt; #先删除本地分支(git br -d <branch>)，然后再push删除远程分支<h4 id="Git远程仓库管理"><a href="#Git远程仓库管理" class="headerlink" title="Git远程仓库管理"></a>Git远程仓库管理</h4></branch></li>
-<li>git remote -v # 查看远程服务器地址和仓库名称</li>
-<li>git remote show origin # 查看远程服务器仓库状态</li>
-<li>git remote add origin git@ github:robbin/robbin_site.git # 添加远程仓库地址</li>
-<li>git remote set-url origin git@ github.com:robbin/robbin_site.git # 设置远程仓库地址(用于修改远程仓库地址) git remote rm <repository> # 删除远程仓库<h4 id="创建远程仓库"><a href="#创建远程仓库" class="headerlink" title="创建远程仓库"></a>创建远程仓库</h4></repository></li>
-<li>git clone –bare robbin_site robbin_site.git # 用带版本的项目创建纯版本仓库</li>
-<li>scp -r my_project.git git@ git.csdn.net:~ # 将纯仓库上传到服务器上</li>
-<li>mkdir robbin_site.git &amp;&amp; cd robbin_site.git &amp;&amp; git –bare init # 在服务器创建纯仓库</li>
-<li>git remote add origin git@ github.com:robbin/robbin_site.git # 设置远程仓库地址</li>
-<li>git push -u origin master # 客户端首次提交</li>
-<li>git push -u origin develop # 首次将本地develop分支提交到远程develop分支，并且track</li>
-<li>git remote set-head origin master # 设置远程仓库的HEAD指向master分支<h3 id="git-添加第二个仓库"><a href="#git-添加第二个仓库" class="headerlink" title="git 添加第二个仓库"></a>git 添加第二个仓库</h3></li>
-<li>git remote add origin git@ github.com:robbin/robbin_site.git # 设置远程仓库地址</li>
-<li>git pull origin master —-allow-unrelated-histories<br>也可以命令设置跟踪远程库和本地库</li>
-<li>git branch –set-upstream master origin/master</li>
-<li>git branch –set-upstream develop origin/develop</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1934,7 +1871,7 @@ startForeground(NOTIFY_ID, notification);
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1946,7 +1883,7 @@ startForeground(NOTIFY_ID, notification);
               <div class="site-state-item site-state-categories">
               
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -1957,7 +1894,7 @@ startForeground(NOTIFY_ID, notification);
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">45</span>
+                  <span class="site-state-item-count">46</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -2147,6 +2084,10 @@ startForeground(NOTIFY_ID, notification);
                 
                   <a class="lefttag" href="/tags/爬虫">
                      爬虫
+                  </a>
+                
+                  <a class="lefttag" href="/tags/webstorm">
+                     webstorm
                   </a>
                 
                 </div>
