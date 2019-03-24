@@ -270,6 +270,157 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/androidRecyclerViewAdapter技巧/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="牟骏荣">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="牟骏荣博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/androidRecyclerViewAdapter技巧/" itemprop="url">androidRecyclerViewAdapter技巧</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-22T11:40:32+08:00">
+                2018-11-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/分类/android-安卓/" itemprop="url" rel="index">
+                    <span itemprop="name">android-安卓</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li><p>设置布局加载方式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tv_menu_list.setLayoutManager(new GridLayoutManager(this, 3)); //设置布局加载方式</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>视图布局</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;RelativeLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">    android:id=&quot;@+id/items&quot;</span><br><span class="line">    android:layout_width=&quot;match_parent&quot;</span><br><span class="line">    android:layout_height=&quot;match_parent&quot;</span><br><span class="line">    android:paddingBottom=&quot;10dp&quot;</span><br><span class="line">    android:background=&quot;#ffffff&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;ImageView</span><br><span class="line">        android:id=&quot;@+id/imageview_center&quot;</span><br><span class="line">        android:layout_centerHorizontal=&quot;true&quot;</span><br><span class="line">        android:layout_marginTop=&quot;20dp&quot;</span><br><span class="line">        android:background=&quot;#00000000&quot;</span><br><span class="line">        android:gravity=&quot;center&quot;</span><br><span class="line">        android:layout_marginBottom=&quot;20dp&quot;</span><br><span class="line">        android:scaleType=&quot;centerCrop&quot;</span><br><span class="line">        android:src=&quot;@drawable/logo1&quot;</span><br><span class="line">        android:visibility=&quot;visible&quot;</span><br><span class="line">        android:layout_width=&quot;60dp&quot;</span><br><span class="line">        android:layout_height=&quot;60dp&quot; /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;TextView</span><br><span class="line">        android:layout_below=&quot;@+id/imageview_center&quot;</span><br><span class="line">        android:gravity=&quot;center&quot;</span><br><span class="line">        android:id=&quot;@+id/textview_center&quot;</span><br><span class="line">        android:layout_width=&quot;match_parent&quot;</span><br><span class="line">        android:text=&quot;asdfasdf水电费&quot;</span><br><span class="line">        android:layout_height=&quot;wrap_content&quot; /&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;/RelativeLayout&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>RecyclerView.Adapter</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">private class TvAdapter extends RecyclerView.Adapter&lt;TvAdapter.ViewHolder&gt; &#123;</span><br><span class="line"></span><br><span class="line">    @NonNull</span><br><span class="line">    @Override</span><br><span class="line">    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) &#123;</span><br><span class="line">        View inflate = View.inflate(getBaseContext(), R.layout.tv_menu_list_tiem_layout, null);</span><br><span class="line">        return new ViewHolder(inflate);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onBindViewHolder(@NonNull ViewHolder holder, int position) &#123;</span><br><span class="line">        holder.textview.setText(tvDataList.get(position).getTitle());</span><br><span class="line"></span><br><span class="line">        Picasso.with(getBaseContext())</span><br><span class="line">                .load(app.getImgurl()+tvDataList.get(position).getCoverImageUrl())</span><br><span class="line">                .placeholder(R.drawable.defaultbg)</span><br><span class="line">                .error(R.drawable.defaultbg)</span><br><span class="line">                .fit()</span><br><span class="line">                .into(holder.img);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public int getItemCount() &#123;</span><br><span class="line">        return tvDataList.size();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    class ViewHolder extends RecyclerView.ViewHolder &#123;</span><br><span class="line">        private TextView textview; //定义视图布局</span><br><span class="line">        private ImageView img;//定义视图布局</span><br><span class="line"></span><br><span class="line">        public ViewHolder(View itemView) &#123;</span><br><span class="line">            super(itemView);</span><br><span class="line">            textview = (TextView) itemView.findViewById(R.id.textview_center);</span><br><span class="line">            img = (ImageView) itemView.findViewById(R.id.imageview_center);</span><br><span class="line">            itemView.setOnClickListener(new View.OnClickListener() &#123;</span><br><span class="line">                @Override</span><br><span class="line">                public void onClick(View view) &#123;</span><br><span class="line">                	//跳转方式</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/android应用启动显示白色背景的解决方法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1567,198 +1718,6 @@ console.log(zz,&quot;zz&quot;);// 正则表达式
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/shell获取当前系统时间/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="牟骏荣">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="牟骏荣博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/shell获取当前系统时间/" itemprop="url">shell获取当前系统时间</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-14T11:29:31+08:00">
-                2018-09-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/分类/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>在shell脚本里常常需要获取系统时间来处理某项操作，今天系统的学习了一下如何获取系统时间。记录如下：<br>linux的系统时间在shell里是可以直接调用系统变量的如：<br>获取今天时期：<code>date +%Y%m%d</code> 或 <code>date +%F</code> 或 $(date +%y%m%d)<br>命令输出结果如下：</p>
-<h2 id="隐藏Activity的头部默认导航"><a href="#隐藏Activity的头部默认导航" class="headerlink" title="隐藏Activity的头部默认导航"></a>隐藏Activity的头部默认导航</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@centi-C sh]# date +%Y%m%d </span><br><span class="line">20120727 </span><br><span class="line">[root@centi-C sh]# date +%F </span><br><span class="line">2012-07-27 </span><br><span class="line">[root@centi-C sh]# date +%y%m%d </span><br><span class="line">120727</span><br></pre></td></tr></table></figure>
-<p>获取昨天时期：<code>date -d yesterday +%Y%m%d</code> 也可以写成<code>date -d -1day +%Y%m%d</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@centi-C sh]# date -d yesterday +%Y%m%d </span><br><span class="line">20120726 </span><br><span class="line">[root@centi-C sh]# date -d yesterday +%F </span><br><span class="line">2012-07-26 </span><br><span class="line">[root@centi-C sh]# date -d -1day +%y%m%d </span><br><span class="line">120726 </span><br><span class="line">[root@centi-C sh]# date -d -1day +%Y%m%d </span><br><span class="line">20120726</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li>获取前天日期：<code>date -d -2day +%Y%m%d</code> </li>
-<li>依次类推比如获取10天前的日期：<code>date -d -10day +%Y%m%d</code> </li>
-<li>或n天前的 <code>date -d &quot;n days ago&quot; +%y%m%d</code> </li>
-<li>明天：<code>date -d tomorrow +%y%m%d</code> </li>
-<li><p>注意以上中间有空格 </p>
-</li>
-<li><p>至于你需要什么样的日期时间格式，就需要应用相关的时间域参数来实现咯</p>
-</li>
-<li>相关时间域如下： </li>
-<li>% H 小时（00..23） </li>
-<li>% I 小时（01..12） </li>
-<li>% k 小时（0..23） </li>
-<li>% l 小时（1..12） </li>
-<li>% M 分（00..59） </li>
-<li>% p 显示出AM或PM </li>
-<li>% r 时间（hh：mm：ss AM或PM），12小时 </li>
-<li>% s 从1970年1月1日00：00：00到目前经历的秒数 </li>
-<li>% S 秒（00..59） </li>
-<li>% T 时间（24小时制）（hh:mm:ss） </li>
-<li>% X 显示时间的格式（％H:％M:％S） </li>
-<li>% Z 时区 日期域 </li>
-<li>% a 星期几的简称（ Sun..Sat） </li>
-<li>% A 星期几的全称（ Sunday..Saturday） </li>
-<li>% b 月的简称（Jan..Dec） </li>
-<li>% B 月的全称（January..December） </li>
-<li>% c 日期和时间（ Mon Nov 8 14：12：46 CST 1999） </li>
-<li>% d 一个月的第几天（01..31） </li>
-<li>% D 日期（mm／dd／yy） </li>
-<li>% h 和%b选项相同 </li>
-<li>% j 一年的第几天（001..366） </li>
-<li>% m 月（01..12） </li>
-<li>% w 一个星期的第几天（0代表星期天） </li>
-<li>% W 一年的第几个星期（00..53，星期一为第一天） </li>
-<li>% x 显示日期的格式（mm/dd/yy） </li>
-<li>% y 年的最后两个数字（ 1999则是99） </li>
-<li>% Y 年（例如：1970，1996等） </li>
-<li>注意：只有超级用户才有权限使用date命令设置时间，一般用户只能使用date命令显示时间。</li>
-</ul>
-<p>添加一个练习脚本，功能：</p>
-<ul>
-<li><p><font color="#ff0000"> 在每月第一天备份并压缩/etc目录的所有内容，存放在/root/bak目录里，且文件名为如下形式yymmdd_etc，yy为年，mm为月，dd为日。Shell程序fileback存放在/usr/bin目录下。</font></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#/bin/bash </span><br><span class="line">#filebak </span><br><span class="line">#file executable: chmod 755 filebak </span><br><span class="line">PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin </span><br><span class="line">export PATH </span><br><span class="line">bakdir=&quot;/root/bak/&quot; </span><br><span class="line">filename=&quot;`date +%y%m%d`_etc.tar.gz&quot; </span><br><span class="line">if [ ! -x &quot;$bakdir&quot; ];then </span><br><span class="line">mkdir $bakdir </span><br><span class="line">fi </span><br><span class="line">cd $bakdir </span><br><span class="line">tar cvfz $filename /etc</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>或使用crontab -e 命令添加定时任务：</p>
-</li>
-<li>0 1 <em> </em> * /bin/sh /usr/bin/fileback</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1809,7 +1768,7 @@ console.log(zz,&quot;zz&quot;);// 正则表达式
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">48</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1832,7 +1791,7 @@ console.log(zz,&quot;zz&quot;);// 正则表达式
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -2026,6 +1985,10 @@ console.log(zz,&quot;zz&quot;);// 正则表达式
                 
                   <a class="lefttag" href="/tags/webstorm">
                      webstorm
+                  </a>
+                
+                  <a class="lefttag" href="/tags/js">
+                     js
                   </a>
                 
                 </div>
