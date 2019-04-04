@@ -270,6 +270,182 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/django-查询语句/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="牟骏荣">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="牟骏荣博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/django-查询语句/" itemprop="url">django-查询语句</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-04T10:15:18+08:00">
+                2019-04-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/分类/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="1-model"><a href="#1-model" class="headerlink" title="1.model"></a>1.model</h3><ul>
+<li>假设我们的model如下：</li>
+<li>某个JobType下有很多Job。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"> class JobType(models.Model):</span><br><span class="line">    name = models.CharField(max_length=10)</span><br><span class="line">    description = models.CharField(max_length=100, null=True, blank=True)</span><br><span class="line"></span><br><span class="line">    def __str__(self):</span><br><span class="line">        return self.name</span><br><span class="line"></span><br><span class="line">class Job(models.Model):</span><br><span class="line">    name = models.CharField(max_length=50)</span><br><span class="line">    type = models.ForeignKey(JobType, related_name=&apos;jobs&apos;)</span><br><span class="line">    city = models.CharField(max_length=30)</span><br><span class="line">    experience = models.CharField(max_length=15)</span><br><span class="line">    education = models.CharField(max_length=10)</span><br><span class="line">    salary = models.CharField(max_length=15)</span><br><span class="line">    public_time = models.DateTimeField()</span><br><span class="line"></span><br><span class="line">    def __str__(self):</span><br><span class="line">        return self.name</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h3><ul>
+<li><p>查询所有JobType</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> JobType.objects.all()</span><br><span class="line">Out[1]: [&lt;JobType: Java&gt;, &lt;JobType: Python&gt;, &lt;JobType: PHP&gt;]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>对上述的queryset按名字排序（逆序则在字段前加减号‘-’，如order_by(‘-name’) ）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">In [2]: JobType.objects.all().order_by(&apos;name&apos;)</span><br><span class="line">Out[2]: [&lt;JobType: Java&gt;, &lt;JobType: PHP&gt;, &lt;JobType: Python&gt;]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查询name为‘Python’的JobType（ 注意用get()方法得到的是单个对象而不是queryset,若有多个对象满足条件应该使用filter()方法。）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">In [3]: JobType.objects.get(name=&apos;Python&apos;)</span><br><span class="line">Out[3]: &lt;JobType: Python&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>注意：1）若get()返回多个对象，会引发异常 MultipleObjectsReturned</p>
+</li>
+<li><p>2）若没有对象符合查询条件，会引发异常 DoseNotExist，如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JobType.objects.get(id=100)  # raises JobType.DoesNotExist</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查询所有JobType的name为Python的Job</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">In [4]: type = JobType.objects.get(name=&apos;Python&apos;)</span><br><span class="line"></span><br><span class="line">In [5]: Job.objects.filter(type=type)</span><br><span class="line"></span><br><span class="line">Out[5]: [&lt;Job: Python开发工程师&gt;, &lt;Job: Python开发工程师&gt;, &lt;Job: python软件工程师&gt;, &lt;Job: Python&gt;, &lt;Job: Python开发&gt;, &lt;Job: Python&gt;, &lt;Job: Java/Python&gt;, &lt;Job: 大数据开发工程师JAVA、Scala、Python&gt;, &lt;Job: python开发工程师&gt;, &lt;Job: Python&gt;, &lt;Job: Python研发高级工程师&gt;, &lt;Job: Python开发&gt;, &lt;Job: Python工程师&gt;, &lt;Job: Python&gt;, &lt;Job: Python／PHP 语言开发工程师-YL&gt;, &lt;Job: Python工程师&gt;, &lt;Job: Python工程师（中高级）&gt;, &lt;Job: Python后台开发工程师&gt;, &lt;Job: python web开发实习生&gt;, &lt;Job: Python开发&gt;, &apos;...(remaining elements truncated)...&apos;]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>由于我们在Job model中定义type外键时，定义了related_name=‘jobs’，故还能用下面的方法查询</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">In [6]: type = JobType.objects.get(name=&apos;Python&apos;) </span><br><span class="line"></span><br><span class="line">In [7]: type.jobs.all()</span><br><span class="line"></span><br><span class="line">Out[7]: [&lt;Job: Python开发工程师&gt;, &lt;Job: Python开发工程师&gt;, &lt;Job: python软件工程师&gt;, &lt;Job: Python&gt;, &lt;Job: Python开发&gt;, &lt;Job: Python&gt;, &lt;Job: Java/Python&gt;, &lt;Job: 大数据开发工程师JAVA、Scala、Python&gt;, &lt;Job: python开发工程师&gt;, &lt;Job: Python&gt;, &lt;Job: Python研发高级工程师&gt;, &lt;Job: Python开发&gt;, &lt;Job: Python工程师&gt;, &lt;Job: Python&gt;, &lt;Job: Python／PHP 语言开发工程师-YL&gt;, &lt;Job: Python工程师&gt;, &lt;Job: Python工程师（中高级）&gt;, &lt;Job: Python后台开发工程师&gt;, &lt;Job: python web开发实习生&gt;, &lt;Job: Python开发&gt;, &apos;...(remaining elements truncated)...&apos;]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>当然，我们也可以用一条语句完成这个查询。就是下面的跨表查询，即外键 + 两条下划线 + 另一个表的字段：fk__field-in-foreign-model</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">In [8]: Job.objects.filter(type__name=&apos;Python&apos;)</span><br><span class="line"></span><br><span class="line">Out[8]: [&lt;Job: Python开发工程师&gt;, &lt;Job: Python开发工程师&gt;, &lt;Job: python软件工程师&gt;, &lt;Job: Python&gt;, &lt;Job: Python开发&gt;, &lt;Job: Python&gt;, &lt;Job: Java/Python&gt;, &lt;Job: 大数据开发工程师JAVA、Scala、Python&gt;, &lt;Job: python开发工程师&gt;, &lt;Job: Python&gt;, &lt;Job: Python研发高级工程师&gt;, &lt;Job: Python开发&gt;, &lt;Job: Python工程师&gt;, &lt;Job: Python&gt;, &lt;Job: Python／PHP 语言开发工程师-YL&gt;, &lt;Job: Python工程师&gt;, &lt;Job: Python工程师（中高级）&gt;, &lt;Job: Python后台开发工程师&gt;, &lt;Job: python web开发实习生&gt;, &lt;Job: Python开发&gt;, &apos;...(remaining elements truncated)...&apos;]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查询JobType的name为‘Python’之外的所有Job</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">In [9]: Job.objects.all().exclude(type__name=&apos;Python&apos;)</span><br><span class="line"></span><br><span class="line">Out[9]: [&lt;Job: PHP/高级PHP工程师&gt;, &lt;Job: PHP开发工程师&gt;, &lt;Job: PHP&gt;, &lt;Job: PHP开发&gt;, &lt;Job: PHP&gt;, &lt;Job: PHP工程师&gt;, &lt;Job: PHP工程师&gt;, &lt;Job: PHP&gt;, &lt;Job: PHP研发工程师&gt;, &lt;Job: PHP开发工程师&gt;, &lt;Job: PHP&gt;, &lt;Job: PHP&gt;, &lt;Job: PHP开发工程师&gt;, &lt;Job: 高级PHP开发工程师&gt;, &lt;Job: PHP高级工程师&gt;]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://www.cnblogs.com/rinka/p/django_make_queries_anout_built-in_lookups.html" target="_blank" rel="noopener">转载</a></p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/JS-HTML获取键盘事件/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1615,159 +1791,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/使用JAVA代码实现Android布局/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="牟骏荣">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="牟骏荣博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/使用JAVA代码实现Android布局/" itemprop="url">使用JAVA代码实现Android布局</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-27T14:00:16+08:00">
-                2018-11-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/分类/android-安卓/" itemprop="url" rel="index">
-                    <span itemprop="name">android-安卓</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li><p>RelativeLayout布局设置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">int screenWidth = ScreenUtils.getScreenWidth(getBaseContext());//获取屏幕高度</span><br><span class="line">int onew = screenWidth / 5;</span><br><span class="line">int s1 = onew / 3;</span><br><span class="line">int magnification = ScreenUtils.dip2px(getBaseContext(), 50) / 50;//获取屏幕高度并算出dp和px的倍数</span><br><span class="line">ViewGroup.LayoutParams layoutParams = tongzhi_dot.getLayoutParams();</span><br><span class="line">RelativeLayout.LayoutParams layoutParams2 = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);</span><br><span class="line">layoutParams2.setMargins(screenWidth - s1 - 15, magnification * 10, s1, 35 * magnification);//4个参数按顺序分别是左上右下</span><br><span class="line">tongzhi_dot.setLayoutParams(layoutParams2); //tongzhi_dot 一个View的布局ID</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>LinearLayout</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);</span><br><span class="line">lp.setMargins(10, 20, 30, 40);</span><br><span class="line">imageView.setLayoutParams(lp);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>LinearLayout 设置高宽</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LinearLayout box = (LinearLayout) layout.findViewById(R.id.dialog_liner_box);</span><br><span class="line">box.setLayoutParams(new LinearLayout.LayoutParams((int) (ScreenUtils.getScreenWidth(context) * 0.8), ViewGroup.LayoutParams.WRAP_CONTENT));</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="ScreenUtils-分享"><a href="#ScreenUtils-分享" class="headerlink" title="ScreenUtils 分享"></a>ScreenUtils 分享</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> android.app.Activity;</span><br><span class="line"><span class="keyword">import</span> android.content.Context;</span><br><span class="line"><span class="keyword">import</span> android.graphics.Bitmap;</span><br><span class="line"><span class="keyword">import</span> android.graphics.Rect;</span><br><span class="line"><span class="keyword">import</span> android.util.DisplayMetrics;</span><br><span class="line"><span class="keyword">import</span> android.view.View;</span><br><span class="line"><span class="keyword">import</span> android.view.WindowManager;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获得屏幕相关的辅助类</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ScreenUtils</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 获得屏幕高度</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> context</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getScreenWidth</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">		WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);</span><br><span class="line">		DisplayMetrics outMetrics = <span class="keyword">new</span> DisplayMetrics();</span><br><span class="line">		wm.getDefaultDisplay().getMetrics(outMetrics);</span><br><span class="line">		<span class="keyword">return</span> outMetrics.widthPixels;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 获得屏幕宽度</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> context</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getScreenHeight</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">		WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);</span><br><span class="line">		DisplayMetrics outMetrics = <span class="keyword">new</span> DisplayMetrics();</span><br><span class="line">		wm.getDefaultDisplay().getMetrics(outMetrics);</span><br><span class="line">		<span class="keyword">return</span> outMetrics.heightPixels;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 根据手机的分辨率从 dp 的单位 转成为 px(像素)</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">dip2px</span><span class="params">(Context context, <span class="keyword">float</span> dpValue)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">float</span> scale = context.getResources().getDisplayMetrics().density;</span><br><span class="line">		<span class="keyword">return</span> (<span class="keyword">int</span>) (dpValue * scale + <span class="number">0.5f</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 根据手机的分辨率从 px(像素) 的单位 转成为 dp</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">px2dip</span><span class="params">(Context context, <span class="keyword">float</span> pxValue)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">float</span> scale = context.getResources().getDisplayMetrics().density;</span><br><span class="line">		<span class="keyword">return</span> (<span class="keyword">int</span>) (pxValue / scale + <span class="number">0.5f</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 根据手机的分辨率从 sp 的单位 转成为 px(像素)</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">sp2px</span><span class="params">(Context context, <span class="keyword">float</span> spValue)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">float</span> scale = context.getResources().getDisplayMetrics().scaledDensity;</span><br><span class="line">		<span class="keyword">return</span> (<span class="keyword">int</span>) (spValue * scale + <span class="number">0.5f</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 根据手机的分辨率从 px(像素) 的单位 转成为 sp</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">px2sp</span><span class="params">(Context context, <span class="keyword">float</span> pxValue)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">float</span> scale = context.getResources().getDisplayMetrics().scaledDensity;</span><br><span class="line">		<span class="keyword">return</span> (<span class="keyword">int</span>) (pxValue / scale + <span class="number">0.5f</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 获得状态栏的高度</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> context</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getStatusHeight</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">int</span> statusHeight = -<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			Class&lt;?&gt; clazz = Class.forName(<span class="string">"com.android.internal.R$dimen"</span>);</span><br><span class="line">			Object object = clazz.newInstance();</span><br><span class="line">			<span class="keyword">int</span> height = Integer.parseInt(clazz.getField(<span class="string">"status_bar_height"</span>).get(object).toString());</span><br><span class="line">			statusHeight = context.getResources().getDimensionPixelSize(height);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> statusHeight;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 获取当前屏幕截图，包含状态栏</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> activity</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Bitmap <span class="title">snapShotWithStatusBar</span><span class="params">(Activity activity)</span> </span>&#123;</span><br><span class="line">		View view = activity.getWindow().getDecorView();</span><br><span class="line">		view.setDrawingCacheEnabled(<span class="keyword">true</span>);</span><br><span class="line">		view.buildDrawingCache();</span><br><span class="line">		Bitmap bmp = view.getDrawingCache();</span><br><span class="line">		<span class="keyword">int</span> width = getScreenWidth(activity);</span><br><span class="line">		<span class="keyword">int</span> height = getScreenHeight(activity);</span><br><span class="line">		Bitmap bp = <span class="keyword">null</span>;</span><br><span class="line">		bp = Bitmap.createBitmap(bmp, <span class="number">0</span>, <span class="number">0</span>, width, height);</span><br><span class="line">		view.destroyDrawingCache();</span><br><span class="line">		<span class="keyword">return</span> bp;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 获取当前屏幕截图，不包含状态栏</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> activity</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Bitmap <span class="title">snapShotWithoutStatusBar</span><span class="params">(Activity activity)</span> </span>&#123;</span><br><span class="line">		View view = activity.getWindow().getDecorView();</span><br><span class="line">		view.setDrawingCacheEnabled(<span class="keyword">true</span>);</span><br><span class="line">		view.buildDrawingCache();</span><br><span class="line">		Bitmap bmp = view.getDrawingCache();</span><br><span class="line">		Rect frame = <span class="keyword">new</span> Rect();</span><br><span class="line">		activity.getWindow().getDecorView().getWindowVisibleDisplayFrame(frame);</span><br><span class="line">		<span class="keyword">int</span> statusBarHeight = frame.top;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">int</span> width = getScreenWidth(activity);</span><br><span class="line">		<span class="keyword">int</span> height = getScreenHeight(activity);</span><br><span class="line">		Bitmap bp = <span class="keyword">null</span>;</span><br><span class="line">		bp = Bitmap.createBitmap(bmp, <span class="number">0</span>, statusBarHeight, width, height - statusBarHeight);</span><br><span class="line">		view.destroyDrawingCache();</span><br><span class="line">		<span class="keyword">return</span> bp;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1818,7 +1841,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-count">49</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1841,7 +1864,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">49</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -2039,6 +2062,14 @@
                 
                   <a class="lefttag" href="/tags/js">
                      js
+                  </a>
+                
+                  <a class="lefttag" href="/tags/django">
+                     django
+                  </a>
+                
+                  <a class="lefttag" href="/tags/sql">
+                     sql
                   </a>
                 
                 </div>

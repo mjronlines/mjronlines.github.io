@@ -270,6 +270,163 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/ubuntu16.0.4 系统中chrome浏览器的代理配置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="牟骏荣">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="牟骏荣博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/ubuntu16.0.4 系统中chrome浏览器的代理配置/" itemprop="url">ubuntu16.0.4 系统中chrome浏览器的代理配置</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-14T11:29:31+08:00">
+                2018-09-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/分类/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li>受支持的桌面环境中运行Chromium时，将使用系统代理设置。但您的系统不受支持，或启动系统配置时出现问题。 </li>
+<li><p>但您仍可通过命令行进行配置。如需详细了解各项实验功能和环境变量，请参见 man chromium-browser。  </p>
+</li>
+<li><p>安装好google-chrome（或者chromium也行）后，我们发现浏览器的设置中，代理配置功能失效，显示为： </p>
+</li>
+<li><p>在受支持的桌面环境中运行google-chrome时，将使用系统代理设置。但您的系统不受支持，或启动系统配置时出现问题。 </p>
+</li>
+<li><p>但您仍可通过命令行进行配置。如需详细了解各项实验功能和环境变量，请参见 man google-chrome。 </p>
+<h2 id="关闭该google-chrome，并重新从命令行启动，加入一个参数："><a href="#关闭该google-chrome，并重新从命令行启动，加入一个参数：" class="headerlink" title="关闭该google-chrome，并重新从命令行启动，加入一个参数："></a>关闭该google-chrome，并重新从命令行启动，加入一个参数：</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">jackX<span class="meta">@thinkpad</span>:~$ google-chrome --proxy-server=<span class="string">"socks5://localhost:8787"</span> </span><br><span class="line">chromium-browser --proxy-server=<span class="string">"socks5://localhost:8787"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>值得注意的是，由于我平常windows环境下使用的代理工具为：chrome+SwitchyOmega插件+MyEntunnel，配置是SSH+socks5，所以一开始没有在–proxy-server参数中指定socks5，导致启动后代理失效。(可通过google-chrome –help了解详细参数) </p>
+</li>
+<li><p>chrome成功启动后，打开百度输入“ip”，可显示我的代理服务器IP，说明代理成功启用。</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/shell获取当前系统时间/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1667,154 +1824,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/javascript图形验证码大全/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="牟骏荣">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="牟骏荣博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/javascript图形验证码大全/" itemprop="url">javascript图形验证码大全</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-14T11:29:31+08:00">
-                2018-09-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/分类/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>javascript图形验证码大全<iframe height="498" width="100%" src="https://mjronlines.github.io/assets/jsRegCode/index.html" frameborder="0" allowfullscreen></iframe>
-
-
-</li>
-</ul>
-<p><a href="https://mjronlines.github.io/assets/jsRegCode/index.html" title="javascript图形验证码大全">javascript图形验证码大全</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1865,7 +1874,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-count">49</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1888,7 +1897,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">49</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -2086,6 +2095,14 @@
                 
                   <a class="lefttag" href="/tags/js">
                      js
+                  </a>
+                
+                  <a class="lefttag" href="/tags/django">
+                     django
+                  </a>
+                
+                  <a class="lefttag" href="/tags/sql">
+                     sql
                   </a>
                 
                 </div>

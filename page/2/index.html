@@ -270,6 +270,159 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/使用JAVA代码实现Android布局/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="牟骏荣">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="牟骏荣博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/使用JAVA代码实现Android布局/" itemprop="url">使用JAVA代码实现Android布局</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-27T14:00:16+08:00">
+                2018-11-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/分类/android-安卓/" itemprop="url" rel="index">
+                    <span itemprop="name">android-安卓</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li><p>RelativeLayout布局设置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">int screenWidth = ScreenUtils.getScreenWidth(getBaseContext());//获取屏幕高度</span><br><span class="line">int onew = screenWidth / 5;</span><br><span class="line">int s1 = onew / 3;</span><br><span class="line">int magnification = ScreenUtils.dip2px(getBaseContext(), 50) / 50;//获取屏幕高度并算出dp和px的倍数</span><br><span class="line">ViewGroup.LayoutParams layoutParams = tongzhi_dot.getLayoutParams();</span><br><span class="line">RelativeLayout.LayoutParams layoutParams2 = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);</span><br><span class="line">layoutParams2.setMargins(screenWidth - s1 - 15, magnification * 10, s1, 35 * magnification);//4个参数按顺序分别是左上右下</span><br><span class="line">tongzhi_dot.setLayoutParams(layoutParams2); //tongzhi_dot 一个View的布局ID</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>LinearLayout</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);</span><br><span class="line">lp.setMargins(10, 20, 30, 40);</span><br><span class="line">imageView.setLayoutParams(lp);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>LinearLayout 设置高宽</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LinearLayout box = (LinearLayout) layout.findViewById(R.id.dialog_liner_box);</span><br><span class="line">box.setLayoutParams(new LinearLayout.LayoutParams((int) (ScreenUtils.getScreenWidth(context) * 0.8), ViewGroup.LayoutParams.WRAP_CONTENT));</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="ScreenUtils-分享"><a href="#ScreenUtils-分享" class="headerlink" title="ScreenUtils 分享"></a>ScreenUtils 分享</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> android.app.Activity;</span><br><span class="line"><span class="keyword">import</span> android.content.Context;</span><br><span class="line"><span class="keyword">import</span> android.graphics.Bitmap;</span><br><span class="line"><span class="keyword">import</span> android.graphics.Rect;</span><br><span class="line"><span class="keyword">import</span> android.util.DisplayMetrics;</span><br><span class="line"><span class="keyword">import</span> android.view.View;</span><br><span class="line"><span class="keyword">import</span> android.view.WindowManager;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获得屏幕相关的辅助类</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ScreenUtils</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 获得屏幕高度</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> context</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getScreenWidth</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">		WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);</span><br><span class="line">		DisplayMetrics outMetrics = <span class="keyword">new</span> DisplayMetrics();</span><br><span class="line">		wm.getDefaultDisplay().getMetrics(outMetrics);</span><br><span class="line">		<span class="keyword">return</span> outMetrics.widthPixels;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 获得屏幕宽度</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> context</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getScreenHeight</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">		WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);</span><br><span class="line">		DisplayMetrics outMetrics = <span class="keyword">new</span> DisplayMetrics();</span><br><span class="line">		wm.getDefaultDisplay().getMetrics(outMetrics);</span><br><span class="line">		<span class="keyword">return</span> outMetrics.heightPixels;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 根据手机的分辨率从 dp 的单位 转成为 px(像素)</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">dip2px</span><span class="params">(Context context, <span class="keyword">float</span> dpValue)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">float</span> scale = context.getResources().getDisplayMetrics().density;</span><br><span class="line">		<span class="keyword">return</span> (<span class="keyword">int</span>) (dpValue * scale + <span class="number">0.5f</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 根据手机的分辨率从 px(像素) 的单位 转成为 dp</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">px2dip</span><span class="params">(Context context, <span class="keyword">float</span> pxValue)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">float</span> scale = context.getResources().getDisplayMetrics().density;</span><br><span class="line">		<span class="keyword">return</span> (<span class="keyword">int</span>) (pxValue / scale + <span class="number">0.5f</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 根据手机的分辨率从 sp 的单位 转成为 px(像素)</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">sp2px</span><span class="params">(Context context, <span class="keyword">float</span> spValue)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">float</span> scale = context.getResources().getDisplayMetrics().scaledDensity;</span><br><span class="line">		<span class="keyword">return</span> (<span class="keyword">int</span>) (spValue * scale + <span class="number">0.5f</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 根据手机的分辨率从 px(像素) 的单位 转成为 sp</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">px2sp</span><span class="params">(Context context, <span class="keyword">float</span> pxValue)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">float</span> scale = context.getResources().getDisplayMetrics().scaledDensity;</span><br><span class="line">		<span class="keyword">return</span> (<span class="keyword">int</span>) (pxValue / scale + <span class="number">0.5f</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 获得状态栏的高度</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> context</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getStatusHeight</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">int</span> statusHeight = -<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			Class&lt;?&gt; clazz = Class.forName(<span class="string">"com.android.internal.R$dimen"</span>);</span><br><span class="line">			Object object = clazz.newInstance();</span><br><span class="line">			<span class="keyword">int</span> height = Integer.parseInt(clazz.getField(<span class="string">"status_bar_height"</span>).get(object).toString());</span><br><span class="line">			statusHeight = context.getResources().getDimensionPixelSize(height);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> statusHeight;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 获取当前屏幕截图，包含状态栏</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> activity</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Bitmap <span class="title">snapShotWithStatusBar</span><span class="params">(Activity activity)</span> </span>&#123;</span><br><span class="line">		View view = activity.getWindow().getDecorView();</span><br><span class="line">		view.setDrawingCacheEnabled(<span class="keyword">true</span>);</span><br><span class="line">		view.buildDrawingCache();</span><br><span class="line">		Bitmap bmp = view.getDrawingCache();</span><br><span class="line">		<span class="keyword">int</span> width = getScreenWidth(activity);</span><br><span class="line">		<span class="keyword">int</span> height = getScreenHeight(activity);</span><br><span class="line">		Bitmap bp = <span class="keyword">null</span>;</span><br><span class="line">		bp = Bitmap.createBitmap(bmp, <span class="number">0</span>, <span class="number">0</span>, width, height);</span><br><span class="line">		view.destroyDrawingCache();</span><br><span class="line">		<span class="keyword">return</span> bp;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 获取当前屏幕截图，不包含状态栏</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> activity</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Bitmap <span class="title">snapShotWithoutStatusBar</span><span class="params">(Activity activity)</span> </span>&#123;</span><br><span class="line">		View view = activity.getWindow().getDecorView();</span><br><span class="line">		view.setDrawingCacheEnabled(<span class="keyword">true</span>);</span><br><span class="line">		view.buildDrawingCache();</span><br><span class="line">		Bitmap bmp = view.getDrawingCache();</span><br><span class="line">		Rect frame = <span class="keyword">new</span> Rect();</span><br><span class="line">		activity.getWindow().getDecorView().getWindowVisibleDisplayFrame(frame);</span><br><span class="line">		<span class="keyword">int</span> statusBarHeight = frame.top;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">int</span> width = getScreenWidth(activity);</span><br><span class="line">		<span class="keyword">int</span> height = getScreenHeight(activity);</span><br><span class="line">		Bitmap bp = <span class="keyword">null</span>;</span><br><span class="line">		bp = Bitmap.createBitmap(bmp, <span class="number">0</span>, statusBarHeight, width, height - statusBarHeight);</span><br><span class="line">		view.destroyDrawingCache();</span><br><span class="line">		<span class="keyword">return</span> bp;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/androidRecyclerViewAdapter技巧/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1561,163 +1714,6 @@ console.log(zz,&quot;zz&quot;);// 正则表达式
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/ubuntu16.0.4 系统中chrome浏览器的代理配置/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="牟骏荣">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="牟骏荣博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/ubuntu16.0.4 系统中chrome浏览器的代理配置/" itemprop="url">ubuntu16.0.4 系统中chrome浏览器的代理配置</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-14T11:29:31+08:00">
-                2018-09-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/分类/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>受支持的桌面环境中运行Chromium时，将使用系统代理设置。但您的系统不受支持，或启动系统配置时出现问题。 </li>
-<li><p>但您仍可通过命令行进行配置。如需详细了解各项实验功能和环境变量，请参见 man chromium-browser。  </p>
-</li>
-<li><p>安装好google-chrome（或者chromium也行）后，我们发现浏览器的设置中，代理配置功能失效，显示为： </p>
-</li>
-<li><p>在受支持的桌面环境中运行google-chrome时，将使用系统代理设置。但您的系统不受支持，或启动系统配置时出现问题。 </p>
-</li>
-<li><p>但您仍可通过命令行进行配置。如需详细了解各项实验功能和环境变量，请参见 man google-chrome。 </p>
-<h2 id="关闭该google-chrome，并重新从命令行启动，加入一个参数："><a href="#关闭该google-chrome，并重新从命令行启动，加入一个参数：" class="headerlink" title="关闭该google-chrome，并重新从命令行启动，加入一个参数："></a>关闭该google-chrome，并重新从命令行启动，加入一个参数：</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">jackX<span class="meta">@thinkpad</span>:~$ google-chrome --proxy-server=<span class="string">"socks5://localhost:8787"</span> </span><br><span class="line">chromium-browser --proxy-server=<span class="string">"socks5://localhost:8787"</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>值得注意的是，由于我平常windows环境下使用的代理工具为：chrome+SwitchyOmega插件+MyEntunnel，配置是SSH+socks5，所以一开始没有在–proxy-server参数中指定socks5，导致启动后代理失效。(可通过google-chrome –help了解详细参数) </p>
-</li>
-<li><p>chrome成功启动后，打开百度输入“ip”，可显示我的代理服务器IP，说明代理成功启用。</p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1768,7 +1764,7 @@ console.log(zz,&quot;zz&quot;);// 正则表达式
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-count">49</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1791,7 +1787,7 @@ console.log(zz,&quot;zz&quot;);// 正则表达式
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">49</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -1989,6 +1985,14 @@ console.log(zz,&quot;zz&quot;);// 正则表达式
                 
                   <a class="lefttag" href="/tags/js">
                      js
+                  </a>
+                
+                  <a class="lefttag" href="/tags/django">
+                     django
+                  </a>
+                
+                  <a class="lefttag" href="/tags/sql">
+                     sql
                   </a>
                 
                 </div>
