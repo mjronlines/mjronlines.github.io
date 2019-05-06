@@ -270,6 +270,153 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/android-WebView技巧/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="牟骏荣">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="牟骏荣博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/android-WebView技巧/" itemprop="url">WebView技巧</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-14T11:29:31+08:00">
+                2018-09-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/分类/android-安卓/" itemprop="url" rel="index">
+                    <span itemprop="name">android-安卓</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li>WebView技巧<h2 id="WebView启用相关配置"><a href="#WebView启用相关配置" class="headerlink" title="WebView启用相关配置"></a>WebView启用相关配置</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">   wv = (WebView) findViewById(R.id.article_webwiew);</span><br><span class="line">wv.getSettings().setSupportMultipleWindows(<span class="keyword">true</span>);</span><br><span class="line">wv.getSettings().setJavaScriptEnabled(<span class="keyword">true</span>);</span><br><span class="line">wv.setWebViewClient(<span class="keyword">new</span> WebViewClient());</span><br><span class="line">wv.setWebChromeClient(<span class="keyword">new</span> WebChromeClient());</span><br><span class="line">wv.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);<span class="comment">//关闭缓存</span></span><br><span class="line">wv.getSettings().setAllowFileAccess(<span class="keyword">true</span>);<span class="comment">//允许读取文件</span></span><br><span class="line">wv.getSettings().setAllowContentAccess(<span class="keyword">true</span>);</span><br><span class="line">wv.getSettings().setSupportZoom(<span class="keyword">false</span>);<span class="comment">//禁止缩放</span></span><br><span class="line">wv.getSettings().setDomStorageEnabled(<span class="keyword">true</span>);<span class="comment">//开启本地数据库储存</span></span><br><span class="line">wv.getSettings().setDatabaseEnabled(<span class="keyword">true</span>);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="WebView-缩放"><a href="#WebView-缩放" class="headerlink" title="WebView 缩放"></a>WebView 缩放</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wv.getSettings().setSupportZoom(true);//禁止缩放</span><br><span class="line">wv.getSettings().setBuiltInZoomControls(true);</span><br><span class="line">wv.getSettings().setDisplayZoomControls(true);</span><br><span class="line">wv.setInitialScale(100); //缩放比例</span><br></pre></td></tr></table></figure>
+<h2 id="WebView-JSON数据替换为String"><a href="#WebView-JSON数据替换为String" class="headerlink" title="WebView JSON数据替换为String"></a>WebView JSON数据替换为String</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">webView = (WebView) findViewById(R.id.bbs_webview);  </span><br><span class="line">webView.getSettings().setJavaScriptEnabled(<span class="keyword">true</span>);  </span><br><span class="line">special_content = special_content.replaceAll(<span class="string">"&amp;"</span>, <span class="string">""</span>);  </span><br><span class="line">special_content = special_content.replaceAll(<span class="string">""</span><span class="string">", "</span>\<span class="string">""</span>);  </span><br><span class="line">special_content = special_content.replaceAll(<span class="string">"&lt;"</span>, <span class="string">"&lt;"</span>);  </span><br><span class="line">special_content = special_content.replaceAll(<span class="string">"&gt;"</span>, <span class="string">"&gt;"</span>);  </span><br><span class="line">special_content = special_content.replaceAll(<span class="string">"\\n"</span>, <span class="string">"&lt;br&gt;"</span>);<span class="comment">//换行  </span></span><br><span class="line">special_content = special_content.replaceAll(<span class="string">"&lt;img"</span>, <span class="string">"&lt;img width=\"100%\""</span>);<span class="comment">//图片不超出屏幕  </span></span><br><span class="line">webView.loadDataWithBaseURL(<span class="keyword">null</span>, special_content, <span class="string">"text/html"</span>, <span class="string">"utf-8"</span>, <span class="keyword">null</span>);   <span class="comment">//加载html源码</span></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/RelativeLayout相对布局 安卓布局技巧/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1805,157 +1952,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/28种纯css3动态加载loading动态特效/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="牟骏荣">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="牟骏荣博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/28种纯css3动态加载loading动态特效/" itemprop="url">28种纯css3动态加载loading动态特效</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-14T11:29:30+08:00">
-                2018-09-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/分类/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>28种纯css3动态加载loading动态特效</li>
-</ul>
-<p><iframe height="498" width="100%" src="https://mjronlines.github.io/assets/28css3loading/index.html" frameborder="0" allowfullscreen></iframe></p>
-<h2 id="案例地址"><a href="#案例地址" class="headerlink" title="案例地址"></a>案例地址</h2><p><a href="https://mjronlines.github.io/assets/28css3loading/index.html">28种纯css3动态加载loading动态特效</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2001,7 +2002,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-count">51</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2013,7 +2014,7 @@
               <div class="site-state-item site-state-categories">
               
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -2024,7 +2025,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-count">51</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -2234,6 +2235,10 @@
                 
                   <a class="lefttag" href="/tags/正则表达式">
                      正则表达式
+                  </a>
+                
+                  <a class="lefttag" href="/tags/mongo">
+                     mongo
                   </a>
                 
                 </div>

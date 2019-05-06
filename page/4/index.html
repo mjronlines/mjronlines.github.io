@@ -270,6 +270,153 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/js-anglar JS使用两层ng-repeat嵌套使用，分辨$index/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="牟骏荣">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="牟骏荣博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/js-anglar JS使用两层ng-repeat嵌套使用，分辨$index/" itemprop="url">anglar JS使用两层ng-repeat嵌套使用，分辨$index</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-14T11:29:31+08:00">
+                2018-09-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/分类/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="anglar-JS使用两层ng-repeat嵌套使用，分辨-index"><a href="#anglar-JS使用两层ng-repeat嵌套使用，分辨-index" class="headerlink" title="anglar JS使用两层ng-repeat嵌套使用，分辨$index"></a>anglar JS使用两层ng-repeat嵌套使用，分辨$index</h2><ul>
+<li>使用ng-init给首层的每个元素赋值一个独立的值。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ng-init=&quot;outerIndex = $index;&quot;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML:"></a>HTML:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;category-nav&quot;&gt;</span><br><span class="line">  &lt;div class=&quot;category-nav-header&quot;&gt;资源分类&lt;/div&gt;</span><br><span class="line">  &lt;div class=&quot;category-nav-cell&quot; ng-repeat=&quot;firstItem in firstCategorys track by $index&quot; ng-init=&quot;outerIndex = $index;&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;category-nav-cell-header&quot;&gt;</span><br><span class="line">      &lt;h4 class=&quot;category-nav-firstTitle&quot; ng-click=&quot;clickFirstCategory($index)&quot;&gt;&#123;&#123;firstItem&#125;&#125;&lt;/h4&gt;</span><br><span class="line">      &lt;img src=&quot;&quot; alt=&quot;&quot; class=&quot;category-nav-expand&quot; ng-click=&quot;showOrHiden($index)&quot;&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;category-nav-secondContain&quot; ng-if=&quot;categoryStatus[$index]&quot;&gt;</span><br><span class="line">      &lt;div  class=&quot;category-nav-second&quot; ng-repeat=&quot;secondItem in secondCategory[$index]&quot; ng-click=&quot;clickNavSecondCategory(outerIndex,$index)&quot;&gt;&#123;&#123;secondItem&#125;&#125;&lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="JS"><a href="#JS" class="headerlink" title="JS"></a>JS</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$scope.clickNavSecondCategory = function (outerIndex,innerIndex) &#123;</span><br><span class="line">  console.log(&apos;点击了导航栏的分类页码&apos;+outerIndex+innerIndex);</span><br><span class="line">  $scope.showMainContentSecondCategory = false;</span><br><span class="line">  $scope.routes.splice(1,2,$scope.firstCategorys[outerIndex],$scope.secondCategory[outerIndex][innerIndex]);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/js-Windows.close无效/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1576,158 +1723,11 @@ startForeground(NOTIFY_ID, notification);
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/android-WebView技巧/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="牟骏荣">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="牟骏荣博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/android-WebView技巧/" itemprop="url">WebView技巧</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-14T11:29:31+08:00">
-                2018-09-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/分类/android-安卓/" itemprop="url" rel="index">
-                    <span itemprop="name">android-安卓</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>WebView技巧<h2 id="WebView启用相关配置"><a href="#WebView启用相关配置" class="headerlink" title="WebView启用相关配置"></a>WebView启用相关配置</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">   wv = (WebView) findViewById(R.id.article_webwiew);</span><br><span class="line">wv.getSettings().setSupportMultipleWindows(<span class="keyword">true</span>);</span><br><span class="line">wv.getSettings().setJavaScriptEnabled(<span class="keyword">true</span>);</span><br><span class="line">wv.setWebViewClient(<span class="keyword">new</span> WebViewClient());</span><br><span class="line">wv.setWebChromeClient(<span class="keyword">new</span> WebChromeClient());</span><br><span class="line">wv.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);<span class="comment">//关闭缓存</span></span><br><span class="line">wv.getSettings().setAllowFileAccess(<span class="keyword">true</span>);<span class="comment">//允许读取文件</span></span><br><span class="line">wv.getSettings().setAllowContentAccess(<span class="keyword">true</span>);</span><br><span class="line">wv.getSettings().setSupportZoom(<span class="keyword">false</span>);<span class="comment">//禁止缩放</span></span><br><span class="line">wv.getSettings().setDomStorageEnabled(<span class="keyword">true</span>);<span class="comment">//开启本地数据库储存</span></span><br><span class="line">wv.getSettings().setDatabaseEnabled(<span class="keyword">true</span>);</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="WebView-缩放"><a href="#WebView-缩放" class="headerlink" title="WebView 缩放"></a>WebView 缩放</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wv.getSettings().setSupportZoom(true);//禁止缩放</span><br><span class="line">wv.getSettings().setBuiltInZoomControls(true);</span><br><span class="line">wv.getSettings().setDisplayZoomControls(true);</span><br><span class="line">wv.setInitialScale(100); //缩放比例</span><br></pre></td></tr></table></figure>
-<h2 id="WebView-JSON数据替换为String"><a href="#WebView-JSON数据替换为String" class="headerlink" title="WebView JSON数据替换为String"></a>WebView JSON数据替换为String</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">webView = (WebView) findViewById(R.id.bbs_webview);  </span><br><span class="line">webView.getSettings().setJavaScriptEnabled(<span class="keyword">true</span>);  </span><br><span class="line">special_content = special_content.replaceAll(<span class="string">"&amp;"</span>, <span class="string">""</span>);  </span><br><span class="line">special_content = special_content.replaceAll(<span class="string">""</span><span class="string">", "</span>\<span class="string">""</span>);  </span><br><span class="line">special_content = special_content.replaceAll(<span class="string">"&lt;"</span>, <span class="string">"&lt;"</span>);  </span><br><span class="line">special_content = special_content.replaceAll(<span class="string">"&gt;"</span>, <span class="string">"&gt;"</span>);  </span><br><span class="line">special_content = special_content.replaceAll(<span class="string">"\\n"</span>, <span class="string">"&lt;br&gt;"</span>);<span class="comment">//换行  </span></span><br><span class="line">special_content = special_content.replaceAll(<span class="string">"&lt;img"</span>, <span class="string">"&lt;img width=\"100%\""</span>);<span class="comment">//图片不超出屏幕  </span></span><br><span class="line">webView.loadDataWithBaseURL(<span class="keyword">null</span>, special_content, <span class="string">"text/html"</span>, <span class="string">"utf-8"</span>, <span class="keyword">null</span>);   <span class="comment">//加载html源码</span></span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1773,7 +1773,7 @@ startForeground(NOTIFY_ID, notification);
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-count">51</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1785,7 +1785,7 @@ startForeground(NOTIFY_ID, notification);
               <div class="site-state-item site-state-categories">
               
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -1796,7 +1796,7 @@ startForeground(NOTIFY_ID, notification);
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-count">51</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -2006,6 +2006,10 @@ startForeground(NOTIFY_ID, notification);
                 
                   <a class="lefttag" href="/tags/正则表达式">
                      正则表达式
+                  </a>
+                
+                  <a class="lefttag" href="/tags/mongo">
+                     mongo
                   </a>
                 
                 </div>

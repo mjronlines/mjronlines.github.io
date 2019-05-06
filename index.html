@@ -270,6 +270,170 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/MongoMaximum 33554432bytes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="牟骏荣">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="牟骏荣博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/MongoMaximum 33554432bytes/" itemprop="url">Sort operation used more than the maximum 33554432 bytes of RAM</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-06T10:25:26+08:00">
+                2019-05-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/分类/linux/" itemprop="url" rel="index">
+                    <span itemprop="name">linux</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/分类/linux/服务端/" itemprop="url" rel="index">
+                    <span itemprop="name">服务端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li>上线许久的产品突然爆出了一个Mongodb 查询的BUG，错误如下<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&quot;exception&quot;:&quot;org.springframework.data.mongodb.UncategorizedMongoDbException&quot;,</span><br><span class="line">&quot;message&quot;:&quot;Query failed with error code 96 and error message &apos;Executor error during find command: OperationFailed: Sort operation used more than the maximum 33554432 bytes of RAM. Add an index, or specify a smaller limit.&apos; on server 127.0.0.1:27017; </span><br><span class="line">nested exception is com.mongodb.MongoQueryException: </span><br><span class="line">Query failed with error code 96 and error message &apos;Executor error during find command: OperationFailed: Sort operation used more than the maximum 33554432 bytes of RAM. </span><br><span class="line">Add an index, or specify a smaller limit.&apos; on server 127.0.0.1:27017&quot;</span><br><span class="line">Executor error during find command :: caused by :: Sort operation used more than the maximum 33554432 bytes of RAM. Add an index, or specify a smaller limit</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>原因比较明确：Sort operation used more than the maximum 33554432 bytes of RAM.，33554432 bytes算下来正好是32Mb，而Mongodb的sort操作是把数据拿到内存中再进行排序的，为了节约内存，默认给sort操作限制了最大内存为32Mb，当数据量越来越大直到超过32Mb的时候就自然抛出异常了！解决方案有两个思路，一个是既然内存不够用那就修改默认配置多分配点内存空间；一个是像错误提示里面说的那样创建索引。<br>首先说如何修改默认内存配置，在Mongodb命令行窗口中执行如下命令即可：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.adminCommand(&#123;setParameter:1, internalQueryExecMaxBlockingSortBytes:335544320&#125;)</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><p>我直接把内存扩大了10倍，变成了320Mb。从这里可以看出，除非你服务器的内存足够大，否则sort占用的内存会成为一个严重的资源消耗！然后是创建索引，也比较简单：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">db.yourCollection.createIndex(&#123;&lt;field&gt;:&lt;1 or -1&gt;&#125;)</span><br><span class="line">db.yourCollection.getIndexes()  //查看当前collection的索引</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>其中1表示升序排列，-1表示降序排列。索引创建之后即时生效，不需要重启数据库和服务器程序，也不需要对原来的数据库查询语句进行修改。创建索引的话也有不好的地方，会导致数据写入变慢，同时Mongodb数据本身占用的存储空间也会变多。不过从查询性能和服务器资源消耗这两方面来看，通过创建索引来解决这个问题还是最佳的方案！</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/JS正则表达式大全(整理详细且实用)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1890,164 +2054,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/Ionic安卓自动更新/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="牟骏荣">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="牟骏荣博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Ionic安卓自动更新/" itemprop="url">Ionic android 端自动更新</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-31T16:31:34+08:00">
-                2019-01-31
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/分类/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Ionic-android-端自动更新重点记录"><a href="#Ionic-android-端自动更新重点记录" class="headerlink" title="Ionic android 端自动更新重点记录"></a>Ionic android 端自动更新重点记录</h2><ul>
-<li>安装相应包  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ionic cordova plugin add cordova-plugin-file-opener2</span><br><span class="line">npm install @ionic-native/file-opener</span><br><span class="line"></span><br><span class="line">ionic cordova plugin add cordova-plugin-file-transfer</span><br><span class="line">npm install @ionic-native/file-transfer</span><br><span class="line"></span><br><span class="line">ionic cordova plugin add cordova-plugin-file-opener2</span><br><span class="line">npm install @ionic-native/file-opener</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<ul>
-<li>npm包版本应用4.19.0测试</li>
-<li>分别引入到app.modules.ts的providers 里面</li>
-</ul>
-<h3 id="更新代码"><a href="#更新代码" class="headerlink" title="更新代码"></a>更新代码</h3><ul>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">updateApk() &#123;</span><br><span class="line">    let alert1 = this.alertCtrl.create(&#123;</span><br><span class="line">      title: &apos;版本更新&apos;,</span><br><span class="line">      message: &apos;检查到最新版本，是否进行更新&apos;,</span><br><span class="line">      buttons: [</span><br><span class="line">        &#123;</span><br><span class="line">          text: &apos;否&apos;,</span><br><span class="line">          role: &apos;cancel&apos;,</span><br><span class="line">          handler: () =&gt; &#123;</span><br><span class="line">            console.log(&apos;不进行更新&apos;);</span><br><span class="line">            super.showToast(this.toastCtrl, &quot;不进行更新&quot;)</span><br><span class="line"></span><br><span class="line">          &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          text: &apos;是&apos;,</span><br><span class="line">          handler: () =&gt; &#123;</span><br><span class="line"></span><br><span class="line">            // const updateUrl = &apos;http://192.168.10.112:9090/appversion.xml&apos;;</span><br><span class="line">            // console.log(&apos;下载地址&apos;);</span><br><span class="line">            // console.log(updateUrl);</span><br><span class="line">            // this.appUpdate.checkAppUpdate(updateUrl).then(() =&gt; &#123; console.log(&apos;Update available&apos;) &#125;);</span><br><span class="line">            // alert1.dismiss();</span><br><span class="line">            console.log(&apos;更新APP&apos;);</span><br><span class="line">            let url = &quot;http://192.168.10.112:9090/apk2.apk&quot;;</span><br><span class="line">            console.log(url);</span><br><span class="line"></span><br><span class="line">            console.log(&apos;开始下载Android代码----------------------------&apos;);</span><br><span class="line">            const fileTransfer: FileTransferObject = this.transfer.create();</span><br><span class="line">            try &#123;</span><br><span class="line">             </span><br><span class="line">            &#125; catch (error) &#123;</span><br><span class="line">              console.log(&apos;fileTransfer--Err&apos;);</span><br><span class="line">              console.log(JSON.stringify(error));</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            fileTransfer.onProgress(progressEvent =&gt; &#123;</span><br><span class="line">              var present = new Number((progressEvent.loaded / progressEvent.total) * 100);</span><br><span class="line">              console.log(&apos;当前进度为：&apos; + present.toFixed(0));</span><br><span class="line">              // var presentInt = present.toFixed(0);</span><br><span class="line">              // this.loadingService.presentProgress(presentInt);</span><br><span class="line"></span><br><span class="line">            &#125;);</span><br><span class="line">            let savePath = this.file.dataDirectory + &quot;upload&quot;;</span><br><span class="line">            // var savePath = down+ &apos;android.apk&apos;;</span><br><span class="line">            console.log(&apos;保存地址&apos;);</span><br><span class="line">            console.log(savePath);</span><br><span class="line">            fileTransfer.download(encodeURI(url), savePath).then((entry) =&gt; &#123;</span><br><span class="line">              super.showToast(this.toastCtrl, &quot;下载成功&quot;);</span><br><span class="line">              console.log(&apos;保存apk包的地址为: &apos; + savePath + &apos;android.apk&apos;);</span><br><span class="line">              console.log(&apos;download complete: &apos; + entry.toURL());</span><br><span class="line">              console.log(&quot;下载成功&quot;);</span><br><span class="line">              this.fileOpener.open(entry.toURL(), &quot;application/vnd.android.package-archive&quot;)</span><br><span class="line">                .then(() =&gt; console.log(&apos;打开apk包成功！&apos;))</span><br><span class="line">                .catch(e =&gt; console.log(&apos;打开apk包失败！&apos;, e));</span><br><span class="line">            &#125;, (error) =&gt; &#123;</span><br><span class="line">              super.showToast(this.toastCtrl, &quot;下载失败&quot;);</span><br><span class="line">              console.log(&quot;下载失败&quot;);</span><br><span class="line">              // this.loadingService.presentTip(&apos;操作提醒&apos;, &apos;由于部分手机出现异常,请您进入手机设置-应用管理-Ceshiname-权限，将存储权限打开后再进行升级，由此给您带来的不便，敬请谅解。&apos;);</span><br><span class="line">              for (var item in error) &#123;</span><br><span class="line">                console.log(item + &quot;:&quot; + error[item]);</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;)</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;],</span><br><span class="line">    &#125;)</span><br><span class="line">    alert1.present();</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2093,7 +2104,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-count">51</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2105,7 +2116,7 @@
               <div class="site-state-item site-state-categories">
               
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -2116,7 +2127,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-count">51</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -2326,6 +2337,10 @@
                 
                   <a class="lefttag" href="/tags/正则表达式">
                      正则表达式
+                  </a>
+                
+                  <a class="lefttag" href="/tags/mongo">
+                     mongo
                   </a>
                 
                 </div>
