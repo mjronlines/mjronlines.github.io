@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="牟骏荣博客">
 <meta property="og:description" content="CSS实现单行、多行文本溢出显示省略号1234display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 3;//数组填写1则一行超出省略号overflow: hidden;  CSS常用div阴影效果 1box-shadow: 0 1px 5px 0 rgba(0,0,0,.5);  CSS常用文字阴影效果 1tex">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-24T08:42:02.544Z">
+<meta property="og:updated_time" content="2019-06-28T06:49:40.101Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Css实用案例收集">
 <meta name="twitter:description" content="CSS实现单行、多行文本溢出显示省略号1234display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 3;//数组填写1则一行超出省略号overflow: hidden;  CSS常用div阴影效果 1box-shadow: 0 1px 5px 0 rgba(0,0,0,.5);  CSS常用文字阴影效果 1tex">
@@ -369,6 +369,9 @@
 </li>
 <li><p>CSS常用文字阴影效果</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">text-shadow: 0 0 0.1em #666, 0 0 0.3em #666,0 0 0.1em #666</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Safari消除CSS点击A出现短暂半透明效果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a,img &#123;</span><br><span class="line">    -webkit-tap-highlight-color:transparent;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="css-不能选中文字"><a href="#css-不能选中文字" class="headerlink" title="css 不能选中文字"></a>css 不能选中文字</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">-webkit-touch-callout: none;</span><br><span class="line">/* iOS Safari */</span><br><span class="line">-webkit-user-select: none;</span><br><span class="line">/* Chrome/Safari/Opera */</span><br><span class="line">-khtml-user-select: none;</span><br><span class="line">/* Konqueror */</span><br><span class="line">-moz-user-select: none;</span><br><span class="line">/* Firefox */</span><br><span class="line">-ms-user-select: none;</span><br><span class="line">/* Internet Explorer/Edge */</span><br><span class="line">user-select: none;</span><br><span class="line">/* Non-prefixed version, currently</span><br></pre></td></tr></table></figure>
