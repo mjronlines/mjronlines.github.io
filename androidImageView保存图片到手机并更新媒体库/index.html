@@ -77,17 +77,17 @@
 
 
 
-<meta name="description" content="— title: android-ImageView保存图片到手机并更新媒体库 tags:  - android categories:  -ImageView — ## android-ImageView保存图片到手机并更新媒体库 12345678910111213141516171819202122232425262728293031323334353637383940414243444546">
+<meta name="description" content="title: android-ImageView保存图片到手机并更新媒体库tags:    androidcategories:   android-安卓   android-ImageView保存图片到手机并更新媒体库12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849">
 <meta property="og:type" content="article">
 <meta property="og:title" content="牟骏荣博客">
 <meta property="og:url" content="https://mjronlines.github.io/androidImageView保存图片到手机并更新媒体库/index.html">
 <meta property="og:site_name" content="牟骏荣博客">
-<meta property="og:description" content="— title: android-ImageView保存图片到手机并更新媒体库 tags:  - android categories:  -ImageView — ## android-ImageView保存图片到手机并更新媒体库 12345678910111213141516171819202122232425262728293031323334353637383940414243444546">
+<meta property="og:description" content="title: android-ImageView保存图片到手机并更新媒体库tags:    androidcategories:   android-安卓   android-ImageView保存图片到手机并更新媒体库12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-20T02:06:33.800Z">
+<meta property="og:updated_time" content="2019-07-19T09:08:33.284Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="牟骏荣博客">
-<meta name="twitter:description" content="— title: android-ImageView保存图片到手机并更新媒体库 tags:  - android categories:  -ImageView — ## android-ImageView保存图片到手机并更新媒体库 12345678910111213141516171819202122232425262728293031323334353637383940414243444546">
+<meta name="twitter:description" content="title: android-ImageView保存图片到手机并更新媒体库tags:    androidcategories:   android-安卓   android-ImageView保存图片到手机并更新媒体库12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849">
 
 
 
@@ -337,8 +337,14 @@
       
 
       
-        <p>— title: android-ImageView保存图片到手机并更新媒体库 tags:  - android categories:  -<br>ImageView — ## android-ImageView保存图片到手机并更新媒体库</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//调用执行</span></span><br><span class="line">imageview.setDrawingCacheEnabled(<span class="keyword">true</span>);</span><br><span class="line">Bitmap imageBitmap = imageview.getDrawingCache();</span><br><span class="line"><span class="keyword">if</span> (imageBitmap != <span class="keyword">null</span>) &#123;</span><br><span class="line">	<span class="keyword">new</span> SaveImageTask().execute(imageBitmap);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	 </span><br><span class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">SaveImageTask</span> <span class="keyword">extends</span> <span class="title">AsyncTask</span>&lt;<span class="title">Bitmap</span>, <span class="title">Void</span>, <span class="title">String</span>&gt; </span>&#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">protected</span> String <span class="title">doInBackground</span><span class="params">(Bitmap... params)</span> </span>&#123;</span><br><span class="line">		String result = getResources().getString(R.string.save_picture_failed);</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			String sdcard = Environment.getExternalStorageDirectory().toString();</span><br><span class="line"><span class="comment">//                String sdcard = Environment.getDataDirectory().toString();</span></span><br><span class="line"><span class="comment">//                String sdcard =  getBaseContext().getFilesDir().toString();;</span></span><br><span class="line">			File fileDir=<span class="keyword">new</span> File(getApplication().getExternalCacheDir(),<span class="string">"images"</span>);</span><br><span class="line">			System.out.println(sdcard);</span><br><span class="line"></span><br><span class="line"><span class="comment">//                File file = new File(sdcard + "/DCIM");</span></span><br><span class="line">			file = <span class="keyword">new</span> File(sdcard+ <span class="string">"/Download"</span>);</span><br><span class="line">			<span class="keyword">if</span> (!file.exists()) &#123;</span><br><span class="line">				file.mkdirs();</span><br><span class="line">			&#125;</span><br><span class="line">			fileName = <span class="string">"IMG_"</span> + <span class="keyword">new</span> Date().getTime() + <span class="string">".jpg"</span>;</span><br><span class="line">			File imageFile = <span class="keyword">new</span> File(file.getAbsolutePath(),fileName);</span><br><span class="line">			FileOutputStream outStream = <span class="keyword">null</span>;</span><br><span class="line">			outStream = <span class="keyword">new</span> FileOutputStream(imageFile);</span><br><span class="line">			Bitmap image = params[<span class="number">0</span>];</span><br><span class="line">			image.compress(Bitmap.CompressFormat.JPEG, <span class="number">100</span>, outStream);</span><br><span class="line">			outStream.flush();</span><br><span class="line">			outStream.close();</span><br><span class="line">			result = getResources().getString(R.string.save_picture_success,  file.getAbsolutePath());</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> result;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onPostExecute</span><span class="params">(String result)</span> </span>&#123;</span><br><span class="line">		Toast.makeText(getApplicationContext(),result,Toast.LENGTH_SHORT).show();</span><br><span class="line"></span><br><span class="line">		share_code_img.setDrawingCacheEnabled(<span class="keyword">false</span>);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//后面两句是重点不然不会再媒体库中显示(或者重启后显示)</span></span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			MediaStore.Images.Media.insertImage(getBaseContext().getContentResolver(),</span><br><span class="line">					file.getAbsolutePath(), fileName, <span class="keyword">null</span>);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (FileNotFoundException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		getBaseContext().sendBroadcast(<span class="keyword">new</span> Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.parse(<span class="string">"file://"</span> + file.getAbsolutePath()+fileName)));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <hr>
+<p>title: android-ImageView保存图片到手机并更新媒体库<br>tags:  </p>
+<ul>
+<li>android<br>categories:  </li>
+<li>android-安卓</li>
+</ul>
+<hr>
+<h2 id="android-ImageView保存图片到手机并更新媒体库"><a href="#android-ImageView保存图片到手机并更新媒体库" class="headerlink" title="android-ImageView保存图片到手机并更新媒体库"></a>android-ImageView保存图片到手机并更新媒体库</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//调用执行</span></span><br><span class="line">imageview.setDrawingCacheEnabled(<span class="keyword">true</span>);</span><br><span class="line">Bitmap imageBitmap = imageview.getDrawingCache();</span><br><span class="line"><span class="keyword">if</span> (imageBitmap != <span class="keyword">null</span>) &#123;</span><br><span class="line">	<span class="keyword">new</span> SaveImageTask().execute(imageBitmap);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	 </span><br><span class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">SaveImageTask</span> <span class="keyword">extends</span> <span class="title">AsyncTask</span>&lt;<span class="title">Bitmap</span>, <span class="title">Void</span>, <span class="title">String</span>&gt; </span>&#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">protected</span> String <span class="title">doInBackground</span><span class="params">(Bitmap... params)</span> </span>&#123;</span><br><span class="line">		String result = getResources().getString(R.string.save_picture_failed);</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			String sdcard = Environment.getExternalStorageDirectory().toString();</span><br><span class="line"><span class="comment">//                String sdcard = Environment.getDataDirectory().toString();</span></span><br><span class="line"><span class="comment">//                String sdcard =  getBaseContext().getFilesDir().toString();;</span></span><br><span class="line">			File fileDir=<span class="keyword">new</span> File(getApplication().getExternalCacheDir(),<span class="string">"images"</span>);</span><br><span class="line">			System.out.println(sdcard);</span><br><span class="line"></span><br><span class="line"><span class="comment">//                File file = new File(sdcard + "/DCIM");</span></span><br><span class="line">			file = <span class="keyword">new</span> File(sdcard+ <span class="string">"/Download"</span>);</span><br><span class="line">			<span class="keyword">if</span> (!file.exists()) &#123;</span><br><span class="line">				file.mkdirs();</span><br><span class="line">			&#125;</span><br><span class="line">			fileName = <span class="string">"IMG_"</span> + <span class="keyword">new</span> Date().getTime() + <span class="string">".jpg"</span>;</span><br><span class="line">			File imageFile = <span class="keyword">new</span> File(file.getAbsolutePath(),fileName);</span><br><span class="line">			FileOutputStream outStream = <span class="keyword">null</span>;</span><br><span class="line">			outStream = <span class="keyword">new</span> FileOutputStream(imageFile);</span><br><span class="line">			Bitmap image = params[<span class="number">0</span>];</span><br><span class="line">			image.compress(Bitmap.CompressFormat.JPEG, <span class="number">100</span>, outStream);</span><br><span class="line">			outStream.flush();</span><br><span class="line">			outStream.close();</span><br><span class="line">			result = getResources().getString(R.string.save_picture_success,  file.getAbsolutePath());</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> result;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onPostExecute</span><span class="params">(String result)</span> </span>&#123;</span><br><span class="line">		Toast.makeText(getApplicationContext(),result,Toast.LENGTH_SHORT).show();</span><br><span class="line"></span><br><span class="line">		share_code_img.setDrawingCacheEnabled(<span class="keyword">false</span>);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//后面两句是重点不然不会再媒体库中显示(或者重启后显示)</span></span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			MediaStore.Images.Media.insertImage(getBaseContext().getContentResolver(),</span><br><span class="line">					file.getAbsolutePath(), fileName, <span class="keyword">null</span>);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (FileNotFoundException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		getBaseContext().sendBroadcast(<span class="keyword">new</span> Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.parse(<span class="string">"file://"</span> + file.getAbsolutePath()+fileName)));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -427,8 +433,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -466,7 +481,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">57</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -690,6 +705,22 @@
                      预览图片
                   </a>
                 
+                  <a class="lefttag" href="/tags/验证码">
+                     验证码
+                  </a>
+                
+                  <a class="lefttag" href="/tags/close">
+                     close
+                  </a>
+                
+                  <a class="lefttag" href="/tags/phone">
+                     phone
+                  </a>
+                
+                  <a class="lefttag" href="/tags/scroll">
+                     scroll
+                  </a>
+                
                 </div>
             
           
@@ -707,6 +738,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#android-ImageView保存图片到手机并更新媒体库"><span class="nav-number">1.</span> <span class="nav-text">android-ImageView保存图片到手机并更新媒体库</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
