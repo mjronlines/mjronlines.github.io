@@ -270,169 +270,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/android使用Service在后台运行/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="牟骏荣">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="牟骏荣博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/android使用Service在后台运行/" itemprop="url">android使用Service在后台运行</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-14T11:29:31+08:00">
-                2018-09-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/分类/android-安卓/" itemprop="url" rel="index">
-                    <span itemprop="name">android-安卓</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="android使用Service在后台运行"><a href="#android使用Service在后台运行" class="headerlink" title="android使用Service在后台运行"></a>android使用Service在后台运行</h2><p>public void useForeground(CharSequence tickerText, String currSong) {<br>    Intent notificationIntent = new Intent(getApplicationContext(), MainActivity.class);<br>    PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, notificationIntent, 0);<br>    /* Method 01 </p>
-<pre><code> * this method must SET SMALLICON! 
- * otherwise it can&apos;t do what we want in Android 4.4 KitKat, 
- * it can only show the application info page which contains the &apos;Force Close&apos; button.*/  
-NotificationCompat.Builder mNotifyBuilder = new NotificationCompat.Builder(PlayService.this)  
-        .setSmallIcon(R.drawable.ic_launcher)  
-        .setTicker(tickerText)  
-        .setWhen(System.currentTimeMillis())  
-        .setContentTitle(getString(R.string.app_name))  
-        .setContentText(currSong)  
-        .setContentIntent(pendingIntent);  
-Notification notification = mNotifyBuilder.build();  
-
-/* Method 02  
-Notification notification = new Notification(R.drawable.ic_launcher, tickerText, 
-        System.currentTimeMillis()); 
-notification.setLatestEventInfo(PlayService.this, getText(R.string.app_name), 
-        currSong, pendingIntent); 
-*/  
-
-startForeground(NOTIFY_ID, notification);  
-</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">## android黑屏后保持Service运行</span><br><span class="line"></span><br><span class="line">```java</span><br><span class="line">   private PowerManager.WakeLock wakeLock = null;</span><br><span class="line">   PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);</span><br><span class="line">   wakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, MyService.class.getName());</span><br><span class="line">   wakeLock.acquire();</span><br><span class="line">   //需要权限</span><br><span class="line">   &lt;uses-permission android:name=&quot;android.permission.WAKE_LOCK&quot; /&gt;</span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/androidImageView保存图片到手机并更新媒体库/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -508,7 +345,7 @@ startForeground(NOTIFY_ID, notification);
 <p>title: android-ImageView保存图片到手机并更新媒体库<br>tags:  </p>
 <ul>
 <li>android<br>categories:  </li>
-<li>android-安卓</li>
+<li>安卓</li>
 </ul>
 <hr>
 <h2 id="android-ImageView保存图片到手机并更新媒体库"><a href="#android-ImageView保存图片到手机并更新媒体库" class="headerlink" title="android-ImageView保存图片到手机并更新媒体库"></a>android-ImageView保存图片到手机并更新媒体库</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//调用执行</span></span><br><span class="line">imageview.setDrawingCacheEnabled(<span class="keyword">true</span>);</span><br><span class="line">Bitmap imageBitmap = imageview.getDrawingCache();</span><br><span class="line"><span class="keyword">if</span> (imageBitmap != <span class="keyword">null</span>) &#123;</span><br><span class="line">	<span class="keyword">new</span> SaveImageTask().execute(imageBitmap);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	 </span><br><span class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">SaveImageTask</span> <span class="keyword">extends</span> <span class="title">AsyncTask</span>&lt;<span class="title">Bitmap</span>, <span class="title">Void</span>, <span class="title">String</span>&gt; </span>&#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">protected</span> String <span class="title">doInBackground</span><span class="params">(Bitmap... params)</span> </span>&#123;</span><br><span class="line">		String result = getResources().getString(R.string.save_picture_failed);</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			String sdcard = Environment.getExternalStorageDirectory().toString();</span><br><span class="line"><span class="comment">//                String sdcard = Environment.getDataDirectory().toString();</span></span><br><span class="line"><span class="comment">//                String sdcard =  getBaseContext().getFilesDir().toString();;</span></span><br><span class="line">			File fileDir=<span class="keyword">new</span> File(getApplication().getExternalCacheDir(),<span class="string">"images"</span>);</span><br><span class="line">			System.out.println(sdcard);</span><br><span class="line"></span><br><span class="line"><span class="comment">//                File file = new File(sdcard + "/DCIM");</span></span><br><span class="line">			file = <span class="keyword">new</span> File(sdcard+ <span class="string">"/Download"</span>);</span><br><span class="line">			<span class="keyword">if</span> (!file.exists()) &#123;</span><br><span class="line">				file.mkdirs();</span><br><span class="line">			&#125;</span><br><span class="line">			fileName = <span class="string">"IMG_"</span> + <span class="keyword">new</span> Date().getTime() + <span class="string">".jpg"</span>;</span><br><span class="line">			File imageFile = <span class="keyword">new</span> File(file.getAbsolutePath(),fileName);</span><br><span class="line">			FileOutputStream outStream = <span class="keyword">null</span>;</span><br><span class="line">			outStream = <span class="keyword">new</span> FileOutputStream(imageFile);</span><br><span class="line">			Bitmap image = params[<span class="number">0</span>];</span><br><span class="line">			image.compress(Bitmap.CompressFormat.JPEG, <span class="number">100</span>, outStream);</span><br><span class="line">			outStream.flush();</span><br><span class="line">			outStream.close();</span><br><span class="line">			result = getResources().getString(R.string.save_picture_success,  file.getAbsolutePath());</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> result;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onPostExecute</span><span class="params">(String result)</span> </span>&#123;</span><br><span class="line">		Toast.makeText(getApplicationContext(),result,Toast.LENGTH_SHORT).show();</span><br><span class="line"></span><br><span class="line">		share_code_img.setDrawingCacheEnabled(<span class="keyword">false</span>);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//后面两句是重点不然不会再媒体库中显示(或者重启后显示)</span></span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			MediaStore.Images.Media.insertImage(getBaseContext().getContentResolver(),</span><br><span class="line">					file.getAbsolutePath(), fileName, <span class="keyword">null</span>);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (FileNotFoundException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		getBaseContext().sendBroadcast(<span class="keyword">new</span> Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.parse(<span class="string">"file://"</span> + file.getAbsolutePath()+fileName)));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -614,8 +451,8 @@ startForeground(NOTIFY_ID, notification);
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/分类/android-安卓/" itemprop="url" rel="index">
-                    <span itemprop="name">android-安卓</span>
+                  <a href="/分类/安卓/" itemprop="url" rel="index">
+                    <span itemprop="name">安卓</span>
                   </a>
                 </span>
 
@@ -761,8 +598,8 @@ startForeground(NOTIFY_ID, notification);
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/分类/android-安卓/" itemprop="url" rel="index">
-                    <span itemprop="name">android-安卓</span>
+                  <a href="/分类/安卓/" itemprop="url" rel="index">
+                    <span itemprop="name">安卓</span>
                   </a>
                 </span>
 
@@ -1695,8 +1532,8 @@ startForeground(NOTIFY_ID, notification);
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/分类/android-安卓/" itemprop="url" rel="index">
-                    <span itemprop="name">android-安卓</span>
+                  <a href="/分类/安卓/" itemprop="url" rel="index">
+                    <span itemprop="name">安卓</span>
                   </a>
                 </span>
 
@@ -1920,6 +1757,173 @@ startForeground(NOTIFY_ID, notification);
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/AngularJSH5videosrcurl/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="牟骏荣">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="牟骏荣博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/AngularJSH5videosrcurl/" itemprop="url">AngularJS H5 video src url</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-14T11:29:30+08:00">
+                2018-09-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/分类/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li>首先说下背景 我这边开发web  使用后H5页面 用的是angularJs  </li>
+<li><p>问题: 在开发的时候 把路径放在H5页面里面的video标签 路径是对的  视频也是可以播放的 但是就是播放不了令人费解</p>
+<h4 id="如果我直接使用"><a href="#如果我直接使用" class="headerlink" title="如果我直接使用"></a>如果我直接使用</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;video src=&quot;&#123;&#123;item.url&#125;&#125;&quot;  width=&quot;320&quot; height=&quot;240&quot; controls=&quot;controls&quot;&gt;&lt;/video&gt;  </span><br><span class="line">//这样会在前台报出angularJs错误  </span><br><span class="line">Error: $interpolate:interr</span><br><span class="line">Interpolation Error</span><br><span class="line">说是插值误差</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>然后我查到 在angularJs 中有一个 ng-src  我就把上列代码中的src 变成 ng-src<br>但是还是不行 他还是会在前台爆出 插值错误<br>最后我在网上找到了答案<br>为什么我们直接给ng-src 或者 src 路径是时不行的呢?<br>原来:</p>
+</li>
+</ul>
+<h5 id="在angularJs中为了避免安全漏洞，一些ng-src或者ng-include都会进行安全校验，因此常常会遇到一个iframe中的ng-src无法使用。"><a href="#在angularJs中为了避免安全漏洞，一些ng-src或者ng-include都会进行安全校验，因此常常会遇到一个iframe中的ng-src无法使用。" class="headerlink" title="在angularJs中为了避免安全漏洞，一些ng-src或者ng-include都会进行安全校验，因此常常会遇到一个iframe中的ng-src无法使用。"></a>在angularJs中为了避免安全漏洞，一些ng-src或者ng-include都会进行安全校验，因此常常会遇到一个iframe中的ng-src无法使用。</h5><ul>
+<li>人话就是  我们用angular里面的 ng-src 时会进行安全检查  因为我们是访问资源服务器上面的视频  所以他不给你这个url通过 所以我们就不放不了视频</li>
+</ul>
+<p>这里有人要说了  为什么我用 src=”“ 也不行 我想说的是 因为我们使用了 这个在页面加载的时候 angularjs 会把src变成ng-src  这样所以不能通过</p>
+<p>那么我们怎么解决这个url问题  </p>
+<p>简单直接 我们直接告诉angularJs 这个url是安全的  你信任他 </p>
+<ul>
+<li>方法是 $sce服务把一些地址变成安全的、授权的链接…简单地说，就像告诉门卫，这个陌生人其实是我的好朋友，很值得信赖，不必拦截它！</li>
+</ul>
+<p>常用的方法有:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$sce.trustAs(type,name);</span><br><span class="line">$sce.trustAsHtml(value);</span><br><span class="line">$sce.trustAsUrl(value);</span><br><span class="line">$sce.trustAsResourceUrl(value);</span><br><span class="line">$sce.trustAsJs(value);</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><p>下面我是我处理过的代码 已经可以执行了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;col-sm-10&quot;&gt;  </span><br><span class="line">    &lt;video ng-src=&quot;&#123;&#123;videoUrl(item.url)&#125;&#125;&quot;  width=&quot;320&quot; height=&quot;240&quot; controls=&quot;controls&quot;&gt;  </span><br><span class="line">  </span><br><span class="line">    &lt;/video&gt;  </span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>下面是JS videoUrl方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">下面是JS videoUrl方法</span><br><span class="line"> $scope.videoUrl = function(url)&#123;</span><br><span class="line">    return $sce .trustAsResourceUrl(url);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -1970,7 +1974,7 @@ startForeground(NOTIFY_ID, notification);
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">52</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1982,7 +1986,7 @@ startForeground(NOTIFY_ID, notification);
               <div class="site-state-item site-state-categories">
               
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>

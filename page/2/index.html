@@ -270,165 +270,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/VSCode - Beautify插件配置 /">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="牟骏荣">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="牟骏荣博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/VSCode - Beautify插件配置 /" itemprop="url">VSCode - Beautify插件配置</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-28T10:57:01+08:00">
-                2019-02-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/分类/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="1-使用Beautify插件配置-自动格式化按如下步骤设置"><a href="#1-使用Beautify插件配置-自动格式化按如下步骤设置" class="headerlink" title="1.使用Beautify插件配置 自动格式化按如下步骤设置"></a>1.使用Beautify插件配置 自动格式化按如下步骤设置</h2><ul>
-<li>在工作目录下建立.jsbeautifyrc文件.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;brace_style&quot;: &quot;none,preserve-inline&quot;,</span><br><span class="line">  &quot;indent_size&quot;: 2,</span><br><span class="line">  &quot;indent_char&quot;: &quot; &quot;,</span><br><span class="line">  &quot;jslint_happy&quot;: true,</span><br><span class="line">  &quot;unformatted&quot;: [&quot;&quot;],</span><br><span class="line">  &quot;css&quot;: &#123;</span><br><span class="line">    &quot;indent_size&quot;: 2</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>注释</p>
-<ul>
-<li>brace_style，格式风格，详见官方说明（为避免和eslint默认检查冲突，建议此属性设置为 none,preserve-inline）</li>
-<li>indent_size，缩进长度（为避免和eslint默认检查冲突，建议此属性设置为 2）</li>
-<li>indent_char，缩进填充的内容（充满♂）</li>
-<li>jslint_happy:true，若你要搭配jslint使用，请开启此选项</li>
-<li>unformatted:[“a”,”pre”]，这里放不需要格式化的标签类型。注意 template 也是默认不格式化的，.vue 的template 标签如果需要格式化请在 .jsbeautifyrc 重新定义不带 template 的声明属性</li>
-</ul>
-<h2 id="2-启用保存时自动"><a href="#2-启用保存时自动" class="headerlink" title="2.启用保存时自动"></a>2.启用保存时自动</h2><p>在VSCode的配置文件里添加 editor.formatOnSave:true 即可实现保存时自动格式化</p>
-<h2 id="3-快捷键"><a href="#3-快捷键" class="headerlink" title="3.快捷键"></a>3.快捷键</h2><p>在 VS Code 的键盘快捷方式文件里添加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;key&quot;: &quot;cmd+b&quot;, // 自己定键位</span><br><span class="line">  &quot;command&quot;: &quot;HookyQR.beautify&quot;,</span><br><span class="line">  &quot;when&quot;: &quot;editorFocus&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="4-单独配置vue"><a href="#4-单独配置vue" class="headerlink" title="4.单独配置vue"></a>4.单独配置vue</h2><ul>
-<li>文件-&gt; 设置 -&gt; settings.json 中添加属性<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&quot;beautify.language&quot;: &#123;</span><br><span class="line">      &quot;js&quot;: &#123;</span><br><span class="line">          &quot;type&quot;: [</span><br><span class="line">              &quot;javascript&quot;,</span><br><span class="line">              &quot;json&quot;</span><br><span class="line">          ],</span><br><span class="line">          &quot;filename&quot;: [</span><br><span class="line">              &quot;.jshintrc&quot;,</span><br><span class="line">              &quot;.jsbeautify&quot;</span><br><span class="line">          ]</span><br><span class="line">      &#125;,</span><br><span class="line">      &quot;css&quot;: [</span><br><span class="line">          &quot;css&quot;,</span><br><span class="line">          &quot;scss&quot;</span><br><span class="line">      ],</span><br><span class="line">      &quot;html&quot;: [</span><br><span class="line">          &quot;htm&quot;,</span><br><span class="line">          &quot;html&quot;,</span><br><span class="line">          &quot;vue&quot;  //&lt; 这条给vue配置</span><br><span class="line">      ]</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="插件备份（自己研究）"><a href="#插件备份（自己研究）" class="headerlink" title="插件备份（自己研究）"></a>插件备份（自己研究）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  // The plugin looks for a .jsbeautifyrc file in the same directory as the</span><br><span class="line">  // source file you&apos;re prettifying (or any directory above if it doesn&apos;t exist,</span><br><span class="line">  // or in your home folder if everything else fails) and uses those options</span><br><span class="line">  // along the default ones.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  // Details: https://github.com/victorporof/Sublime-HTMLPrettify#using-your-own-jsbeautifyrc-options</span><br><span class="line">  // Documentation: https://github.com/einars/js-beautify/</span><br><span class="line">  &quot;html&quot;: &#123;</span><br><span class="line">    &quot;allowed_file_extensions&quot;: [&quot;htm&quot;, &quot;html&quot;, &quot;xhtml&quot;, &quot;shtml&quot;, &quot;xml&quot;, &quot;svg&quot;,&quot;aspx&quot;,&quot;jsp&quot;],</span><br><span class="line">    &quot;brace_style&quot;: &quot;collapse&quot;, // [collapse|expand|end-expand|none] Put braces on the same line as control statements (default), or put braces on own line (Allman / ANSI style), or just put end braces on own line, or attempt to keep them where they are</span><br><span class="line">    &quot;end_with_newline&quot;: false, // End output with newline</span><br><span class="line">    &quot;indent_char&quot;: &quot;\t&quot;, // Indentation character</span><br><span class="line">    &quot;indent_handlebars&quot;: false, // e.g. &#123;&#123;#foo&#125;&#125;, &#123;&#123;/foo&#125;&#125;</span><br><span class="line">    &quot;indent_inner_html&quot;: false, // Indent &lt;head&gt; and &lt;body&gt; sections</span><br><span class="line">    &quot;indent_scripts&quot;: &quot;keep&quot;, // [keep|separate|normal]</span><br><span class="line">    &quot;indent_size&quot;: 1, // Indentation size</span><br><span class="line">    &quot;max_preserve_newlines&quot;: 10, // Maximum number of line breaks to be preserved in one chunk (0 disables)</span><br><span class="line">    &quot;preserve_newlines&quot;: true, // Whether existing line breaks before elements should be preserved (only works before elements, not inside tags or for text)</span><br><span class="line">    &quot;unformatted&quot;: [&quot;a&quot;, &quot;span&quot;, &quot;img&quot;, &quot;code&quot;, &quot;pre&quot;, &quot;sub&quot;, &quot;sup&quot;, &quot;em&quot;, &quot;strong&quot;, &quot;b&quot;, &quot;i&quot;, &quot;u&quot;, &quot;strike&quot;, &quot;big&quot;, &quot;small&quot;, &quot;pre&quot;, &quot;h1&quot;, &quot;h2&quot;, &quot;h3&quot;, &quot;h4&quot;, &quot;h5&quot;, &quot;h6&quot;], // List of tags that should not be reformatted</span><br><span class="line">    &quot;wrap_line_length&quot;: 0 // Lines should wrap at next opportunity after this number of characters (0 disables)</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;css&quot;: &#123;</span><br><span class="line">    &quot;allowed_file_extensions&quot;: [&quot;css&quot;, &quot;scss&quot;, &quot;sass&quot;, &quot;less&quot;],</span><br><span class="line">    &quot;end_with_newline&quot;: false, // End output with newline</span><br><span class="line">    &quot;indent_char&quot;: &quot;\t&quot;, // Indentation character</span><br><span class="line">    &quot;indent_size&quot;: 1, // Indentation size</span><br><span class="line">    &quot;newline_between_rules&quot;: true, // Add a new line after every css rule</span><br><span class="line">    &quot;selector_separator&quot;: &quot; &quot;,</span><br><span class="line">    &quot;selector_separator_newline&quot;: false // Separate selectors with newline or not (e.g. &quot;a,\nbr&quot; or &quot;a, br&quot;)</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;js&quot;: &#123;</span><br><span class="line">    &quot;allowed_file_extensions&quot;: [&quot;js&quot;, &quot;json&quot;, &quot;jshintrc&quot;, &quot;jsbeautifyrc&quot;,&quot;csslintrc&quot;],</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    // Set brace_style</span><br><span class="line">    //  collapse: (old default) Put braces on the same line as control statements</span><br><span class="line">    //  collapse-preserve-inline: (new default) Same as collapse but better support for ES6 destructuring and other features. https://github.com/victorporof/Sublime-HTMLPrettify/issues/231</span><br><span class="line">    //  expand: Put braces on own line (Allman / ANSI style)</span><br><span class="line">    //  end-expand: Put end braces on own line</span><br><span class="line">    //  none: Keep them where they are</span><br><span class="line">    &quot;brace_style&quot;: &quot;collapse&quot;,//&quot;collapse-preserve-inline&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &quot;break_chained_methods&quot;: false, // Break chained method calls across subsequent lines</span><br><span class="line">    &quot;e4x&quot;: false, // Pass E4X xml literals through untouched</span><br><span class="line">    &quot;end_with_newline&quot;: false, // End output with newline</span><br><span class="line">    &quot;indent_char&quot;: &quot;\t&quot;, // Indentation character</span><br><span class="line">    &quot;indent_level&quot;: 0, // Initial indentation level</span><br><span class="line">    &quot;indent_size&quot;: 1, // Indentation size</span><br><span class="line">    &quot;indent_with_tabs&quot;: true, // Indent with tabs, overrides `indent_size` and `indent_char`</span><br><span class="line">    &quot;jslint_happy&quot;: true, // If true, then jslint-stricter mode is enforced</span><br><span class="line">    &quot;keep_array_indentation&quot;: false, // Preserve array indentation</span><br><span class="line">    &quot;keep_function_indentation&quot;: false, // Preserve function indentation</span><br><span class="line">    &quot;max_preserve_newlines&quot;: 0, // Maximum number of line breaks to be preserved in one chunk (0 disables)</span><br><span class="line">    &quot;preserve_newlines&quot;: true, // Whether existing line breaks should be preserved</span><br><span class="line">    &quot;space_after_anon_function&quot;: false, // Should the space before an anonymous function&apos;s parens be added, &quot;function()&quot; vs &quot;function ()&quot;</span><br><span class="line">    &quot;space_before_conditional&quot;: true, // Should the space before conditional statement be added, &quot;if(true)&quot; vs &quot;if (true)&quot;</span><br><span class="line">    &quot;space_in_empty_paren&quot;: false, // Add padding spaces within empty paren, &quot;f()&quot; vs &quot;f( )&quot;</span><br><span class="line">    &quot;space_in_paren&quot;: false, // Add padding spaces within paren, ie. f( a, b )</span><br><span class="line">    &quot;unescape_strings&quot;: false, // Should printable characters in strings encoded in \xNN notation be unescaped, &quot;example&quot; vs &quot;\x65\x78\x61\x6d\x70\x6c\x65&quot;</span><br><span class="line">    &quot;wrap_line_length&quot;: 0 // Lines should wrap at next opportunity after this number of characters (0 disables)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/vue 使用技巧/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -781,8 +622,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/分类/android-安卓/" itemprop="url" rel="index">
-                    <span itemprop="name">android-安卓</span>
+                  <a href="/分类/安卓/" itemprop="url" rel="index">
+                    <span itemprop="name">安卓</span>
                   </a>
                 </span>
 
@@ -928,8 +769,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/分类/android-安卓/" itemprop="url" rel="index">
-                    <span itemprop="name">android-安卓</span>
+                  <a href="/分类/安卓/" itemprop="url" rel="index">
+                    <span itemprop="name">安卓</span>
                   </a>
                 </span>
 
@@ -1081,8 +922,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/分类/android-安卓/" itemprop="url" rel="index">
-                    <span itemprop="name">android-安卓</span>
+                  <a href="/分类/安卓/" itemprop="url" rel="index">
+                    <span itemprop="name">安卓</span>
                   </a>
                 </span>
 
@@ -1232,8 +1073,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/分类/android-安卓/" itemprop="url" rel="index">
-                    <span itemprop="name">android-安卓</span>
+                  <a href="/分类/安卓/" itemprop="url" rel="index">
+                    <span itemprop="name">安卓</span>
                   </a>
                 </span>
 
@@ -1331,7 +1172,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/解决 Could not find lint-gradle-api.jar/">
+    <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/解决android加载国外java包失败/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="牟骏荣">
@@ -1350,7 +1191,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/解决 Could not find lint-gradle-api.jar/" itemprop="url">解决 Could not find lint-gradle-api.jar</a></h2>
+                <a class="post-title-link" href="/解决android加载国外java包失败/" itemprop="url">解决android加载国外java包失败</a></h2>
         
 
         <div class="post-meta">
@@ -1385,8 +1226,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/分类/android-安卓/" itemprop="url" rel="index">
-                    <span itemprop="name">android-安卓</span>
+                  <a href="/分类/安卓/" itemprop="url" rel="index">
+                    <span itemprop="name">安卓</span>
                   </a>
                 </span>
 
@@ -1532,8 +1373,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/分类/android-安卓/" itemprop="url" rel="index">
-                    <span itemprop="name">android-安卓</span>
+                  <a href="/分类/安卓/" itemprop="url" rel="index">
+                    <span itemprop="name">安卓</span>
                   </a>
                 </span>
 
@@ -1780,6 +1621,149 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://mjronlines.github.io/linux编译安装php nginx部分代码/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="牟骏荣">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="牟骏荣博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/linux编译安装php nginx部分代码/" itemprop="url">linux编译安装php nginx部分代码</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-14T11:29:31+08:00">
+                2018-09-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/分类/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="安装php"><a href="#安装php" class="headerlink" title="安装php"></a>安装php</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">./configure --prefix=/home/php5.6 --enable-fpm --with-png-dir  --with-gd  --enable-gd-native-ttf  </span><br><span class="line"> --enable-gd-jis-conv  --with-png-dir  --with-zlib   --with-zlib-dir   --with-freetype-dir </span><br><span class="line">  --with-mysql --enable-mysqlnd</span><br><span class="line">#查找帮助./configure --help|grep fpm</span><br><span class="line">#make &amp;&amp; make install</span><br><span class="line">经过漫长时间的等待</span><br><span class="line">#cp php.ini-development /usr/local/php5/lib/php.ini 复制 php.ini</span><br><span class="line">#cp /usr/local/php5/etc/php-fpm.conf.default php-fpm.conf 复制 fpm 配置文件</span><br><span class="line">#/usr/local/php5/bin/php -varsoin</span><br></pre></td></tr></table></figure>
+<p>##nginx 安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#./configure --prefix=/usr/local/nginx  --with-http_stub_status_module --with-http_ssl_module //后面为 https 模块 </span><br><span class="line">.....</span><br><span class="line">#/usr/local/nginx/sbin/nginx</span><br><span class="line">打开浏览器 http://localhost</span><br><span class="line">Welcome to nginx! 安装成功</span><br><span class="line">nginx 支持 php</span><br><span class="line">#vi /usr/local/nginx/conf/nginx.conf </span><br><span class="line">把以下取消注释</span><br><span class="line"> location ~ .php$ &#123;</span><br><span class="line">    root     html;</span><br><span class="line">    fastcgi_pass   127.0.0.1:9000;</span><br><span class="line">    fastcgi_index  index.php;</span><br><span class="line">    fastcgi_param  SCRIPT_FILENAME  /usr/local/nginx/html/$fastcgi_script_name;</span><br><span class="line">    include        fastcgi_params;</span><br><span class="line">&#125;</span><br><span class="line">重启 nginx</span><br><span class="line">#pkill -9 nginx</span><br><span class="line">#/usr/local/nginx/sbin/nginx</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -1830,7 +1814,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">52</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1842,7 +1826,7 @@
               <div class="site-state-item site-state-categories">
               
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
